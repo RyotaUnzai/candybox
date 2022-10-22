@@ -1,0 +1,23 @@
+QWidget#body {
+    background-color: #fff;
+}
+
+QWidget#body > QPushButton {
+    color: #ededed;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: #6e6d72;
+    max-height: 30px;
+    min-height: 30px;
+}
+
+QWidget#body > QPushButton:hover {
+    color: #ededed;
+    border-color: #ededed;
+}
+
+QWidget#body > QPushButton:pressed {
+    background-color: #6e6d72;
+}

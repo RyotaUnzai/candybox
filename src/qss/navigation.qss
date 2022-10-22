@@ -1,0 +1,23 @@
+QFrame#Navigation {
+    background-color: transparent;
+}
+
+QFrame#Navigation > QPushButton {
+    color: #6e6d72;
+    background-color: transparent;
+    border: none;
+}
+
+QFrame#Navigation > QPushButton:hover {
+    color: #ededed;
+}
+
+QFrame#Navigation > QPushButton:pressed {
+    color: #00b8b8;
+}
+
+QFrame#Navigation > QLabel {
+    color: #fff;
+    padding-bottom: 15;
+    background-color: transparent;
+}

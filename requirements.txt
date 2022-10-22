@@ -1,0 +1,4 @@
+mkdocs==1.4.1
+PySide2==5.15.2.1
+PyYAML==6.0
+shiboken2==5.15.2.1

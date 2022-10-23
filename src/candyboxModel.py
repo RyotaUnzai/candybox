@@ -5,46 +5,29 @@ from candyboxView import *
 
 
 class candyBoxBodyItemModel(object):
-    widgetItems = {}
+    __widgetItems = {}
 
-    def setBodyWidgetItems(self, layout):
+    def setBodyWidgetItems(self, layout: QBoxLayout) -> None:
+        self.__widgetItems = {}
         for num in range(layout.count()):
-            item = layout.takeAt(num)
-            try:
-                widget = item.widget()
-                print(widget)
-                print(type(widget))
-            except BaseException:
-                pass
+            item = layout.itemAt(num)
+            widget = item.widget()
+            self.__widgetItems[widget.objectName()] = widget
+
+    def showHideWidget(self, widgetType: str, layout: QBoxLayout) -> None:
+        for num in range(layout.count()):
+            item = layout.itemAt(num)
+            widget = item.widget()
+            objectName = widget.objectName()
+            if widgetType != objectName:
+                widget.hide()
+            else:
+                widget.show()
+
+    @property
+    def widgetItems(self):
+        return self.__widgetItems
 
 
 def debug():
     print("debug")
-
-
-def showHideWidget(view: candyBoxMainWindow, widgetType: str, bodyWidget: QWidget) -> None:
-    print("showHideWidget")
-    if widgetType == "homeWidget":
-        print(view.cw.body.layout.count())
-
-        print("homeWidget", bodyWidget)
-
-    elif widgetType == "messageWidget":
-        print(view.cw.body.layout.count())
-
-        print("messageWidget", bodyWidget)
-
-    elif widgetType == "scheduleWidget":
-        print(view.cw.body.layout.count())
-
-        print("scheduleWidget", bodyWidget)
-
-    elif widgetType == "settingWidget":
-        print(view.cw.body.layout.count())
-
-        print("settingWidget", bodyWidget)
-
-    elif widgetType == "accountWidget":
-        print(view.cw.body.layout.count())
-
-        print("accountWidget", bodyWidget)

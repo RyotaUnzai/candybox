@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from re import L
 from PySide2.QtWidgets import *
 from PySide2.QtGui import *
 
@@ -42,8 +43,9 @@ class candyBoxDelegator(core.delegator):
     def view(self, value):
         self.__view = value
         #self.nav = self.__view.cw.navigation
-        #self.nav = self.__view.cw.navigation.ui
-        self.body = self.__view.cw.bodyWidget
+        self.nav = self.__view.cw.navigation.ui
+        self.bodyWidget = self.__view.cw.bodyWidget
+        self.bodyWidgetLayout = self.__view.cw.bodyWidget.layout()
 
     @property
     def model(self) -> candyboxModel:
@@ -55,12 +57,28 @@ class candyBoxDelegator(core.delegator):
 
     def connect(self):
         self.view.show()
-        # self.__bodyWidgetConnection()
-        # self.__navigationConnection()
+        self.__bodyWidgetConnection()
+        self.__navigationConnection()
 
     def __bodyWidgetConnection(self):
         self.bodyItemModel = self.model.candyBoxBodyItemModel()
-        self.bodyItemModel.setBodyWidgetItems(self.body.layout())
+        self.bodyItemModel.setBodyWidgetItems(self.bodyWidgetLayout)
+
+        self.nav.PB_Home.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Home", layout=self.bodyWidgetLayout)
+        )
+        self.nav.PB_Message.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Message", layout=self.bodyWidgetLayout)
+        )
+        self.nav.PB_Schedule.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.bodyWidgetLayout)
+        )
+        self.nav.PB_Setting.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Setting", layout=self.bodyWidgetLayout)
+        )
+        self.nav.PB_Account.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Account", layout=self.bodyWidgetLayout)
+        )
 
     def __navigationConnection(self):
         # self.nav.setMaximumWidth(100)
@@ -82,19 +100,3 @@ class candyBoxDelegator(core.delegator):
         self.FontRemix.Font_Remixicon.setPixelSize(36)
         self.nav.L_Appicon.setFont(self.FontRemix.Font_Remixicon)
         self.nav.L_Appicon.setText(self.FontRemix.ri_apps_fill)
-
-        self.nav.PB_Home.clicked.connect(
-            lambda: self.model.showHideWidget(view=self.view, widgetType="homeWidget", bodyWidget=self.body)
-        )
-        self.nav.PB_Message.clicked.connect(
-            lambda: self.model.showHideWidget(view=self.view, widgetType="messageWidget", bodyWidget=self.body)
-        )
-        self.nav.PB_Schedule.clicked.connect(
-            lambda: self.model.showHideWidget(view=self.view, widgetType="scheduleWidget", bodyWidget=self.body)
-        )
-        self.nav.PB_Setting.clicked.connect(
-            lambda: self.model.showHideWidget(view=self.view, widgetType="settingWidget", bodyWidget=self.body)
-        )
-        self.nav.PB_Account.clicked.connect(
-            lambda: self.model.showHideWidget(view=self.view, widgetType="accountWidget", bodyWidget=self.body)
-        )

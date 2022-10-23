@@ -13,22 +13,45 @@ class candyBoxCentralWidget(QWidget):
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
         self.navigation = views.navigationWidget(self)
         self.navigation.setObjectName("navigation")
+
+        # body ---- start
         self.bodyWidget = QWidget(self)
-        self.hbox = QVBoxLayout()
-        self.bodyWidget.setLayout(self.hbox)
+        self.home = views.homeWidget(self)
+        self.message = views.messageWidget(self)
+        self.schedule = views.scheduleWidget(self)
+        self.setting = views.settingWidget(self)
+        self.account = views.accountWidget(self)
+        self.homeUI = self.home.ui
+        self.messageUI = self.message.ui
+        self.scheduleUI = self.schedule.ui
+        self.settingUI = self.setting.ui
+        self.accountUI = self.account.ui
+        # # body ---- end
 
-        for i in range(6):
-            btn = QPushButton("Button:%s" % i, self)
-            btn.resize(50, 25)
+        self.__initLayout()
 
-            self.hbox.addWidget(btn)
-        # views.bodyWidget(self)
+    def __initLayout(self):
+        self.boxLayout = QBoxLayout(QBoxLayout.TopToBottom, self)
+        self.bodyWidget.setLayout(self.boxLayout)
 
-        self.centralWidgetLayout = QHBoxLayout(self)
+        # for i in range(6):
+        #     self.boxLayout.addWidget(QPushButton("button:%s" % i))
+
+        self.boxLayout.addWidget(self.homeUI)
+        self.boxLayout.addWidget(self.messageUI)
+        self.boxLayout.addWidget(self.scheduleUI)
+        self.boxLayout.addWidget(self.settingUI)
+        self.boxLayout.addWidget(self.accountUI)
+
+        self.centralWidgetLayout = QBoxLayout(QBoxLayout.LeftToRight, self)
         self.centralWidgetLayout.addWidget(self.navigation.ui)
-        # self.centralWidgetLayout.addLayout(self.hbox)
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
+
+        self.messageUI.hide()
+        self.scheduleUI.hide()
+        self.settingUI.hide()
+        self.accountUI.hide()
 
     @property
     def navigation(self) -> views.navigationWidget:

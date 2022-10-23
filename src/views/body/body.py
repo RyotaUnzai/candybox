@@ -1,18 +1,6 @@
 
 from PySide2.QtWidgets import *
-import os
-try:
 
-    import sys
-    sys.path.append("./")
-    sys.path.append("../account")
-    sys.path.append("../home")
-    sys.path.append("../message")
-    sys.path.append("../schedule")
-    sys.path.append("../setting")
-    print(os.getenv("PYTHONPATH"))
-except BaseException:
-    pass
 try:
     from ..account import *
     from ..home import *
@@ -20,7 +8,13 @@ try:
     from ..schedule import *
     from ..setting import *
 except BaseException:
-    from PySide2.QtWidgets import *
+    import sys
+    sys.path.append("./")
+    sys.path.append("../account")
+    sys.path.append("../home")
+    sys.path.append("../message")
+    sys.path.append("../schedule")
+    sys.path.append("../setting")
     from PySide2.QtGui import *
     from src.views.account import *
     from src.views.home import *
@@ -34,7 +28,7 @@ class bodyWidget(QFrame):
         super(bodyWidget, self).__init__(parent, *args, **kwargs)
 
         # self.setObjectName("body")
-        self.Hbox = QGridLayout(self)
+        #self.Hbox = QGridLayout(self)
 
         #self.home = homeWidget(self)
         #self.message = messageWidget(self)
@@ -54,7 +48,7 @@ class bodyWidget(QFrame):
         # self.layout.addWidget(self.settingUI)
         # self.layout.addWidget(self.accountUI)
 
-        self.setLayout(self.Hbox)
+        # self.setLayout(self.Hbox)
 
 
 def main():

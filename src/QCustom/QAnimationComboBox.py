@@ -4,14 +4,14 @@ from PySide2.QtGui import *
 from PySide2.QtCore import *
 
 
-class CustomeComboBox(QComboBox):
+class QAnimationComboBox(QComboBox):
     __PopupOffcet = (0, 0)
     __fade = False
     __stretch = False
     __slide = False
 
     def __init__(self, parent=None, *args, **kwargs):
-        super(CustomeComboBox, self).__init__(parent, *args, **kwargs)
+        super(QAnimationComboBox, self).__init__(parent, *args, **kwargs)
         self.popup = self.view().window()
 
     @property

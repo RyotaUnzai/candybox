@@ -13,7 +13,7 @@ if __name__ == "__main__":
     qssloader = core.qssLoader(rootPath=core.PATH_QSS)
 
     app = QApplication(sys.argv)
-    app.setStyleSheet(qssloader.styleSheet)
+    # app.setStyleSheet(qssloader.styleSheet)
     app.setWindowIcon(QPixmap(":/image/app/appIcon.png"))
 
     delegator = candyboxDelegator.candyBoxDelegator()

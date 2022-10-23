@@ -3,8 +3,6 @@ import core
 from PySide2.QtWidgets import QWidget
 from PySide2.QtUiTools import loadUiType, QUiLoader
 
-from QCustom import QAnimationComboBox
-
 
 class scheduleWidget(QWidget):
 
@@ -18,3 +16,9 @@ class scheduleWidget(QWidget):
         self.ui.setParent(parent)
         self.setObjectName("Schedule")
         # QAnimationComboBox
+        self.ui.setStyleSheet("""
+QFrame#Schedule {
+    background-color: #fff;
+}
+
+        """)

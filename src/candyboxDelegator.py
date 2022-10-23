@@ -41,9 +41,9 @@ class candyBoxDelegator(core.delegator):
     @view.setter
     def view(self, value):
         self.__view = value
-        self.nav = self.__view.cw.navigation
-        self.nav = self.__view.cw.navigation.ui
-        self.body = self.__view.cw.body
+        #self.nav = self.__view.cw.navigation
+        #self.nav = self.__view.cw.navigation.ui
+        self.body = self.__view.cw.bodyWidget
 
     @property
     def model(self) -> candyboxModel:
@@ -55,11 +55,16 @@ class candyBoxDelegator(core.delegator):
 
     def connect(self):
         self.view.show()
-        self.__navigationConnection()
+        # self.__bodyWidgetConnection()
+        # self.__navigationConnection()
+
+    def __bodyWidgetConnection(self):
+        self.bodyItemModel = self.model.candyBoxBodyItemModel()
+        self.bodyItemModel.setBodyWidgetItems(self.body.layout())
 
     def __navigationConnection(self):
         # self.nav.setMaximumWidth(100)
-        self.nav.PB_Home.clicked.connect(self.view.close)
+        # self.nav.PB_Home.clicked.connect(self.view.close)
 
         self.FontRemix.Font_Remixicon.setPixelSize(20)
         self.nav.PB_Home.setFont(self.FontRemix.Font_Remixicon)
@@ -78,6 +83,18 @@ class candyBoxDelegator(core.delegator):
         self.nav.L_Appicon.setFont(self.FontRemix.Font_Remixicon)
         self.nav.L_Appicon.setText(self.FontRemix.ri_apps_fill)
 
-        self.nav.PB_Message.clicked.connect(
+        self.nav.PB_Home.clicked.connect(
             lambda: self.model.showHideWidget(view=self.view, widgetType="homeWidget", bodyWidget=self.body)
+        )
+        self.nav.PB_Message.clicked.connect(
+            lambda: self.model.showHideWidget(view=self.view, widgetType="messageWidget", bodyWidget=self.body)
+        )
+        self.nav.PB_Schedule.clicked.connect(
+            lambda: self.model.showHideWidget(view=self.view, widgetType="scheduleWidget", bodyWidget=self.body)
+        )
+        self.nav.PB_Setting.clicked.connect(
+            lambda: self.model.showHideWidget(view=self.view, widgetType="settingWidget", bodyWidget=self.body)
+        )
+        self.nav.PB_Account.clicked.connect(
+            lambda: self.model.showHideWidget(view=self.view, widgetType="accountWidget", bodyWidget=self.body)
         )

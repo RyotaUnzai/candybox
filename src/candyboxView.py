@@ -7,34 +7,44 @@ import views
 
 class candyBoxCentralWidget(QWidget):
     __navigation = None
-    __body = None
+    __bodyWidget = None
 
     def __init__(self, parent=None, *args, **kwargs) -> None:
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
         self.navigation = views.navigationWidget(self)
         self.navigation.setObjectName("navigation")
-        self.body = views.bodyWidget(self)
+        self.bodyWidget = QWidget(self)
+        self.hbox = QVBoxLayout()
+        self.bodyWidget.setLayout(self.hbox)
 
-        self.hbox = QHBoxLayout(self)
-        self.hbox.addWidget(self.navigation.ui)
-        self.hbox.addWidget(self.body)
-        self.setLayout(self.hbox)
+        for i in range(6):
+            btn = QPushButton("Button:%s" % i, self)
+            btn.resize(50, 25)
 
-    @ property
+            self.hbox.addWidget(btn)
+        # views.bodyWidget(self)
+
+        self.centralWidgetLayout = QHBoxLayout(self)
+        self.centralWidgetLayout.addWidget(self.navigation.ui)
+        # self.centralWidgetLayout.addLayout(self.hbox)
+        self.centralWidgetLayout.addWidget(self.bodyWidget)
+        self.setLayout(self.centralWidgetLayout)
+
+    @property
     def navigation(self) -> views.navigationWidget:
         return self.__navigation
 
-    @ navigation.setter
+    @navigation.setter
     def navigation(self, value):
         self.__navigation = value
 
-    @ property
-    def body(self) -> views.bodyWidget:
-        return self.__body
+    @property
+    def bodyWidget(self) -> views.bodyWidget:
+        return self.__bodyWidget
 
-    @ body.setter
-    def body(self, value):
-        self.__body = value
+    @bodyWidget.setter
+    def bodyWidget(self, value):
+        self.__bodyWidget = value
 
 
 class candyBoxMainWindow(QMainWindow):

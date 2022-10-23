@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Body</class>
- <widget class="QFrame" name="Body">
+ <class>Schedule</class>
+ <widget class="QFrame" name="Schedule">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>521</height>
+    <width>257</width>
+    <height>164</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,25 +20,18 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QComboBox" name="Cb_qss"/>
+   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="L_qss">
      <property name="text">
-      <string>Home</string>
+      <string>Schedule</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QPushButton" name="PB_qss">
-     <property name="text">
-      <string>Check</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QComboBox" name="Cb_qss"/>
-   </item>
-   <item row="1" column="1">
-    <widget class="QSpinBox" name="SB_qss"/>
+    <widget class="QDial" name="dial"/>
    </item>
   </layout>
  </widget>

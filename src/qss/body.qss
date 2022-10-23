@@ -1,23 +1,23 @@
 QWidget#body {
-    background-color: #fff;
+    background-color: var(--highlight-color1);
 }
 
 QWidget#body > QPushButton {
-    color: #ededed;
+    color: var(--hover-color1);
     background-color: transparent;
     border-width: 2px;
     border-style: solid;
     border-radius: 15px;
-    border-color: #6e6d72;
+    border-color: var(--default-color1);
     max-height: 30px;
     min-height: 30px;
 }
 
 QWidget#body > QPushButton:hover {
-    color: #ededed;
-    border-color: #ededed;
+    color: var(--hover-color1);
+    border-color: var(--hover-color1);
 }
 
 QWidget#body > QPushButton:pressed {
-    background-color: #6e6d72;
+    background-color: var(--default-color1);
 }

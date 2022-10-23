@@ -97,8 +97,17 @@ def readFile(path, decoding="utf-8-sig"):
             try:
                 text = codecs.open(file, "r", decoding)
             except TypeError:
-                text = open(path).read().decode(decoding)
+                try:
+                    text = open(path).read().decode(decoding)
+                except UnicodeDecodeError:
+                    text = open(path).read().decode("utf-8_sig")
     return text
+
+
+
+def saveFile(path, data):
+    with open(path, mode='w') as f:
+        f.write(data)
 
 
 def dict2json(data):

@@ -3,21 +3,21 @@ QFrame#Navigation {
 }
 
 QFrame#Navigation > QPushButton {
-    color: #6e6d72;
+    color: var(--default-color1);
     background-color: transparent;
     border: none;
 }
 
 QFrame#Navigation > QPushButton:hover {
-    color: #ededed;
+    color: var(--hover-color1);
 }
 
 QFrame#Navigation > QPushButton:pressed {
-    color: #00b8b8;
+    color: var(--main-color1);
 }
 
 QFrame#Navigation > QLabel {
-    color: #fff;
+    color: var(--highlight-color1);
     padding-bottom: 15;
     background-color: transparent;
 }

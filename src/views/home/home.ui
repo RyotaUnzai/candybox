@@ -43,7 +43,7 @@
     <widget class="QSpinBox" name="SB_qss"/>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="L_qss">
+    <widget class="QLabel" name="L_Header1">
      <property name="text">
       <string>Home</string>
      </property>

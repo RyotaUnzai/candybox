@@ -1,5 +1,17 @@
+:root {
+    --background-color1: #2c2b30;
+    --main-color1: #00bdbf;
+    --default-color1: #6e6d72;
+    --hover-color1: #ededed;
+    --highlight-color1: #fff
+    --darker-color1: #2b2b2b
+    --header1-color1: #e8e7eb;
+
+    --main-color2: #fb5e4b;
+}
+
 QMainWindow#candybox {
-    background-color: #2c2b30;
+    background-color: var(--background-color1);
 }
 
 QColumnView,
@@ -29,3 +41,18 @@ QToolBox,
 QToolButton {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/*---- QLabel ---*/
+
+QLabel#L_Header1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--header1-color1);
+    background-color: transparent;
+    font-size: 36px;
+}
+
+@import url("home.qss");
+@import url("message.qss");
+@import url("navigation.qss");
+@import url("schedule.qss");
+@import url("setting.qss");

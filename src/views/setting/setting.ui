@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>94</width>
+    <width>372</width>
     <height>578</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="1">
-    <widget class="QLabel" name="L_qss">
+    <widget class="QLabel" name="L_Header1">
      <property name="text">
       <string>Setting</string>
      </property>
@@ -29,6 +29,19 @@
    </item>
    <item row="1" column="1">
     <widget class="QLCDNumber" name="lcdNumber"/>
+   </item>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

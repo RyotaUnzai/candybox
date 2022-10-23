@@ -1,0 +1,239 @@
+/*---- QProgressBar ---*/
+
+QWidget#Message QProgressBar {
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    text-align: center;
+}
+
+QWidget#Message QProgressBar::chunk {
+    background-color: var(--main-color1);
+    width: 4px;
+    margin: 1px;
+}
+
+/* Checkbox & RadioButton */
+QWidget#Message QCheckBox,
+QWidget#Message QListView,
+QWidget#Message QPushButton,
+QWidget#Message QRadioButton,
+QWidget#Message QTabBar,
+QWidget#Message QToolBar,
+QWidget#Message QToolBox,
+QWidget#Message QTreeView {
+    icon-size: 24px;
+    color: var(--highlight-color1);
+}
+
+QWidget#Message QCheckBox,
+QWidget#Message QRadioButton {
+    background: transparent;
+    padding: 2px;
+    spacing: 5px;
+    border-radius: 3px;
+}
+QWidget#Message QCheckBox:disabled,
+QWidget#Message QRadioButton:disabled {
+    color: #808080;
+}
+QWidget#Message QCheckBox[text~=""] {
+    spacing: 10px;
+}
+QWidget#Message QGroupBox::indicator,
+QWidget#Message QCheckBox::indicator,
+QWidget#Message QRadioButton::indicator {
+    background: transparent;
+}
+
+QWidget#Message QGroupBox::indicator:enabled,
+QWidget#Message QCheckBox::indicator:enabled,
+QWidget#Message QTreeView::indicator:enabled,
+QWidget#Message QTreeView::indicator:enabled:selected,
+QWidget#Message QTableView::indicator:enabled {
+    background-color: var(--darker-color1);
+    width: 9px;
+    height: 9px;
+    border: 2px solid #999999;
+    border-radius: 3px;
+}
+
+QWidget#Message QRadioButton::indicator:enabled {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.45 var(--darker-color1),
+        stop: 0.5 #999999,
+        stop: 0.65 #999999,
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+    width: 13px;
+    height: 13px;
+}
+
+QWidget#Message QRadioButton::indicator:enabled:hover {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.45 var(--darker-color1),
+        stop: 0.5 #cccccc,
+        stop: 0.65 #cccccc,
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+}
+
+QWidget#Message QRadioButton::indicator:disabled {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.45 var(--darker-color1),
+        stop: 0.5 #666666,
+        stop: 0.65 #666666,
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+}
+
+QWidget#Message QRadioButton::indicator:checked {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.23 var(--darker-color1),
+        stop: 0.33 #cccccc,
+        stop: 0.65 #cccccc,
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+}
+
+QWidget#Message QRadioButton::indicator:checked:hover {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.2 var(--darker-color1),
+        stop: 0.33 var(--highlight-color1),
+        stop: 0.65 var(--highlight-color1),
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+}
+
+QWidget#Message QRadioButton::indicator:checked:disabled {
+    background: qradialgradient(
+        cx: 0.5,
+        cy: 0.5,
+        radius: 0.7,
+        fx: 0.5,
+        fy: 0.5,
+        stop: 0 var(--darker-color1),
+        stop: 0.2 var(--darker-color1),
+        stop: 0.33 #666666,
+        stop: 0.65 #666666,
+        stop: 0.75 transparent,
+        stop: 1 transparent
+    );
+}
+
+QWidget#Message QGroupBox::indicator:enabled:hover,
+QWidget#Message QCheckBox::indicator:enabled:hover,
+QWidget#Message QTreeView::indicator:enabled:hover,
+QWidget#Message QTreeView::indicator:hover:selected,
+QWidget#Message QTableView::indicator:enabled:hover:!selected,
+QWidget#Message QTableView::indicator:enabled:hover:selected {
+    width: 9px;
+    height: 9px;
+    border: 2px solid #b9b9b9;
+}
+
+QWidget#Message QGroupBox::indicator:enabled:pressed,
+QWidget#Message QCheckBox::indicator:enabled:pressed,
+QWidget#Message QRadioButton::indicator:enabled:pressed,
+QWidget#Message QTreeView::indicator:enabled:pressed {
+    border-color: #e3e3e3;
+}
+
+QWidget#Message QGroupBox::indicator:disabled,
+QWidget#Message QCheckBox::indicator:disabled,
+QWidget#Message QTreeView::indicator:disabled,
+QWidget#Message QTableView::indicator:disabled {
+    background: transparent;
+    border: 2px solid #5a5a5a;
+    border-radius: 3px;
+}
+
+QWidget#Message QGroupBox::indicator:checked,
+QWidget#Message QCheckBox::indicator:checked,
+QWidget#Message QTreeView::indicator:enabled:checked,
+QWidget#Message QTreeView::indicator:checked:selected,
+QWidget#Message QTableView::indicator:enabled:checked:!selected {
+    width: 9px;
+    height: 9px;
+    background: #b9b9b9;
+    border: 2px solid #b9b9b9;
+}
+
+QWidget#Message QTableView::indicator:enabled:checked:selected {
+    width: 9px;
+    height: 9px;
+    background: #cccccc;
+    border: 2px solid #cccccc;
+    min-height: 20px;
+}
+
+QWidget#Message QGroupBox::indicator:checked:hover,
+QWidget#Message QCheckBox::indicator:checked:hover,
+QWidget#Message QTreeView::indicator:checked:hover,
+QWidget#Message QTreeView::indicator:checked:hover:selected,
+QWidget#Message QTableView::indicator:enabled:checked:hover:selected {
+    background-color: #e3e3e3;
+    border-color: #e3e3e3;
+}
+
+QWidget#Message QGroupBox::indicator:checked:pressed,
+QWidget#Message QCheckBox::indicator:checked:pressed,
+QWidget#Message QRadioButton::indicator:checked:pressed,
+QWidget#Message QTreeView::indicator:checked:pressed {
+    background-color: var(--highlight-color1);
+    border-color: var(--highlight-color1);
+}
+
+QWidget#Message QGroupBox::indicator:checked:disabled,
+QWidget#Message QCheckBox::indicator:checked:disabled,
+QWidget#Message QTreeView::indicator:checked:disabled,
+QWidget#Message QTableView::indicator:checked:disabled {
+    background-color: #5a5a5a;
+    width: 9px;
+    height: 9px;
+    border: 2px solid #5a5a5a;
+}
+
+QWidget#Message QCheckBox::indicator:indeterminate {
+    background-color: #333333;
+    border: 2px solid #1e1e1e;
+}
+
+QWidget#Message QCheckBox::indicator:indeterminate:hover {
+    background-color: #4d4d4d;
+    border: 2px solid #1e1e1e;
+}

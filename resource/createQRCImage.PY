@@ -6,6 +6,7 @@ PREFIX = "/"
 
 def searchFile(root, result):
     for file in os.listdir(root):
+
         fullpath = os.path.join(root, file)
 
         if os.path.isdir(fullpath):
@@ -13,7 +14,7 @@ def searchFile(root, result):
 
         if file.split('.')[-1] == "png":
             result.append(fullpath)
-        elif file.split('.')[-1] == "svg":
+        elif file.split('.')[-1] == "svg" and "fonts" not in fullpath:
             result.append(fullpath)
     return result
 

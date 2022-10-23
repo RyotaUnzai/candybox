@@ -34,9 +34,6 @@ class candyBoxCentralWidget(QWidget):
         self.boxLayout = QBoxLayout(QBoxLayout.TopToBottom, self)
         self.bodyWidget.setLayout(self.boxLayout)
 
-        # for i in range(6):
-        #     self.boxLayout.addWidget(QPushButton("button:%s" % i))
-
         self.boxLayout.addWidget(self.homeUI)
         self.boxLayout.addWidget(self.messageUI)
         self.boxLayout.addWidget(self.scheduleUI)

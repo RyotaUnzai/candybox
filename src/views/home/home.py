@@ -18,9 +18,12 @@ class homeWidget(QWidget):
         self.ui = ui
         self.ui.setParent(parent)
         self.setObjectName("Home")
+        self.createQAnimationComboBox()
+        self.changeWidget()
         # self.ui.Cb_qss.deleteLater()
-        self.ComboBox = QtCustom.QAnimationComboBox(self.ui)
 
+    def createQAnimationComboBox(self):
+        self.ComboBox = QtCustom.QAnimationComboBox(self.ui)
         self.ComboBox_ListView = QListView(self.ui)
         self.ComboBox_ListView.setObjectName("Cb_qss")
         self.ComboBox_ListView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -37,12 +40,17 @@ class homeWidget(QWidget):
         for i in range(5):
             self.ComboBox.addItem("Item %s" % i)
 
+    def changeWidget(self):
         for num in range(self.ui.gridLayout.count()):
             item = self.ui.gridLayout.itemAt(num)
-            widget = item.widget()
-            objectName = widget.objectName()
-            if objectName == "Cb_qss":
-                pos = self.ui.gridLayout.getItemPosition(num)
+            try:
+                widget = item.widget()
+                objectName = widget.objectName()
+                if objectName == "Cb_qss":
+                    pos = self.ui.gridLayout.getItemPosition(num)
+            except BaseException:
+                pass
+
         self.ui.Cb_qss.deleteLater()
         self.ui.Cb_qss = self.ComboBox
         self.ui.gridLayout.addWidget(

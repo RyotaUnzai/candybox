@@ -1,0 +1,163 @@
+/*---- QPushButtn ---*/
+
+QWidget#Home QLabel#L_qss {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    color: #6e6d72;
+    background-color: transparent;
+    font-size: 36px;
+}
+
+/*---- QPushButtn ---*/
+
+QWidget#Home QPushButton {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid #6e6d72;
+    border-radius: 12px;
+    color: #fff;
+    background-color: transparent;
+    min-height: 30px;
+}
+
+QWidget#Home QPushButton:hover {
+    border-color: #fff;
+}
+
+QWidget#Home QPushButton:pressed {
+    border-color: #00bdbf;
+}
+
+/*---- QComboBox ---*/
+
+QWidget#Home QComboBox {
+    color: #fff;
+    background-color: transparent;
+    border-style: solid;
+    border-left-width: 2px;
+    border-color: #00bdbf;
+    height: 25px;
+    background-color: #242424;
+}
+
+QWidget#Home QComboBox::drop-down {
+    image: url(":/image/hover/System/arrow-drop-down-line.svg");
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    background-color: #00bdbf;
+}
+QWidget#Home QComboBox::drop-down:hover {
+    image: url(":/image/light/System/arrow-drop-down-line.svg");
+}
+
+QWidget#Home QComboBox::drop-down:on {
+    image: url(":/image/light/System/arrow-drop-up-line.svg");
+}
+
+QWidget#Home QListView {
+    color: #fff;
+    background-color: #242424;
+    outline: none;
+    border-style: 0px solid;
+}
+
+QWidget#Home QListView::item {
+    color: #fff;
+    height: 20px;
+    border-style: 0px solid;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+}
+
+QWidget#Home QListView::item:hover,
+QWidget#Home QListView::item:selected {
+    background-color: #242424;
+    border-color: #00bdbf;
+    border-style: solid;
+    border-left-width: 2px;
+    padding-left: 4px;
+}
+QWidget#Home QLineEdit {
+    background-color: #242424;
+    border-color: #242424;
+    border-style: solid;
+    border-left-width: 7px;
+}
+
+/*---- QSpinBox ---*/
+
+QWidget#Home QSpinBox {
+    color: #fff;
+    background-color: #242424;
+    border: none;
+    padding: 5px;
+}
+
+QWidget#Home QSpinBox::up-arrow,
+QWidget#Home QSpinBox::down-arrow {
+    width: 28px;
+    height: 28px;
+}
+
+QWidget#Home QSpinBox::down-arrow {
+    subcontrol-origin: content;
+    subcontrol-position: left center;
+    image: url(":/image/default/System/arrow-drop-left-fill.svg");
+}
+
+QWidget#Home QSpinBox::up-arrow {
+    subcontrol-origin: content;
+    subcontrol-position: right center;
+    image: url(":/image/default/System/arrow-drop-right-fill.svg");
+}
+
+QWidget#Home QSpinBox::up-arrow:hover {
+    image: url(":/image/hover/System/arrow-drop-right-fill.svg");
+}
+
+QWidget#Home QSpinBox::down-arrow:hover {
+    image: url(":/image/hover/System/arrow-drop-left-fill.svg");
+}
+
+QWidget#Home QSpinBox::up-arrow:pressed {
+    image: url(":/image/default/System/arrow-drop-right-fill.svg");
+}
+
+QWidget#Home QSpinBox::down-arrow:pressed {
+    image: url(":/image/default/System/arrow-drop-left-fill.svg");
+}
+
+QWidget#Home QSpinBox::down-button,
+QWidget#Home QSpinBox::up-button {
+    subcontrol-origin: border;
+    width: 26px;
+    height: 26px;
+    background: transparent;
+    border: none;
+}
+QWidget#Home QSpinBox::down-button {
+    margin: 0 0 0 24px;
+    padding: 0 26px 0 -24px;
+}
+
+QWidget#Home QSpinBox::down-button,
+QWidget#Home QSpinBox::up-button {
+    subcontrol-position: center right;
+}
+
+/*---- QListView ---*/
+
+QWidget#Home QListWidget#LW_qss {
+    color: #fff;
+    outline: none;
+    font-weight: 300;
+    outline: none;
+}
+
+QWidget#Home QListWidget::item#LW_qss {
+    border-color: #fb5e4b;
+}
+
+QWidget#Home QListWidget::item:hover#LW_qss {
+    background-color: #6e6d72;
+}

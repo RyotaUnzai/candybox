@@ -15,4 +15,3 @@ class messageWidget(QWidget):
         self.ui = ui
         self.ui.setParent(parent)
         self.setObjectName("Message")
-        # QAnimationComboBox

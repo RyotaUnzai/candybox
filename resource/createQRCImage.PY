@@ -13,6 +13,8 @@ def searchFile(root, result):
 
         if file.split('.')[-1] == "png":
             result.append(fullpath)
+        elif file.split('.')[-1] == "svg":
+            result.append(fullpath)
     return result
 
 

@@ -1,3 +1,31 @@
 QMainWindow#candybox {
     background-color: #2c2b30;
 }
+
+QColumnView,
+QListView,
+QTableView,
+QTreeView,
+QCheckBox,
+QComboBox,
+QCommandLinkButton,
+QDateEdit,
+QDateTimeEdit,
+QDial,
+QDoubleSpinBox,
+QFocusFrame,
+QFontComboBox,
+QLabel,
+QLineEdit,
+QMenu,
+QProgressBar,
+QRadioButton,
+QSlider,
+QSpinBox,
+QTabBar,
+QTabWidget,
+QTimeEdit,
+QToolBox,
+QToolButton {
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -8,6 +8,17 @@
             "name": "Python: 現在のファイル",
             "type": "python",
             "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}/src;${workspaceRoot}/src/views;${workspaceRoot}/src/views/body"
+            }
+        },
+        {
+            "name": "Candybox",
+            "type": "python",
+            "request": "launch",
             "program": "src/candybox.py",
             "console": "integratedTerminal",
             "justMyCode": true

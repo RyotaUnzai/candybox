@@ -47,7 +47,7 @@ class QAnimationComboBox(QComboBox):
         self.__slide = value
 
     def showPopup(self):
-        super(CustomeComboBox, self).showPopup()
+        super(QAnimationComboBox, self).showPopup()
         self.rect = self.popup.geometry()
         self.popup.move(
             self.rect.x() + self.__PopupOffcet[0],
@@ -79,10 +79,10 @@ class QAnimationComboBox(QComboBox):
                 self.stretchAnimation.finished.connect(self.finishedPopup)
                 finished = True
         if not finished:
-            super(CustomeComboBox, self).hidePopup()
+            super(QAnimationComboBox, self).hidePopup()
 
     def finishedPopup(self):
-        super(CustomeComboBox, self).hidePopup()
+        super(QAnimationComboBox, self).hidePopup()
 
     def stretchWindowAnimation(
         self, start=10, end=0, duration=300, object=None,

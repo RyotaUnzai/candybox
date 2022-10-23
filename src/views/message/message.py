@@ -3,8 +3,6 @@ import core
 from PySide2.QtWidgets import QWidget
 from PySide2.QtUiTools import loadUiType, QUiLoader
 
-from QCustom import QAnimationComboBox
-
 
 class messageWidget(QWidget):
 

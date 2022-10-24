@@ -99,7 +99,6 @@ class qssLoader(object, metaclass=hasMeta):
         for match in pattern.finditer(self.__styleSheet):
             rootVarContents.append(match.group(0))
 
-        # atRules = r"(| +)--[a-zA-z0-9-: ]+([0-9a-zA-Z#:]+);"
         pattern = re.compile(self.patternPseudoRoot["sentance"], re.MULTILINE | re.DOTALL)
         rootVars = []
         for rootVarContent in rootVarContents:
@@ -110,7 +109,6 @@ class qssLoader(object, metaclass=hasMeta):
             key, value = rootVar.split(":")
             key = key.replace(" ", "")
             value = value.replace(" ", "").replace(";", "")
-            #atRules = r"var\(([ ]+|)" + key + r"([ ]+|)\);"
             atRules = r"var\(([ ]+|)" + key + r"([ ]+|)\)"
             pattern = re.compile(atRules, re.MULTILINE | re.DOTALL)
             for match in pattern.finditer(self.__styleSheet):

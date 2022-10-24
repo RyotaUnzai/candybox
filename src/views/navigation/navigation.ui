@@ -64,6 +64,12 @@
        <property name="text">
         <string>Home</string>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -82,6 +88,9 @@
        </property>
        <property name="text">
         <string>Message</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -102,6 +111,9 @@
        <property name="text">
         <string>Schedule</string>
        </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -120,6 +132,9 @@
        </property>
        <property name="text">
         <string>Setting</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -169,6 +184,9 @@
        </property>
        <property name="text">
         <string>Account</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

@@ -16,6 +16,10 @@ QFrame#Navigation > QPushButton:pressed {
     color: var(--main-color1);
 }
 
+QFrame#Navigation > QPushButton:checked {
+    color: var(--highlight-color1);
+}
+
 QFrame#Navigation > QLabel#L_Appicon {
     font-family: remixicon;
     padding-bottom: 15;

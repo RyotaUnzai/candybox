@@ -2,6 +2,7 @@ import os
 
 from .application import *
 from .fontRemixicon import *
+from .fontRaleway import *
 from .qssloader import *
 from .imageResource import *
 

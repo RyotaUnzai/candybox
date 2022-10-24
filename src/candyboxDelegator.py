@@ -18,6 +18,7 @@ class candyBoxDelegator(core.delegator):
         super(candyBoxDelegator, self).__init__(view, model, *args, **kwargs)
 
         self.FontRemix = core.fontRemixicon.Remixcon()
+        self.FontRaleway = core.fontRaleway.Raleway()
 
     @property
     def nav(self) -> candyboxView.views.navigationWidget:
@@ -81,6 +82,7 @@ class candyBoxDelegator(core.delegator):
         )
 
     def __navigationConnection(self):
+
         # self.nav.setMaximumWidth(100)
         # self.nav.PB_Home.clicked.connect(self.view.close)
 

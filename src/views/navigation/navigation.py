@@ -22,8 +22,8 @@ class navigationWidget(QWidget):
         ui = uiLoader.load(__uiFilePath)
         self.ui = ui
         self.ui.setParent(parent)
-        self.ui.setMaximumWidth(86)
-        self.ui.setMinimumWidth(86)
+        self.ui.setMaximumWidth(100)
+        self.ui.setMinimumWidth(100)
         self.setObjectName("Navigation")
 
         self.ui.PB_Home.clicked.connect(self._on_button_clicked)

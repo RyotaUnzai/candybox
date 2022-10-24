@@ -45,7 +45,7 @@ QToolButton {
 /*---- QLabel ---*/
 
 QLabel#L_Header1 {
-    font-family: Times New Roman;
+    font-family: "Raleway";
     color: var(--header1-color1);
     background-color: transparent;
     font-size: 36px;

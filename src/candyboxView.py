@@ -16,6 +16,7 @@ class candyBoxCentralWidget(QWidget):
 
         # body ---- start
         self.bodyWidget = QWidget(self)
+        self.bodyWidget.setObjectName("bodyWidget")
         self.home = views.homeWidget(self)
         self.message = views.messageWidget(self)
         self.schedule = views.scheduleWidget(self)
@@ -58,9 +59,10 @@ class candyBoxCentralWidget(QWidget):
             qssloader.filePath = os.path.join(core.PATH_QSS, "main.qss")
 
             self.parentWidget().setStyleSheet(qssloader.styleSheet)
-        debugButton = QPushButton("reloadQss", self.parentWidget())
-        debugButton.resize(50, 25)
-        debugButton.clicked.connect(getQss)
+        # debugButton = QPushButton("reloadQss", self.parentWidget())
+        # debugButton.resize(50, 25)
+        # debugButton.clicked.connect(getQss)
+        # debugButton.setObjectName("reloadQss")
 
     @property
     def navigation(self) -> views.navigationWidget:

@@ -15,13 +15,3 @@ class settingWidget(QWidget):
         self.ui = ui
         self.ui.setParent(parent)
         self.setObjectName("Setting")
-        # QAnimationComboBox
-
-        self.ui.setStyleSheet("""
-QFrame#Setting {
-    background-color: #0ff;
-}
-QWidget#Setting {
-    background-color: #0ff;
-}
-        """)

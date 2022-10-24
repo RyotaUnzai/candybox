@@ -176,7 +176,6 @@
    </item>
   </layout>
   <zorder></zorder>
-  <zorder>verticalSpacer</zorder>
   <zorder></zorder>
  </widget>
  <resources/>

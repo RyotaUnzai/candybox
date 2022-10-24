@@ -3,15 +3,15 @@
     --main-color1: #00bdbf;
     --default-color1: #6e6d72;
     --hover-color1: #ededed;
-    --highlight-color1: #fff
-    --darker-color1: #2b2b2b
+    --highlight-color1: #ffffff;
+    --darker-color1: #2b2b2b;
     --header1-color1: #e8e7eb;
-
     --main-color2: #fb5e4b;
 }
 
 QMainWindow#candybox {
     background-color: var(--background-color1);
+    color: var(--default-color1);
 }
 
 QColumnView,
@@ -45,7 +45,7 @@ QToolButton {
 /*---- QLabel ---*/
 
 QLabel#L_Header1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Times New Roman;
     color: var(--header1-color1);
     background-color: transparent;
     font-size: 36px;

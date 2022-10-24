@@ -15,10 +15,3 @@ class scheduleWidget(QWidget):
         self.ui = ui
         self.ui.setParent(parent)
         self.setObjectName("Schedule")
-        # QAnimationComboBox
-        self.ui.setStyleSheet("""
-QFrame#Schedule {
-    background-color: #fff;
-}
-
-        """)

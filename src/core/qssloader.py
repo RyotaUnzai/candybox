@@ -15,7 +15,7 @@ class hasMeta(type):
             "key": r"--[a-zA-Z0-9- ]+",
             "value": r":[ #a-zA-Z0-9]+;",
             "var": r"(:|[ ]+:)",
-            "sentance": r"(| +)--[a-zA-z0-9-: ]+([0-9a-zA-Z#:]+);"
+            "sentance": r"(| +)--[a-zA-z0-9-: ]+([0-9a-zA-Z#:]+)"
         }
         dict["atRules"] = {
             "import": r"@import[a-zA-Z0-9\(\".-_<> ]+\);",
@@ -109,28 +109,12 @@ class qssLoader(object, metaclass=hasMeta):
         for rootVar in rootVars:
             key, value = rootVar.split(":")
             key = key.replace(" ", "")
-            value = value.replace(" ", "")
-            atRules = r"var\(([ ]+|)" + key + r"([ ]+|)\);"
+            value = value.replace(" ", "").replace(";", "")
+            #atRules = r"var\(([ ]+|)" + key + r"([ ]+|)\);"
+            atRules = r"var\(([ ]+|)" + key + r"([ ]+|)\)"
             pattern = re.compile(atRules, re.MULTILINE | re.DOTALL)
             for match in pattern.finditer(self.__styleSheet):
                 self.__styleSheet = self.__styleSheet.replace(match.group(0), value)
 
         for rootVarContent in rootVarContents:
             self.__styleSheet = self.__styleSheet.replace(rootVarContent, "")
-
-        # pseudoRootContents = re.search(self.patternPseudoRoot["main"], self.style).group()
-        # tempContents = re.search(self.patternPseudoRoot["main"], self.style).group()
-        # key = re.search(self.patternPseudoRoot["key"], pseudoRootContents).group()
-        # value = re.search(self.patternPseudoRoot["value"], pseudoRootContents).group()
-        # contentsList = (pseudoRootContents.split("\n"))
-        # contentsVarList = contentsList[1:-1]
-        # for content in contentsVarList:
-        #     key, value = content.split(":")
-        #     value = value.replace("\n", "").replace("\r", "")
-        #     var = re.search(self.patternPseudoRoot["key"], key).group()
-        #     pattern = r"var\(([ ]+|)" + var + r"([ ]+|)\);"
-        #     while True:
-        #         if not re.search(pattern, self.style):
-        #             break
-        #         self.style = self.style.replace(re.search(pattern, self.style).group(), value)
-        # self.style = self.style.replace(pseudoRootContents, "")

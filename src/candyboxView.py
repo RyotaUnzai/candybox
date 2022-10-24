@@ -45,11 +45,22 @@ class candyBoxCentralWidget(QWidget):
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
 
-        self.homeUI.hide()
-        # self.messageUI.hide()
+        # self.homeUI.hide()
+        self.messageUI.hide()
         self.scheduleUI.hide()
         self.settingUI.hide()
         self.accountUI.hide()
+
+        def getQss():
+            import core
+            import os
+            qssloader = core.qssLoader()
+            qssloader.filePath = os.path.join(core.PATH_QSS, "main.qss")
+
+            self.parentWidget().setStyleSheet(qssloader.styleSheet)
+        debugButton = QPushButton("reloadQss", self.parentWidget())
+        debugButton.resize(50, 25)
+        debugButton.clicked.connect(getQss)
 
     @property
     def navigation(self) -> views.navigationWidget:

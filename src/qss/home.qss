@@ -1,10 +1,10 @@
 /*---- QPushButtn ---*/
 
 QWidget#Home QPushButton {
+    color: var(--highlight-color1);
     font-family: Arial, Helvetica, sans-serif;
     border: 2px solid var(--default-color1);
     border-radius: 12px;
-    color: var(--highlight-color1);
     background-color: transparent;
     min-height: 30px;
 }

@@ -2,7 +2,7 @@ import sys
 import os
 import core
 
-from PySide2.QtWidgets import QApplication
+from PySide2.QtWidgets import *
 from PySide2.QtGui import *
 
 import candyboxView
@@ -18,11 +18,12 @@ if __name__ == "__main__":
 
     # models.saveFile(path=r"D:\python\candybox\src\qss\test.qss", data=qssloader.styleSheet)
     app = QApplication(sys.argv)
-    app.setStyleSheet(qssloader.styleSheet)
+    # app
     app.setWindowIcon(QPixmap(":/image/app/appIcon.png"))
 
     delegator = candyboxDelegator.candyBoxDelegator()
     delegator.view = candyboxView.candyBoxMainWindow()
+    delegator.view.setStyleSheet(qssloader.styleSheet)
     delegator.model = candyboxModel
     delegator.connect()
 

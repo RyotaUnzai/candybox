@@ -46,10 +46,10 @@ class candyBoxCentralWidget(QWidget):
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
 
-        # self.homeUI.hide()
+        self.homeUI.hide()
         self.messageUI.hide()
         self.scheduleUI.hide()
-        self.settingUI.hide()
+        # self.settingUI.hide()
         self.accountUI.hide()
 
         def getQss():

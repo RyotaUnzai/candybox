@@ -18,6 +18,8 @@ class settingWidgetFilter(QObject):
 
 
 class settingWidget(QWidget):
+    __TableView_Setting = None
+    __TreeView_Setting = None
 
     def __init__(self, parent=None, *args, **kwargs) -> None:
 
@@ -30,4 +32,33 @@ class settingWidget(QWidget):
         self.setObjectName("Setting")
         self.__filter = settingWidgetFilter()
         self.ui.installEventFilter(self.__filter)
-        self.ui.TableView_Setting.setMinimumWidth(240)
+
+        self.TreeView_Setting = self.ui.TreeView_Setting
+        self.TableView_Setting = self.ui.TableView_Setting
+        self.TableView_Setting.setMinimumWidth(240)
+        self.TableView_Setting.setMinimumWidth(240)
+
+        # data = []
+        # for i in range(5):
+        #     data.append({'parent': 'hogehoge', 'key': 'homuhomu_' + str(i).zfill(3)})
+        # for i in range(5):
+        #     data.append({'parent': 'fugafuga', 'key': 'homuhomu_' + str(i).zfill(3)})
+
+        # import models
+        # self.model = models.settingTreeModel.SettingTreeModel()
+
+    @property
+    def TreeView_Setting(self) -> QTreeView:
+        return self.__TreeView_Setting
+
+    @TreeView_Setting.setter
+    def TreeView_Setting(self, value):
+        self.__TreeView_Setting = value
+
+    @property
+    def TableView_Setting(self) -> QTableView:
+        return self.__TableView_Setting
+
+    @TableView_Setting.setter
+    def TableView_Setting(self, value):
+        self.__TableView_Setting = value

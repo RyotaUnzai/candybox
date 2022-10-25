@@ -43,10 +43,6 @@ class candyBoxDelegator(core.delegator):
     @view.setter
     def view(self, value):
         self.__view = value
-        #self.nav = self.__view.cw.navigation
-        self.nav = self.__view.cw.navigation.ui
-        self.bodyWidget = self.__view.cw.bodyWidget
-        self.bodyWidgetLayout = self.__view.cw.bodyWidget.layout()
 
     @property
     def model(self) -> candyboxModel:
@@ -58,10 +54,45 @@ class candyBoxDelegator(core.delegator):
 
     def connect(self):
         self.view.show()
+        self.createClassVariables()
         self.__bodyWidgetConnection()
         self.__navigationConnection()
+        self.__settingWidgetConnection()
+
+    def createClassVariables(self):
+        self.nav = self.view.cw.navigation.ui
+        self.bodyWidget = self.view.cw.bodyWidget
+        self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
+        self.settingWidget = self.view.cw.settingWidget
+
+    def __settingWidgetConnection(self):
+        data = [
+            {'parent': 'python', 'key': 'flake8Args'},
+            {'parent': 'python', 'key': 'provider'},
+            {'parent': 'python', 'key': 'autopep8Args'},
+            {'parent': 'python', 'key': 'renderControlCharacters'},
+            {'parent': 'python', 'key': 'formatOnSave'},
+            {'parent': 'colorInfo', 'key': 'homeUI'},
+            {'parent': 'colorInfo', 'key': 'fields'},
+            {'parent': 'colorInfo', 'key': 'formatOnSave'},
+            {'parent': 'colorInfo', 'key': 'renderControlCharacters'},
+            {'parent': 'colorInfo', 'key': 'associations'},
+            {'parent': 'svn', 'key': 'svn'},
+            {'parent': 'svn', 'key': 'fields'},
+            {'parent': 'svn', 'key': 'formatOnSave'},
+            {'parent': 'svn', 'key': 'renderControlCharacters'},
+            {'parent': 'svn', 'key': 'associations'},
+            {'parent': 'svn', 'key': 'd'}
+        ]
+
+        self.settingModel = self.model.settingTreeModel.SettingTreeModel(data)
+        self.settingWidget.TreeView_Setting.setModel(self.settingModel)
+        self.settingWidget.TableView_Setting.setModel(self.settingModel)
+        self.settingWidget.TreeView_Setting.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.settingWidget.TreeView_Setting.setSelectionModel(self.settingWidget.TableView_Setting.selectionModel())
 
     def __bodyWidgetConnection(self):
+
         self.bodyItemModel = self.model.candyBoxBodyItemModel()
         self.bodyItemModel.setBodyWidgetItems(self.bodyWidgetLayout)
 

@@ -8,6 +8,7 @@ import views
 class candyBoxCentralWidget(QWidget):
     __navigation = None
     __bodyWidget = None
+    __settingWidget = None
 
     def __init__(self, parent=None, *args, **kwargs) -> None:
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
@@ -20,12 +21,12 @@ class candyBoxCentralWidget(QWidget):
         self.home = views.homeWidget(self)
         self.message = views.messageWidget(self)
         self.schedule = views.scheduleWidget(self)
-        self.setting = views.settingWidget(self)
+        self.settingWidget = views.settingWidget(self)
         self.account = views.accountWidget(self)
         self.homeUI = self.home.ui
         self.messageUI = self.message.ui
         self.scheduleUI = self.schedule.ui
-        self.settingUI = self.setting.ui
+        self.settingUI = self.settingWidget.ui
         self.accountUI = self.account.ui
         # # body ---- end
 
@@ -80,8 +81,18 @@ class candyBoxCentralWidget(QWidget):
     def bodyWidget(self, value):
         self.__bodyWidget = value
 
+    @property
+    def settingWidget(self) -> views.settingWidget:
+        return self.__settingWidget
+
+    @settingWidget.setter
+    def settingWidget(self, value):
+        self.__settingWidget = value
+
 
 class candyBoxMainWindow(QMainWindow):
+    __cw = None
+
     def __init__(self, parent=None, *args, **kwargs):
         super(candyBoxMainWindow, self).__init__(parent, *args, **kwargs)
 
@@ -93,6 +104,14 @@ class candyBoxMainWindow(QMainWindow):
 
         self.setAutoFillBackground(True)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
+
+    @property
+    def cw(self) -> candyBoxCentralWidget:
+        return self.__cw
+
+    @cw.setter
+    def cw(self, value):
+        self.__cw = value
 
     def paintEvent(self, event):
         painter = QPainter(self)

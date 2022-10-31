@@ -1,9 +1,9 @@
 # Introduction
-A design sample that also supports the model/view architecture for multi-person tool development using PySide2.
+A design sample that also supports the model/view architecture for multi-person tool development using PySide2.  
 This allows you to develop tools while dividing the work between modelers, viewers, etc.
 QSS has also been extended to allow the use of custom properties that are not available in regular PySide2.
-We have also prepared a buildable bat that makes it easy to use custom Font and images.
-Since this is a sample, we have not implemented anything that will actually work, but you can easily implement these features as well.
+I have also prepared a buildable bat that makes it easy to use custom Font and images.
+Since this is a sample, I have not implemented anything that will actually work, but you can easily implement these features as well.
 
 ## Setting up Candybox to work.
 ### Install a Python3

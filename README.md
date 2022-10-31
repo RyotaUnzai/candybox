@@ -19,3 +19,4 @@ Let's run pipInstall.bat. Various modules should be installed.
 
 ### Run and Debug
 Please start Run And Debug `Candybox`.
+<img src=references/screenshot_01.png>

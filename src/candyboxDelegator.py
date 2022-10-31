@@ -6,6 +6,7 @@ from PySide2.QtGui import *
 import candyboxView
 import candyboxModel
 import core
+import delegator
 
 
 class candyBoxDelegator(core.delegator):
@@ -58,12 +59,25 @@ class candyBoxDelegator(core.delegator):
         self.__bodyWidgetConnection()
         self.__navigationConnection()
         self.__settingWidgetConnection()
+        self.__messageWidgetConnection()
 
     def createClassVariables(self):
         self.nav = self.view.cw.navigation.ui
         self.bodyWidget = self.view.cw.bodyWidget
         self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
         self.settingWidget = self.view.cw.settingWidget
+        self.messageWidget = self.view.cw.messageWidget
+
+    def __messageWidgetConnection(self):
+        iconList = self.model.getExtList(core.PATH_DATA)
+        iconDataList = []
+        for url in iconList:
+            iconData = self.model.loadJson(url)
+            iconData["filePath"] = url
+            iconDataList.append(iconData)
+        self.iconListModel = self.model.iconListModel(data=iconDataList)
+        self.messageWidget.listView.setModel(self.iconListModel)
+        self.messageWidget.listView.setItemDelegate(delegator.iconListDelegate(self.messageWidget.listView))
 
     def __settingWidgetConnection(self):
         data = [

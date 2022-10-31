@@ -17,11 +17,26 @@ class Ui_Message(object):
     def setupUi(self, Message):
         if not Message.objectName():
             Message.setObjectName(u"Message")
-        Message.resize(622, 268)
+        Message.resize(622, 439)
         Message.setFrameShape(QFrame.StyledPanel)
         Message.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(Message)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.radioButton_2 = QRadioButton(Message)
+        self.radioButton_2.setObjectName(u"radioButton_2")
+
+        self.gridLayout.addWidget(self.radioButton_2, 3, 0, 1, 1)
+
+        self.listView = QListView(Message)
+        self.listView.setObjectName(u"listView")
+
+        self.gridLayout.addWidget(self.listView, 4, 0, 1, 2)
+
+        self.radioButton = QRadioButton(Message)
+        self.radioButton.setObjectName(u"radioButton")
+
+        self.gridLayout.addWidget(self.radioButton, 2, 0, 1, 1)
+
         self.PBar_qss = QProgressBar(Message)
         self.PBar_qss.setObjectName(u"PBar_qss")
         self.PBar_qss.setMaximum(0)
@@ -31,29 +46,15 @@ class Ui_Message(object):
 
         self.gridLayout.addWidget(self.PBar_qss, 1, 1, 1, 1)
 
-        self.L_Header1 = QLabel(Message)
-        self.L_Header1.setObjectName(u"L_Header1")
-
-        self.gridLayout.addWidget(self.L_Header1, 0, 0, 1, 1)
-
         self.checkBox = QCheckBox(Message)
         self.checkBox.setObjectName(u"checkBox")
 
         self.gridLayout.addWidget(self.checkBox, 1, 0, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.L_Header1 = QLabel(Message)
+        self.L_Header1.setObjectName(u"L_Header1")
 
-        self.gridLayout.addItem(self.verticalSpacer, 4, 0, 1, 1)
-
-        self.radioButton = QRadioButton(Message)
-        self.radioButton.setObjectName(u"radioButton")
-
-        self.gridLayout.addWidget(self.radioButton, 2, 0, 1, 1)
-
-        self.radioButton_2 = QRadioButton(Message)
-        self.radioButton_2.setObjectName(u"radioButton_2")
-
-        self.gridLayout.addWidget(self.radioButton_2, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.L_Header1, 0, 0, 1, 1)
 
 
         self.retranslateUi(Message)
@@ -63,9 +64,9 @@ class Ui_Message(object):
 
     def retranslateUi(self, Message):
         Message.setWindowTitle(QCoreApplication.translate("Message", u"Frame", None))
-        self.L_Header1.setText(QCoreApplication.translate("Message", u"Message", None))
-        self.checkBox.setText(QCoreApplication.translate("Message", u"CheckBox", None))
-        self.radioButton.setText(QCoreApplication.translate("Message", u"RadioButton", None))
         self.radioButton_2.setText(QCoreApplication.translate("Message", u"RadioButton", None))
+        self.radioButton.setText(QCoreApplication.translate("Message", u"RadioButton", None))
+        self.checkBox.setText(QCoreApplication.translate("Message", u"CheckBox", None))
+        self.L_Header1.setText(QCoreApplication.translate("Message", u"Message", None))
     # retranslateUi
 

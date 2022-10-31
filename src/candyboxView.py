@@ -8,6 +8,7 @@ import views
 class candyBoxCentralWidget(QWidget):
     __navigation = None
     __bodyWidget = None
+    __messageWidget = None
     __settingWidget = None
 
     def __init__(self, parent=None, *args, **kwargs) -> None:
@@ -19,12 +20,12 @@ class candyBoxCentralWidget(QWidget):
         self.bodyWidget = QWidget(self)
         self.bodyWidget.setObjectName("bodyWidget")
         self.home = views.homeWidget(self)
-        self.message = views.messageWidget(self)
+        self.messageWidget = views.messageWidget(self)
         self.schedule = views.scheduleWidget(self)
         self.settingWidget = views.settingWidget(self)
         self.account = views.accountWidget(self)
         self.homeUI = self.home.ui
-        self.messageUI = self.message.ui
+        self.messageUI = self.messageWidget.ui
         self.scheduleUI = self.schedule.ui
         self.settingUI = self.settingWidget.ui
         self.accountUI = self.account.ui
@@ -48,9 +49,9 @@ class candyBoxCentralWidget(QWidget):
         self.setLayout(self.centralWidgetLayout)
 
         self.homeUI.hide()
-        self.messageUI.hide()
+        # self.messageUI.hide()
         self.scheduleUI.hide()
-        # self.settingUI.hide()
+        self.settingUI.hide()
         self.accountUI.hide()
 
         def getQss():
@@ -64,6 +65,14 @@ class candyBoxCentralWidget(QWidget):
         # debugButton.resize(50, 25)
         # debugButton.clicked.connect(getQss)
         # debugButton.setObjectName("reloadQss")
+
+    @property
+    def messageWidget(self) -> views.messageWidget:
+        return self.__messageWidget
+
+    @messageWidget.setter
+    def messageWidget(self, value):
+        self.__messageWidget = value
 
     @property
     def navigation(self) -> views.navigationWidget:

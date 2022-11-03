@@ -20,3 +20,11 @@ Let's run pipInstall.bat. Various modules should be installed.
 ### Run and Debug
 Please start Run And Debug `Candybox`.
 <img src=references/screenshot_01.png>
+
+
+### Third Party
+
+| Name| Type | License |
+| :---: | :---: | :---: | 
+| [remixicon](https://remixicon.com/) | Font/Image | [Apache License Version 2.0](resource/fonts/RemixIcon/License) |
+| [Raleway](https://fonts.google.com/specimen/Raleway) | Font | [SIL Open Font License, Version 1.1](resource/fonts/Raleway/README.md)

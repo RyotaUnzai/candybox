@@ -1,17 +1,15 @@
-# Welcome to MkDocs
+# Introduction
+A design sample that also supports the model/view architecture for multi-person tool development using PySide2.
+This allows you to develop tools while dividing the work between modelers, viewers, etc. QSS has also been extended to allow the use of custom properties that are not available in regular PySide2. I have also prepared a buildable bat that makes it easy to use custom Font and images. Since this is a sample, I have not implemented anything that will actually work, but you can easily implement these features as well.
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Setting up Candybox to work.
+![Image title](screenshot_01.png)
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+1. Install a Python3  
+Let’s first install Python3. The sample used [Python 3.7.7](https://www.python.org/downloads/release/python-377/)
+2. Create a virtualenv  
+Open Folder with VSCode and then Let's run makevenv.bat. After a while, you will see ../candybox/.venv should be created.
+3. Install python modules  
+Let's run pipInstall.bat. Various modules should be installed.
+4. Run and Debug  
+Please start Run And Debug Candybox.

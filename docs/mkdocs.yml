@@ -4,9 +4,12 @@ site_url: https://unzairyota.github.io/candybox/
 site_author: Ryota Unzai / UnPySide.com
 
 theme:
-    favicon: "favicon.ico"
+    logo: "siteIcon.png"
     language: ja
     name: material
+    palette:
+        accent: Green
+        primary: Green
     icon:
         repo: fontawesome/brands/github
     features:
@@ -17,7 +20,6 @@ theme:
         toggle:
           icon: material/brightness-4 
           name: Switch to dark mode
-
       # Palette toggle for dark mode
       - scheme: default
         toggle:
@@ -31,8 +33,21 @@ extra:
           link: https://github.com/UnzaiRyota
         - icon: fontawesome/brands/twitter
           link: https://twitter.com/unpyside
-        - icon: fontawesome/solid/bookmark
+        - icon: fontawesome/solid/blog
           link: https://unpyside.com/
+
+
+plugins:
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        ja: 日本語
+      nav_translations:
+        ja:
+          About Extensions: 拡張機能について
+          Third Party: サードパーティー
+
 
 extra_css:
     - https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css

@@ -193,7 +193,7 @@ def checkJsonFile(path):
 def getExtList(path="", ext=".json"):
     u"""
     """
-    files = glob.glob("%s/*" % path)
+    files = glob.glob("%s/**/*" % path)
     return [file.replace("\\", "/") for file in files if os.path.splitext(file)[1] == ext]
 
 

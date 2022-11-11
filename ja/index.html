@@ -235,9 +235,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          はじめに
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         はじめに
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    拡張機能
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candybox" class="md-nav__link">
+    Candyboxが動作するように設定する。
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -279,6 +317,20 @@
     <li class="md-nav__item">
       <a href="About%20Extensions/qss/" class="md-nav__link">
         QSSの拡張機能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="About%20Extensions/qtCustom/" class="md-nav__link">
+        QtCustom
       </a>
     </li>
   
@@ -359,6 +411,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    拡張機能
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#candybox" class="md-nav__link">
+    Candyboxが動作するように設定する。
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -381,7 +455,10 @@
 また、このサンプルでは通常のPySide2では使用できないカスタムプロパティを使用できるようにQSSを拡張しています。<br />
 そして、カスタムFontや画像を簡単に使用できるように、ビルド可能なbatを用意しました。
 このプロジェクトはモックアッププロジェクトの為、実際に動作が期待できるような機能は実装していませんが、これらの機能も簡単に実装することができます。  </p>
-<h1 id="candybox">Candyboxが動作するように設定する。</h1>
+<h2 id="_2">拡張機能</h2>
+<p>このサンプルにはPySide2を拡張したクラスがいくつかされています。<br />
+そういった拡張したクラスも.uiを利用して問題なくレイアウトできます。  </p>
+<h2 id="candybox">Candyboxが動作するように設定する。</h2>
 <p><img alt="Candybox" src="screenshot_01.png" /></p>
 <ol>
 <li>Python3のインストール<br />

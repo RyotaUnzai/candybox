@@ -5,6 +5,7 @@ from PySide2.QtCore import Qt
 from PySide2.QtUiTools import loadUiType, QUiLoader
 
 
+
 class messageWidget(QWidget):
 
     def __init__(self, parent=None, *args, **kwargs) -> None:
@@ -16,6 +17,7 @@ class messageWidget(QWidget):
         self.ui = ui
         self.ui.setParent(parent)
         self.setObjectName("Message")
+        
 
         self.listView.setAutoFillBackground(True)
         self.listView.setFlow(QListView.LeftToRight)

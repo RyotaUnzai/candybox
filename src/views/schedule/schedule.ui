@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>257</width>
-    <height>164</height>
+    <width>696</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,17 +20,7 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QComboBox" name="Cb_qss"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="L_Header1">
-     <property name="text">
-      <string>Schedule</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
+   <item row="6" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -43,11 +33,58 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="L_Header1">
+     <property name="text">
+      <string>Schedule</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
     <widget class="QDial" name="dial"/>
    </item>
+   <item row="1" column="0">
+    <widget class="QAnimationComboBox" name="Cb_qss"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QIntSlider" name="IntSlider">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QFloatSlider" name="FloatSlider">
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QAnimationComboBox</class>
+   <extends>QComboBox</extends>
+   <header>QAnimationComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QIntSlider</class>
+   <extends>QSlider</extends>
+   <header>QIntSlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QFloatSlider</class>
+   <extends>QSlider</extends>
+   <header>QFloatSlider.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

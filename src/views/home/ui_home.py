@@ -12,6 +12,8 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
+from QAnimationComboBox import QAnimationComboBox
+
 
 class Ui_Home(object):
     def setupUi(self, Home):
@@ -33,7 +35,7 @@ class Ui_Home(object):
 
         self.gridLayout.addWidget(self.spinBox, 2, 2, 1, 1)
 
-        self.Cb_qss = QComboBox(Home)
+        self.Cb_qss = QAnimationComboBox(Home)
         self.Cb_qss.setObjectName(u"Cb_qss")
 
         self.gridLayout.addWidget(self.Cb_qss, 1, 0, 1, 1)

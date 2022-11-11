@@ -1,1 +1,1 @@
-python -m venv .venv
+"C:\Python310\python.exe" -m venv .venv

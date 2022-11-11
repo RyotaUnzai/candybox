@@ -5,11 +5,15 @@ PySide2を使った複数人でのツール開発のためのモデル/ビュー
 そして、カスタムFontや画像を簡単に使用できるように、ビルド可能なbatを用意しました。
 このプロジェクトはモックアッププロジェクトの為、実際に動作が期待できるような機能は実装していませんが、これらの機能も簡単に実装することができます。  
 
-# Candyboxが動作するように設定する。
+## 拡張機能
+このサンプルにはPySide2を拡張したクラスがいくつかされています。  
+そういった拡張したクラスも.uiを利用して問題なくレイアウトできます。  
+
+## Candyboxが動作するように設定する。
 ![Candybox](screenshot_01.png)
 
 1. Python3のインストール  
-まず、Python3をインストールしましょう。サンプルでは[Python 3.7.7](https://www.python.org/downloads/release/python-377/)を使用しました。
+まず、Python3をインストールしましょう。サンプルでは[Python 3.10.6](https://www.python.org/downloads/release/python-3106/)を使用しました。
 2. virtualenvの作成  
 VSCodeでFolderを開き、makevenv.batを実行しましょう。しばらくすると、 ../candybox/.venv が作成されているはずです。
 3. 3.Pythonモジュールのインストール  

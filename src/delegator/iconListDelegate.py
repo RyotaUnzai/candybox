@@ -7,6 +7,7 @@ from PySide2.QtWidgets import *
 import core
 import models
 
+
 class iconListDelegate(QStyledItemDelegate):
     isDrawDisplayName = True
     itemSize = 100
@@ -31,7 +32,6 @@ class iconListDelegate(QStyledItemDelegate):
         self.viewGeometry = option
         self.isDrawDisplayName = True
         self.frameColor = QColor("#3c3c3c")
-
 
         if option.state & QStyle.State_MouseOver:
             self.frameLineColor = QColor("#0088FF")
@@ -71,10 +71,9 @@ class iconListDelegate(QStyledItemDelegate):
     def viewGeometry(self, option):
         self.__viewGeometry = option.widget.geometry()
 
-
     def paint(self, painter, option, index):
         self.painter = painter
-        self.painter.save()
+        # self.painter.save()
         self.setStyle(option, index)
         # create button
         keyName = "%s, %s" % (index.row(), index.column())

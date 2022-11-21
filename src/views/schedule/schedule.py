@@ -40,12 +40,16 @@ class scheduleWidget(QWidget):
         self.CircularSliderB.progressColorType = "gradation"
         self.CircularSliderB.progressBlurColor = QColor(255, 128, 0)
         self.CircularSliderB.indicatorSubColor = QColor(255, 128, 0)
+        self.CircularSliderB.value = 73
 
         self.CircularSliderC.progressColor = QColor(0, 255, 128)
         self.CircularSliderC.progressColorType = "blur"
         self.CircularSliderC.indicatorSubColor = QColor(255, 0, 128)
         self.CircularSliderC.indicatorMainColor = QColor(255, 0, 128)
+        self.CircularSliderC.value = 73
 
+        self.ui.AbstractProgressCircular.progressColorType = "gradation"
+        self.ui.AbstractProgressCircular.value = 73
         self.ui.AbstractProgressCircularB.progressColorType = "blur"
         self.ui.AbstractProgressCircularB.value = 73
 

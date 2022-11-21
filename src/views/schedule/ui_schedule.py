@@ -17,13 +17,14 @@ from QIntSlider import QIntSlider
 from QFloatSlider import QFloatSlider
 from QAbstractProgressCircular import QAbstractProgressCircular
 from QCircularSlider import QCircularSlider
+from QProgressCircular import QProgressCircular
 
 
 class Ui_Schedule(object):
     def setupUi(self, Schedule):
         if not Schedule.objectName():
             Schedule.setObjectName(u"Schedule")
-        Schedule.resize(696, 484)
+        Schedule.resize(696, 624)
         Schedule.setFrameShape(QFrame.StyledPanel)
         Schedule.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(Schedule)
@@ -59,23 +60,7 @@ class Ui_Schedule(object):
         self.QFlowLayout_FlowLayout = QVBoxLayout()
         self.QFlowLayout_FlowLayout.setObjectName(u"QFlowLayout_FlowLayout")
 
-        self.gridLayout.addLayout(self.QFlowLayout_FlowLayout, 9, 0, 1, 2)
-
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.AbstractProgressCircular = QAbstractProgressCircular(Schedule)
-        self.AbstractProgressCircular.setObjectName(u"AbstractProgressCircular")
-        self.AbstractProgressCircular.setValue(24)
-
-        self.horizontalLayout.addWidget(self.AbstractProgressCircular)
-
-        self.APC_PushButton = QPushButton(Schedule)
-        self.APC_PushButton.setObjectName(u"APC_PushButton")
-
-        self.horizontalLayout.addWidget(self.APC_PushButton)
-
-
-        self.gridLayout.addLayout(self.horizontalLayout, 6, 0, 1, 1)
+        self.gridLayout.addLayout(self.QFlowLayout_FlowLayout, 10, 0, 1, 2)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -100,11 +85,32 @@ class Ui_Schedule(object):
 
         self.gridLayout.addLayout(self.horizontalLayout_2, 4, 0, 1, 1)
 
-        self.AbstractProgressCircularB = QAbstractProgressCircular(Schedule)
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.AbstractProgressCircularB = QProgressCircular(Schedule)
         self.AbstractProgressCircularB.setObjectName(u"AbstractProgressCircularB")
         self.AbstractProgressCircularB.setValue(24)
 
-        self.gridLayout.addWidget(self.AbstractProgressCircularB, 7, 0, 1, 1)
+        self.verticalLayout.addWidget(self.AbstractProgressCircularB)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.AbstractProgressCircular = QAbstractProgressCircular(Schedule)
+        self.AbstractProgressCircular.setObjectName(u"AbstractProgressCircular")
+        self.AbstractProgressCircular.setValue(24)
+
+        self.horizontalLayout.addWidget(self.AbstractProgressCircular)
+
+        self.APC_PushButton = QPushButton(Schedule)
+        self.APC_PushButton.setObjectName(u"APC_PushButton")
+
+        self.horizontalLayout.addWidget(self.APC_PushButton)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+
+        self.gridLayout.addLayout(self.verticalLayout, 7, 0, 1, 1)
 
 
         self.retranslateUi(Schedule)

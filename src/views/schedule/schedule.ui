@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>696</width>
-    <height>484</height>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,26 +50,8 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
+   <item row="10" column="0" colspan="2">
     <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
-   </item>
-   <item row="6" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QAbstractProgressCircular" name="AbstractProgressCircular">
-       <property name="value">
-        <number>24</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="APC_PushButton">
-       <property name="text">
-        <string>Progress Start</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -97,11 +79,33 @@
     </layout>
    </item>
    <item row="7" column="0">
-    <widget class="QAbstractProgressCircular" name="AbstractProgressCircularB">
-     <property name="value">
-      <number>24</number>
-     </property>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QProgressCircular" name="AbstractProgressCircularB">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QAbstractProgressCircular" name="AbstractProgressCircular">
+         <property name="value">
+          <number>24</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="APC_PushButton">
+         <property name="text">
+          <string>Progress Start</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
@@ -130,6 +134,11 @@
    <class>QCircularSlider</class>
    <extends>QSlider</extends>
    <header>QCircularSlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QProgressCircular</class>
+   <extends>QProgressBar</extends>
+   <header>QProgressCircular.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

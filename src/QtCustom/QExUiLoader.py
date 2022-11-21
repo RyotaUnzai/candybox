@@ -3,6 +3,9 @@ from .QAnimationComboBox import *
 from .QFlowLayout import *
 from .QFloatSlider import *
 from .QIntSlider import *
+from .QProgressCircular import *
+from .QAbstractProgressCircular import *
+from .QCircularSlider import *
 import typing
 import PySide2
 
@@ -31,6 +34,12 @@ class QExUiLoader(QUiLoader):
             widget = QFloatSlider(parent)
         elif className == "QIntSlider":
             widget = QIntSlider(parent)
+        elif className == "QAbstractProgressCircular":
+            widget = QAbstractProgressCircular(parent)
+        elif className == "QProgressCircular":
+            widget = QProgressCircular(parent)
+        elif className == "QCircularSlider":
+            widget = QCircularSlider(parent)
         else:
             isCustom = False
         if isCustom:

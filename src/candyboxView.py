@@ -49,8 +49,8 @@ class candyBoxCentralWidget(QWidget):
         self.setLayout(self.centralWidgetLayout)
 
         self.homeUI.hide()
-        # self.messageUI.hide()
-        self.scheduleUI.hide()
+        self.messageUI.hide()
+        # self.scheduleUI.hide()
         self.settingUI.hide()
         self.accountUI.hide()
 

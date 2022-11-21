@@ -4,7 +4,8 @@ This allows you to develop tools while dividing the work between modelers, viewe
 
 ## Extensions
 This sample contains several classes that extend PySide2.  
-These extended classes can also be laid out without any problems using .ui.  
+![QCircularSlider](About Extensions/qtCustom_QCircularSlider.png)  
+For example, QCircularSlider. This is a slider in the shape of a circle. Such extended classes can also be laid out without problems using .ui.  
 
 ## Setting up Candybox to work.
 ![Candybox](screenshot_01.png)

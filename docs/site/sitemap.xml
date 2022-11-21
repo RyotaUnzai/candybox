@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
          <loc>https://unzairyota.github.io/candybox/</loc>
-         <lastmod>2022-11-03</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://unzairyota.github.io/candybox/en/"/>
          <xhtml:link rel="alternate" hreflang="ja" href="https://unzairyota.github.io/candybox/ja/"/>
@@ -10,15 +10,23 @@
     </url>
     <url>
          <loc>https://unzairyota.github.io/candybox/About%20Extensions/qss/</loc>
-         <lastmod>2022-11-03</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://unzairyota.github.io/candybox/en/About%20Extensions/qss/"/>
          <xhtml:link rel="alternate" hreflang="ja" href="https://unzairyota.github.io/candybox/ja/About%20Extensions/qss/"/>
          
     </url>
     <url>
+         <loc>https://unzairyota.github.io/candybox/About%20Extensions/qtCustom/</loc>
+         <lastmod>2022-11-21</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://unzairyota.github.io/candybox/en/About%20Extensions/qtCustom/"/>
+         <xhtml:link rel="alternate" hreflang="ja" href="https://unzairyota.github.io/candybox/ja/About%20Extensions/qtCustom/"/>
+         
+    </url>
+    <url>
          <loc>https://unzairyota.github.io/candybox/Third%20Party/thirdParty/</loc>
-         <lastmod>2022-11-03</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://unzairyota.github.io/candybox/en/Third%20Party/thirdParty/"/>
          <xhtml:link rel="alternate" hreflang="ja" href="https://unzairyota.github.io/candybox/ja/Third%20Party/thirdParty/"/>

@@ -17,5 +17,14 @@ QFlowLayoutは、QLayoutを継承したレイアウトクラスで、ジオメ�
 ## QIntSlider
 QIntSliderはQSpinBoxとQSliderを組み合わせたクラスです
 
+## QAvstractProgressCircular
+QAbstractProgressCircularは円の形をしたProgressBarです。
+
 ## QProgressCircular
-QProgressCircularは円の形をしたProgressBarです。
+QProgressCircularは円の形をしたProgressBarです。  
+QAbstractProgressCircularを継承しています
+
+## QCircularSlider
+![QCircularSlider](qtCustom_QCircularSlider.png)  
+QCircularSliderは円の形をしたスライダーです。  
+QAbstractProgressCircularを継承しています

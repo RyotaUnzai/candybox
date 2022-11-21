@@ -7,7 +7,11 @@ PySide2を使った複数人でのツール開発のためのモデル/ビュー
 
 ## 拡張機能
 このサンプルにはPySide2を拡張したクラスがいくつかされています。  
-そういった拡張したクラスも.uiを利用して問題なくレイアウトできます。  
+
+![QCircularSlider](About Extensions/qtCustom_QCircularSlider.png)  
+例えば、QCircularSliderです。これは円の形をしたスライダーです、そういった拡張したクラスも.uiを利用して問題なくレイアウトできます。  
+
+
 
 ## Candyboxが動作するように設定する。
 ![Candybox](screenshot_01.png)

@@ -9,6 +9,7 @@ import models
 
 
 class iconListDelegate(QStyledItemDelegate):
+    _referenceButton = None
     isDrawDisplayName = True
     itemSize = 100
     space = 2
@@ -17,13 +18,47 @@ class iconListDelegate(QStyledItemDelegate):
     textFrameSize = frameSize - (frameRoundSize * 2)
     imageSize = 60
     fontSize = 10
+    _frameColor = QColor("#3c3c3c")
+    _frameLineColor = QColor("#3c3c3c")
+    _backgroundColor = QColor(0, 0, 0, 0)
 
     def __init__(self, parent=None, *args, **kwargs):
         super(iconListDelegate, self).__init__(parent, *args, **kwargs)
         self.imageDict = {}
+        self._referenceButton = QPushButton()
 
         self.count = 0
         self.__viewGeometry = QRect()
+
+    @property
+    def frameColor(self):
+        return self._frameColor
+
+    @property
+    def backgroundColor(self):
+        return self._backgroundColor
+
+    @backgroundColor.setter
+    def backgroundColor(self, value):
+        if "mouseOver" == value:
+            self._backgroundColor = QColor(0, 184, 184, 10)
+        elif "selected" == value:
+            self._backgroundColor = QColor(0, 0, 0, 0)
+        else:
+            self._backgroundColor = QColor(0, 0, 0, 0)
+
+    @property
+    def frameLineColor(self):
+        return self._frameLineColor
+
+    @frameLineColor.setter
+    def frameLineColor(self, value):
+        if "mouseOver" == value:
+            self._frameLineColor = QColor("#00b8b8")
+        elif "selected" == value:
+            self._frameLineColor = QColor("#00E7B8")
+        else:
+            self._frameLineColor = QColor("#3c3c3c")
 
     def setStyle(self, option, index):
         basePosX = option.rect.x() + self.space
@@ -31,15 +66,17 @@ class iconListDelegate(QStyledItemDelegate):
 
         self.viewGeometry = option
         self.isDrawDisplayName = True
-        self.frameColor = QColor("#3c3c3c")
 
         if option.state & QStyle.State_MouseOver:
-            self.frameLineColor = QColor("#0088FF")
+            self.frameLineColor = "mouseOver"
+            self.backgroundColor = "mouseOver"
         elif option.state & QStyle.State_Selected:
-            self.frameLineColor = QColor("#1174CB")
+            self.frameLineColor = "selected"
+            self.backgroundColor = "selected"
         else:
             self.isDrawDisplayName = False
-            self.frameLineColor = QColor("#3c3c3c")
+            self.frameLineColor = None
+            self.backgroundColor = None
 
         self.baseRect = QRect(
             basePosX + (self.space / 2.0),
@@ -58,6 +95,10 @@ class iconListDelegate(QStyledItemDelegate):
             basePosY + self.frameRoundSize,
             self.textFrameSize, self.textFrameSize
         )
+
+    @ property
+    def referenceButton(self):
+        return self._referenceButton
 
     def selected(self, index):
         return "none"
@@ -79,36 +120,50 @@ class iconListDelegate(QStyledItemDelegate):
         keyName = "%s, %s" % (index.row(), index.column())
         self.createButton(index, keyName)
         if self.isDrawDisplayName:
-            # set displayName
             self.drawText(
                 rect=self.textRect, text=index.data(Qt.DisplayRole), fontSize=self.fontSize,
                 align=Qt.AlignBottom | Qt.AlignLeft
             )
+        else:
             self.drawText(
-                rect=self.textRect, text=index.data(core.LastAuthorRole),
-                fontSize=self.fontSize,
-                align=Qt.AlignCenter | Qt.AlignLeft,
+                rect=self.textRect, text=index.data(Qt.DisplayRole), fontSize=self.fontSize,
+                color=QColor("#666666"), align=Qt.AlignBottom | Qt.AlignLeft
             )
 
-            self.drawQStyleOptionButtonFrame(self.frameRect)
-
-    def createImageDict(self, index, keyName):
-        ThumbnailImgPath = index.data(core.ThumbnailImgPathRole)
-        self.imageDict[keyName] = {
-            "btn": QStyleOptionButton(),
-            "image": QPixmap(ThumbnailImgPath)
-        }
-
     def createButton(self, index, keyName):
-        # if keyName not in self.imageDict:
-        self.createImageDict(index, keyName)
-        btn = self.imageDict[keyName]["btn"]
-        btn.iconSize = QSize(self.frameSize, self.frameSize)
-        btn.icon = self.imageDict[keyName]["image"]
-        btn.rect = self.baseRect
-        btn.state = QStyle.State_Enabled
-        btn.color = btn.palette.setColor(QPalette.Button, QColor(self.frameColor))
-        QApplication.style().drawControl(QStyle.CE_PushButton, btn, self.painter)
+        if keyName not in self.imageDict:
+            ThumbnailImgPath = index.data(core.ThumbnailImgPathRole)
+            self.imageDict[keyName] = {
+                "btn": QStyleOptionButton(),
+                "image": QPixmap(ThumbnailImgPath),
+
+            }
+            btn = self.imageDict[keyName]["btn"]
+            btn.state = QStyle.State_Enabled
+            btn.icon = self.imageDict[keyName]["image"]
+            btn.iconSize = QSize(self.frameSize, self.frameSize)
+            btn.color = btn.palette.setColor(QPalette.Button, QColor(self.frameColor))
+        else:
+            btn = self.imageDict[keyName]["btn"]
+            btn.rect = self.baseRect
+        self.referenceButton.setStyleSheet(f"""
+QPushButton{{
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: rgba{self.frameLineColor.getRgb()};
+    background-color: rgba{self.backgroundColor.getRgb()};
+}}
+
+QPushButton:pressed{{
+    background-color: rgba{self.backgroundColor.getRgb()};
+}}
+        """)
+
+        self.referenceButton.style().drawControl(
+            QStyle.CE_PushButton, btn, self.painter, self.referenceButton
+        )
+        # Dont' need
+        # QApplication.style().drawControl(QStyle.CE_PushButton, btn, self.painter)
 
     def drawQStyleOptionButtonFrame(self, rect):
         self.painter.setRenderHint(QPainter.Antialiasing, True)

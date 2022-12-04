@@ -21,3 +21,11 @@ QWidget#body > QPushButton:hover {
 QWidget#body > QPushButton:pressed {
     background-color: var(--default-color1);
 }
+
+background-color: qconicalgradient(
+    cx: 0.5 cy: 0.5,
+    angle: 270,
+    stop: 0 rgba(0, 0, 0, 0),
+    stop: 0.999 "#0088FF",
+    stop: 1 rgba(0, 0, 0, 0)
+);

@@ -20,15 +20,15 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="6" column="0">
+    <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
+   </item>
    <item row="3" column="0">
     <widget class="QIntSlider" name="IntSlider">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QDial" name="dial"/>
    </item>
    <item row="1" column="0">
     <widget class="QAnimationComboBox" name="Cb_qss"/>
@@ -39,19 +39,6 @@
       <string>Schedule</string>
      </property>
     </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QFloatSlider" name="FloatSlider">
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="2">
-    <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
    </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -78,32 +65,45 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QProgressCircular" name="AbstractProgressCircularB">
+   <item row="2" column="0">
+    <widget class="QFloatSlider" name="FloatSlider">
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="1" column="0">
+      <widget class="QAbstractProgressCircular" name="AbstractProgressCircularB">
        <property name="value">
         <number>24</number>
        </property>
       </widget>
      </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QAbstractProgressCircular" name="AbstractProgressCircular">
-         <property name="value">
-          <number>24</number>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="APC_PushButton">
-         <property name="text">
-          <string>Progress Start</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+     <item row="0" column="0">
+      <widget class="QProgressCircular" name="AbstractProgressCircularA">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="APC_PushButtonB">
+       <property name="text">
+        <string>Progress Start</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="APC_PushButtonA">
+       <property name="text">
+        <string>Progress Start</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

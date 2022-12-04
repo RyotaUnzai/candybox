@@ -29,16 +29,16 @@ class Ui_Schedule(object):
         Schedule.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(Schedule)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.QFlowLayout_FlowLayout = QVBoxLayout()
+        self.QFlowLayout_FlowLayout.setObjectName(u"QFlowLayout_FlowLayout")
+
+        self.gridLayout.addLayout(self.QFlowLayout_FlowLayout, 6, 0, 1, 1)
+
         self.IntSlider = QIntSlider(Schedule)
         self.IntSlider.setObjectName(u"IntSlider")
         self.IntSlider.setOrientation(Qt.Horizontal)
 
         self.gridLayout.addWidget(self.IntSlider, 3, 0, 1, 1)
-
-        self.dial = QDial(Schedule)
-        self.dial.setObjectName(u"dial")
-
-        self.gridLayout.addWidget(self.dial, 1, 1, 1, 1)
 
         self.Cb_qss = QAnimationComboBox(Schedule)
         self.Cb_qss.setObjectName(u"Cb_qss")
@@ -49,18 +49,6 @@ class Ui_Schedule(object):
         self.L_Header1.setObjectName(u"L_Header1")
 
         self.gridLayout.addWidget(self.L_Header1, 0, 0, 1, 1)
-
-        self.FloatSlider = QFloatSlider(Schedule)
-        self.FloatSlider.setObjectName(u"FloatSlider")
-        self.FloatSlider.setMaximum(100)
-        self.FloatSlider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.FloatSlider, 2, 0, 1, 1)
-
-        self.QFlowLayout_FlowLayout = QVBoxLayout()
-        self.QFlowLayout_FlowLayout.setObjectName(u"QFlowLayout_FlowLayout")
-
-        self.gridLayout.addLayout(self.QFlowLayout_FlowLayout, 10, 0, 1, 2)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -85,32 +73,39 @@ class Ui_Schedule(object):
 
         self.gridLayout.addLayout(self.horizontalLayout_2, 4, 0, 1, 1)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.AbstractProgressCircularB = QProgressCircular(Schedule)
+        self.FloatSlider = QFloatSlider(Schedule)
+        self.FloatSlider.setObjectName(u"FloatSlider")
+        self.FloatSlider.setMaximum(100)
+        self.FloatSlider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout.addWidget(self.FloatSlider, 2, 0, 1, 1)
+
+        self.gridLayout_2 = QGridLayout()
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.AbstractProgressCircularB = QAbstractProgressCircular(Schedule)
         self.AbstractProgressCircularB.setObjectName(u"AbstractProgressCircularB")
         self.AbstractProgressCircularB.setValue(24)
 
-        self.verticalLayout.addWidget(self.AbstractProgressCircularB)
+        self.gridLayout_2.addWidget(self.AbstractProgressCircularB, 1, 0, 1, 1)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.AbstractProgressCircular = QAbstractProgressCircular(Schedule)
-        self.AbstractProgressCircular.setObjectName(u"AbstractProgressCircular")
-        self.AbstractProgressCircular.setValue(24)
+        self.AbstractProgressCircularA = QProgressCircular(Schedule)
+        self.AbstractProgressCircularA.setObjectName(u"AbstractProgressCircularA")
+        self.AbstractProgressCircularA.setValue(24)
 
-        self.horizontalLayout.addWidget(self.AbstractProgressCircular)
+        self.gridLayout_2.addWidget(self.AbstractProgressCircularA, 0, 0, 1, 1)
 
-        self.APC_PushButton = QPushButton(Schedule)
-        self.APC_PushButton.setObjectName(u"APC_PushButton")
+        self.APC_PushButtonB = QPushButton(Schedule)
+        self.APC_PushButtonB.setObjectName(u"APC_PushButtonB")
 
-        self.horizontalLayout.addWidget(self.APC_PushButton)
+        self.gridLayout_2.addWidget(self.APC_PushButtonB, 1, 1, 1, 1)
+
+        self.APC_PushButtonA = QPushButton(Schedule)
+        self.APC_PushButtonA.setObjectName(u"APC_PushButtonA")
+
+        self.gridLayout_2.addWidget(self.APC_PushButtonA, 0, 1, 1, 1)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
-
-
-        self.gridLayout.addLayout(self.verticalLayout, 7, 0, 1, 1)
+        self.gridLayout.addLayout(self.gridLayout_2, 5, 0, 1, 1)
 
 
         self.retranslateUi(Schedule)
@@ -121,6 +116,7 @@ class Ui_Schedule(object):
     def retranslateUi(self, Schedule):
         Schedule.setWindowTitle(QCoreApplication.translate("Schedule", u"Frame", None))
         self.L_Header1.setText(QCoreApplication.translate("Schedule", u"Schedule", None))
-        self.APC_PushButton.setText(QCoreApplication.translate("Schedule", u"Progress Start", None))
+        self.APC_PushButtonB.setText(QCoreApplication.translate("Schedule", u"Progress Start", None))
+        self.APC_PushButtonA.setText(QCoreApplication.translate("Schedule", u"Progress Start", None))
     # retranslateUi
 

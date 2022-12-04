@@ -32,8 +32,10 @@ class scheduleWidget(QWidget):
 
         self.FlowLayout.space = (50, 10)
 
-        self.APC_PushButton.clicked.connect(self.ProgressStart)
-        self.AbstractProgressCircular.valueChanged.connect(self.ProgressStartCount)
+        self.APC_PushButtonA.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularA))
+        self.AbstractProgressCircularA.valueChanged.connect(self.ProgressStartCount)
+        self.APC_PushButtonB.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularB))
+        self.AbstractProgressCircularB.valueChanged.connect(self.ProgressStartCount)
 
         self.CircularSliderB.progressColor = QColor(128, 0, 255)
         self.CircularSliderB.fontColor = "#888"
@@ -41,6 +43,7 @@ class scheduleWidget(QWidget):
         self.CircularSliderB.progressBlurColor = QColor(255, 128, 0)
         self.CircularSliderB.indicatorSubColor = QColor(255, 128, 0)
         self.CircularSliderB.value = 73
+        self.CircularSliderB.intensity = 100
 
         self.CircularSliderC.progressColor = QColor(0, 255, 128)
         self.CircularSliderC.progressColorType = "blur"
@@ -48,16 +51,16 @@ class scheduleWidget(QWidget):
         self.CircularSliderC.indicatorMainColor = QColor(255, 0, 128)
         self.CircularSliderC.value = 73
 
-        self.ui.AbstractProgressCircular.progressColorType = "gradation"
-        self.ui.AbstractProgressCircular.value = 73
-        self.ui.AbstractProgressCircularB.progressColorType = "blur"
-        self.ui.AbstractProgressCircularB.value = 73
+        self.AbstractProgressCircularA.progressColorType = "gradation"
+        self.AbstractProgressCircularA.value = 73
+        self.AbstractProgressCircularB.progressColorType = "blur"
+        self.AbstractProgressCircularB.value = 73
 
-    def ProgressStart(self):
+    def ProgressStart(self, progressWidget):
         value: int = 0
         while value <= 100:
             time.sleep(0.1)
-            self.AbstractProgressCircular.setValue(value)
+            progressWidget.setValue(value)
             value += 5
 
     def ProgressStartCount(self, value):
@@ -76,12 +79,20 @@ class scheduleWidget(QWidget):
         return self.ui.gridLayout
 
     @property
-    def AbstractProgressCircular(self) -> QtCustom.QAbstractProgressCircular:
-        return self.ui.AbstractProgressCircular
+    def AbstractProgressCircularA(self) -> QtCustom.QAbstractProgressCircular:
+        return self.ui.AbstractProgressCircularA
 
     @property
-    def APC_PushButton(self) -> QPushButton:
-        return self.ui.APC_PushButton
+    def AbstractProgressCircularB(self) -> QtCustom.QAbstractProgressCircular:
+        return self.ui.AbstractProgressCircularB
+
+    @property
+    def APC_PushButtonA(self) -> QPushButton:
+        return self.ui.APC_PushButtonA
+
+    @property
+    def APC_PushButtonB(self) -> QPushButton:
+        return self.ui.APC_PushButtonB
 
     @property
     def Cb_qss(self):

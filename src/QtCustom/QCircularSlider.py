@@ -7,11 +7,22 @@ class QCircularSlider(QAbstractProgressCircular):
     _indicatorSize = 20
     _indicatorMainColor = QColor("#fff")
     _indicatorSubColor = QColor("#fff")
+    _intensity = 20
 
     def __init__(self, parent=None):
         super().__init__(parent)
         self.indicatorSize = 20
-        self.indicatorColor = QColor("#fff")
+        self._indicatorMainColor = QColor("#fff")
+        self._indicatorSubColor = QColor("#fff")
+        self._intensity = 20
+
+    @property
+    def intensity(self):
+        return self._intensity
+
+    @intensity.setter
+    def intensity(self, value):
+        self._intensity = value
 
     @property
     def indicatorMainColor(self):
@@ -49,7 +60,7 @@ class QCircularSlider(QAbstractProgressCircular):
         return super().resizeEvent(event)
 
     def mouseMoveEvent(self, event: QMouseEvent) -> None:
-        self.addValue = int((event.globalX() - self.mousePosX) / 10)
+        self.addValue = int((event.globalX() - self.mousePosX) / self.intensity)
         self.value = self.value + self.addValue
         if self.value < 0:
             self.value = 0
@@ -98,16 +109,18 @@ class QCircularSlider(QAbstractProgressCircular):
             progressColor.setColorAt(1, self.progressBlurColor)
 
         elif self.progressColorType == "gradation":
-            progressColor = QConicalGradient(QPointF(qreal / 2, qreal / 2), 310)
-            progressColor.setColorAt(0, self.progressColor)
-            progressColor.setColorAt(0.50, self.progressBlurColor)
-            progressColor.setColorAt(0.90, self.progressBlurColor)
-            progressColor.setColorAt(1, self.progressColor)
+            self.rounded = False
+            progressColor = QConicalGradient(QPointF(qreal / 2, qreal / 2), 270)
+            progressColor.setColorAt(0, self.progressBlurColor)
+            progressColor.setColorAt(0.001, self.progressColor)
+            progressColor.setColorAt(1, self.progressBlurColor)
         else:
             progressColor = QColor(self.progressColor)
         pen = QPen(progressColor, self.progressWidth, Qt.SolidLine)
         if self.rounded:
             pen.setCapStyle(Qt.RoundCap)
+        else:
+            pen.setCapStyle(Qt.FlatCap)
 
         painter.setPen(pen)
         painter.drawArc(x, x, width, height, startAngle, spanAngle)

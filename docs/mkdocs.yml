@@ -1,6 +1,6 @@
 site_name: Candybox
-repo_url: https://github.com/UnzaiRyota/candybox
-site_url: https://unzairyota.github.io/candybox/
+repo_url: https://github.com/RyotaUnzai/candybox
+site_url: https://ryotaunzai.github.io/candybox/
 site_author: Ryota Unzai / UnPySide.com
 
 theme:
@@ -30,7 +30,7 @@ theme:
 extra:
     social:
         - icon: fontawesome/brands/github-alt
-          link: https://github.com/UnzaiRyota
+          link: https://github.com/
         - icon: fontawesome/brands/twitter
           link: https://twitter.com/unpyside
         - icon: fontawesome/solid/blog

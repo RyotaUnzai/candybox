@@ -20,23 +20,10 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="6" column="0">
-    <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
-   </item>
    <item row="3" column="0">
     <widget class="QIntSlider" name="IntSlider">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QAnimationComboBox" name="Cb_qss"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="L_Header1">
-     <property name="text">
-      <string>Schedule</string>
      </property>
     </widget>
    </item>
@@ -64,6 +51,16 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="L_Header1">
+     <property name="text">
+      <string>Schedule</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QAnimationComboBox" name="Cb_qss"/>
    </item>
    <item row="2" column="0">
     <widget class="QFloatSlider" name="FloatSlider">
@@ -106,6 +103,41 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="6" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>674</width>
+        <height>412</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>FlowLayout</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
   </layout>
  </widget>

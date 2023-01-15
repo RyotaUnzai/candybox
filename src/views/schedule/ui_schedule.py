@@ -29,26 +29,11 @@ class Ui_Schedule(object):
         Schedule.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(Schedule)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.QFlowLayout_FlowLayout = QVBoxLayout()
-        self.QFlowLayout_FlowLayout.setObjectName(u"QFlowLayout_FlowLayout")
-
-        self.gridLayout.addLayout(self.QFlowLayout_FlowLayout, 6, 0, 1, 1)
-
         self.IntSlider = QIntSlider(Schedule)
         self.IntSlider.setObjectName(u"IntSlider")
         self.IntSlider.setOrientation(Qt.Horizontal)
 
         self.gridLayout.addWidget(self.IntSlider, 3, 0, 1, 1)
-
-        self.Cb_qss = QAnimationComboBox(Schedule)
-        self.Cb_qss.setObjectName(u"Cb_qss")
-
-        self.gridLayout.addWidget(self.Cb_qss, 1, 0, 1, 1)
-
-        self.L_Header1 = QLabel(Schedule)
-        self.L_Header1.setObjectName(u"L_Header1")
-
-        self.gridLayout.addWidget(self.L_Header1, 0, 0, 1, 1)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -72,6 +57,16 @@ class Ui_Schedule(object):
 
 
         self.gridLayout.addLayout(self.horizontalLayout_2, 4, 0, 1, 1)
+
+        self.L_Header1 = QLabel(Schedule)
+        self.L_Header1.setObjectName(u"L_Header1")
+
+        self.gridLayout.addWidget(self.L_Header1, 0, 0, 1, 1)
+
+        self.Cb_qss = QAnimationComboBox(Schedule)
+        self.Cb_qss.setObjectName(u"Cb_qss")
+
+        self.gridLayout.addWidget(self.Cb_qss, 1, 0, 1, 1)
 
         self.FloatSlider = QFloatSlider(Schedule)
         self.FloatSlider.setObjectName(u"FloatSlider")
@@ -107,6 +102,33 @@ class Ui_Schedule(object):
 
         self.gridLayout.addLayout(self.gridLayout_2, 5, 0, 1, 1)
 
+        self.scrollArea = QScrollArea(Schedule)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 674, 412))
+        self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label = QLabel(self.scrollAreaWidgetContents)
+        self.label.setObjectName(u"label")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+
+        self.verticalLayout.addWidget(self.label)
+
+        self.QFlowLayout_FlowLayout = QVBoxLayout()
+        self.QFlowLayout_FlowLayout.setObjectName(u"QFlowLayout_FlowLayout")
+
+        self.verticalLayout.addLayout(self.QFlowLayout_FlowLayout)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout.addWidget(self.scrollArea, 6, 0, 1, 1)
+
 
         self.retranslateUi(Schedule)
 
@@ -118,5 +140,6 @@ class Ui_Schedule(object):
         self.L_Header1.setText(QCoreApplication.translate("Schedule", u"Schedule", None))
         self.APC_PushButtonB.setText(QCoreApplication.translate("Schedule", u"Progress Start", None))
         self.APC_PushButtonA.setText(QCoreApplication.translate("Schedule", u"Progress Start", None))
+        self.label.setText(QCoreApplication.translate("Schedule", u"FlowLayout", None))
     # retranslateUi
 

@@ -17,6 +17,11 @@
             "label": "run",
             "type": "shell",
             "command": "run.bat"
+        },
+        {
+            "label": "serve",
+            "type": "shell",
+            "command": "serve.bat"
         }
     ]
 }

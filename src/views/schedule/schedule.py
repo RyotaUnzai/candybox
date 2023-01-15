@@ -26,11 +26,11 @@ class scheduleWidget(QWidget):
         for i in range(5):
             self.Cb_qss.addItem("Item %s" % i)
 
-        for i in range(5):
+        for i in range(50):
             btn = QPushButton("%s" % i)
             self.FlowLayout.addWidget(btn)
 
-        self.FlowLayout.space = (50, 10)
+        # self.FlowLayout.space = (15, 50)
 
         self.APC_PushButtonA.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularA))
         self.AbstractProgressCircularA.valueChanged.connect(self.ProgressStartCount)

@@ -50,8 +50,6 @@ class QFlowLayout(QLayout):
     @space.setter
     def space(self, value):
         self.__space = value
-        self.spaceX = self.__space[0]
-        self.spaceY = self.__space[1]
 
     @property
     def spacing(self):
@@ -117,20 +115,17 @@ class QFlowLayout(QLayout):
 
         for item in self.itemList:
             wid = item.widget()
-            nextX = x + item.sizeHint().width() + self.spaceX
-            if nextX - self.spaceX > rect.right() and lineHeight > 0:
+            nextX = x + item.sizeHint().width() + self.space[0]
+            if nextX - self.space[0] > rect.right() and lineHeight > 0:
                 x = rect.x()
-                y = y + lineHeight + self.spaceY
-                nextX = x + item.sizeHint().width() + self.spaceX
+                y = y + lineHeight + self.space[1]
+                nextX = x + item.sizeHint().width() + self.space[0]
                 lineHeight = 0
 
             if not heightForWidth:
                 item.setGeometry(
                     QRect(
-                        QPoint(
-                            x,
-                            y
-                        ),
+                        QPoint(x + self.space[0], y + self.space[1]),
                         item.sizeHint()
                     )
                 )

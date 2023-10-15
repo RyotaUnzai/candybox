@@ -1,40 +1,48 @@
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
+from PySide2 import QtWidgets, QtCore, QtGui
 
 import views
 
 
-class candyBoxCentralWidget(QWidget):
-    __navigation = None
-    __bodyWidget = None
-    __messageWidget = None
-    __settingWidget = None
+class candyBoxCentralWidget(QtWidgets.QWidget):
+    navigation: views.navigationWidget
+    bodyWidget: views.bodyWidget
+    messageWidget: views.messageWidget
+    settingWidget: views.settingWidget
+    boxLayout: QtWidgets.QBoxLayout
+    centralWidgetLayout: QtWidgets.QBoxLayout
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
+    def __init__(self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
         self.navigation = views.navigationWidget(self)
-        self.navigation.setObjectName("navigation")
-
-        # body ---- start
-        self.bodyWidget = QWidget(self)
-        self.bodyWidget.setObjectName("bodyWidget")
+        self.bodyWidget = QtWidgets.QWidget(self)
         self.home = views.homeWidget(self)
         self.messageWidget = views.messageWidget(self)
         self.schedule = views.scheduleWidget(self)
         self.settingWidget = views.settingWidget(self)
         self.account = views.accountWidget(self)
+        self.boxLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.TopToBottom, self)
+        self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
+        self.__initUI()
+
+
+    def __initUI(self) -> None:
+        self.bodyWidget.setObjectName("bodyWidget")
+        self.navigation.setObjectName("navigation")
         self.homeUI = self.home.ui
         self.messageUI = self.messageWidget.ui
         self.scheduleUI = self.schedule.ui
         self.settingUI = self.settingWidget.ui
         self.accountUI = self.account.ui
-        # # body ---- end
 
         self.__initLayout()
 
-    def __initLayout(self):
-        self.boxLayout = QBoxLayout(QBoxLayout.TopToBottom, self)
+        self.homeUI.hide()
+        self.messageUI.hide()
+        # self.scheduleUI.hide()
+        self.settingUI.hide()
+        self.accountUI.hide()
+
+    def __initLayout(self) -> None:
         self.bodyWidget.setLayout(self.boxLayout)
 
         self.boxLayout.addWidget(self.homeUI)
@@ -43,100 +51,54 @@ class candyBoxCentralWidget(QWidget):
         self.boxLayout.addWidget(self.settingUI)
         self.boxLayout.addWidget(self.accountUI)
 
-        self.centralWidgetLayout = QBoxLayout(QBoxLayout.LeftToRight, self)
         self.centralWidgetLayout.addWidget(self.navigation.ui)
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
 
-        self.homeUI.hide()
-        self.messageUI.hide()
-        # self.scheduleUI.hide()
-        self.settingUI.hide()
-        self.accountUI.hide()
+        # def getQss():
+        #     import core
+        #     import os
+        #     qssloader = core.qssLoader()
+        #     qssloader.filePath = os.path.join(core.PATH_QSS, "main.qss")
 
-        def getQss():
-            import core
-            import os
-            qssloader = core.qssLoader()
-            qssloader.filePath = os.path.join(core.PATH_QSS, "main.qss")
+        #     self.parentWidget().setStyleSheet(qssloader.styleSheet)
 
-            self.parentWidget().setStyleSheet(qssloader.styleSheet)
-        # debugButton = QPushButton("reloadQss", self.parentWidget())
-        # debugButton.resize(50, 25)
-        # debugButton.clicked.connect(getQss)
-        # debugButton.setObjectName("reloadQss")
+class candyBoxMainWindow(QtWidgets.QMainWindow):
+    cw: candyBoxCentralWidget
 
-    @property
-    def messageWidget(self) -> views.messageWidget:
-        return self.__messageWidget
-
-    @messageWidget.setter
-    def messageWidget(self, value):
-        self.__messageWidget = value
-
-    @property
-    def navigation(self) -> views.navigationWidget:
-        return self.__navigation
-
-    @navigation.setter
-    def navigation(self, value):
-        self.__navigation = value
-
-    @property
-    def bodyWidget(self) -> views.bodyWidget:
-        return self.__bodyWidget
-
-    @bodyWidget.setter
-    def bodyWidget(self, value):
-        self.__bodyWidget = value
-
-    @property
-    def settingWidget(self) -> views.settingWidget:
-        return self.__settingWidget
-
-    @settingWidget.setter
-    def settingWidget(self, value):
-        self.__settingWidget = value
-
-
-class candyBoxMainWindow(QMainWindow):
-    __cw = None
-
-    def __init__(self, parent=None, *args, **kwargs):
+    def __init__(self, parent: QtWidgets.QWidget = None, *args, **kwargs):
         super(candyBoxMainWindow, self).__init__(parent, *args, **kwargs)
-
-        self.setWindowTitle("CandyBox")
-        self.setObjectName("candybox")
         self.cw = candyBoxCentralWidget(self)
+        self.__initUI()
+
+    def __initUI(self) -> None:
         self.setCentralWidget(self.cw)
         self.resize(800, 600)
 
         self.setAutoFillBackground(True)
-        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+        
+        self.setWindowTitle("CandyBox")
+        self.setObjectName("candybox")
 
-    @property
-    def cw(self) -> candyBoxCentralWidget:
-        return self.__cw
+    def paintEvent(self, event) -> None:
+        painter: QtGui.QPainter = QtGui.QPainter(self)
+        painterPath: QtGui.QPainterPath = QtGui.QPainterPath()
+        linearGradient: QtGui.QLinearGradient = QtGui.QLinearGradient(90, 114, 117, 114)
+        painter.setRenderHint(QtGui.QPainter.Antialiasing)
 
-    @cw.setter
-    def cw(self, value):
-        self.__cw = value
+        painter.setPen(QtCore.Qt.NoPen)
+        linearGradient.setColorAt(0.0, QtGui.QColor("#2c2b30"))
+        linearGradient.setColorAt(0.499999999, QtGui.QColor("#2c2b30"))
+        linearGradient.setColorAt(0.5, QtGui.QColor("#18181b"))
+        linearGradient.setColorAt(1.0, QtGui.QColor("#2c2b30"))
 
-    def paintEvent(self, event):
-        painter = QPainter(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        path = QPainterPath()
-
-        painter.setPen(Qt.NoPen)
-        lGrad = QLinearGradient(90, 114, 117, 114)
-        lGrad.setColorAt(0.0, QColor("#2c2b30"))
-        lGrad.setColorAt(0.499999999, QColor("#2c2b30"))
-        lGrad.setColorAt(0.5, QColor("#18181b"))
-        lGrad.setColorAt(1.0, QColor("#2c2b30"))
-        painter.setBrush(QBrush(lGrad))
+        painter.setBrush(QtGui.QBrush(linearGradient))
         painter.drawRect(0, 0, self.geometry().width(), self.geometry().height())
-        painter.setPen(Qt.NoPen)
-        painter.setBrush(QColor("#00b8b8"))
+        painter.setPen(QtCore.Qt.NoPen)
+        painter.setBrush(QtGui.QColor("#00b8b8"))
         painter.drawRect(0, 0, 104, 87)
-        path.addRoundedRect(0, 0, 104, 87, 0, 0)
+        painterPath.addRoundedRect(0, 0, 104, 87, 0, 0)
         painter.end()
+
+        super(candyBoxMainWindow, self).paintEvent(event)

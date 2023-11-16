@@ -40,7 +40,8 @@ class candyBoxDelegator(core.Delegator):
         for url in iconList:
             iconData = core.loadJson(url)
             iconData["filePath"] = url
-            iconDataList.append(iconData)
+            iconModel = candyboxModel.IconModel(**iconData)
+            iconDataList.append(iconModel)
         self.iconListModel = self.model.IconListModel(data=iconDataList)
         self.messageWidget.listView.setModel(self.iconListModel)
         self.messageWidget.listView.setItemDelegate(delegator.iconListDelegate(self.messageWidget.listView))

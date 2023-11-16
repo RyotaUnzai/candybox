@@ -6,9 +6,8 @@ from PySide2 import QtCore, QtWidgets
 
 import core
 from core import utils
-
-# from PySide2.QtCore import *
-# from PySide2.QtWidgets import *
+from .iconModel import IconModel
+from typing import Any, List
 
 
 class IconFileSystemModel(QtWidgets.QFileSystemModel):
@@ -25,10 +24,14 @@ class IconFileSystemModel(QtWidgets.QFileSystemModel):
 
 class IconListModel(QtCore.QAbstractListModel):
     fileSystemWatcher = QtCore.QFileSystemWatcher()
+    __items:  List[IconModel]
+    currentItem: IconModel
 
-    def __init__(self, parent=None, data=[], *args, **kwargs):
+    def __init__(self, parent: Any = None, data: List[IconModel] = [], *args, **kwargs):
         super(IconListModel, self).__init__(parent, *args, **kwargs)
         self.__items = data
+        self.currentItem = self.__items[0]
+        
         self.__inquiryItems = {}
         self.count = 0
         self.initItems()
@@ -40,12 +43,6 @@ class IconListModel(QtCore.QAbstractListModel):
             self.count += 1
         else:
             self.count = 0
-        for item in self.__items:
-            if ":resource" in item["imageUrl"]:
-                item["imageUrl"] = item["imageUrl"].replace(":resource", core.PATH_RESOURCE.as_posix()).replace("\\", "/")
-            item["baseName"] = utils.getBasename(item["filePath"])
-            item["displayName"] = item["baseName"].split(".")[0]
-
 
     def reload(self, path):
         self.initItems(reload=True)
@@ -54,6 +51,7 @@ class IconListModel(QtCore.QAbstractListModel):
         return len(self.__items)
 
     def data(self, index, role: QtCore.Qt.DisplayRole):
+        self.currentItem = self.__items[index.row()]
         if not index.isValid():
             return None
 
@@ -61,15 +59,15 @@ class IconListModel(QtCore.QAbstractListModel):
             return None
 
         if role == QtCore.Qt.DisplayRole:
-            return self.__items[index.row()]["displayName"]
+            return self.currentItem.displayName
         elif role == core.ThumbnailImgPathRole:
-            return self.__items[index.row()]["imageUrl"]
+            return self.currentItem.imageUrl
         elif role == core.FilePathRole:
-            return self.__items[index.row()]["filePath"]
+            return self.currentItem.filePath
         elif role == core.AssetVersionRole:
-            return self.__items[index.row()]["fileData"]["AssetVersion"]
+            return self.currentItem.fileData["AssetVersion"]
         elif role == core.AuthorsRole:
-            return self.__items[index.row()]["fileData"]["Authors"]
+            return self.currentItem.fileData["Authors"]
         else:
             return None
 

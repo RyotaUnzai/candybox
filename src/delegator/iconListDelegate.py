@@ -7,6 +7,7 @@ from PySide2.QtWidgets import *
 import core
 import models
 
+from pathlib import WindowsPath
 
 class iconListDelegate(QStyledItemDelegate):
     _referenceButton = None
@@ -132,11 +133,10 @@ class iconListDelegate(QStyledItemDelegate):
 
     def createButton(self, index, keyName):
         if keyName not in self.imageDict:
-            ThumbnailImgPath = index.data(core.ThumbnailImgPathRole)
+            ThumbnailImgPath: WindowsPath = index.data(core.ThumbnailImgPathRole)
             self.imageDict[keyName] = {
                 "btn": QStyleOptionButton(),
-                "image": QPixmap(ThumbnailImgPath),
-
+                "image": QPixmap(ThumbnailImgPath.as_posix()),
             }
             btn = self.imageDict[keyName]["btn"]
             btn.state = QStyle.State_Enabled

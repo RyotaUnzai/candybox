@@ -1,9 +1,10 @@
 import os
 import re
-import models
+
+import core
 
 
-class hasMeta(type):
+class HasMeta(type):
     def __new__(cls, name, bases, dict):
         dict["file"] = ""
         dict["style"] = ""
@@ -22,16 +23,13 @@ class hasMeta(type):
             "importFixStart": r'@import url("',
             "importFixEnd": r'");',
         }
-        return super(hasMeta, cls).__new__(cls, name, bases, dict)
+        return super(HasMeta, cls).__new__(cls, name, bases, dict)
 
 
-class qssLoader(object, metaclass=hasMeta):
+class QssLoader(object, metaclass=HasMeta):
     __styleSheet = ""
     __filePath = ""
     __fileDir = ""
-
-    def __init__(self):
-        pass
 
     @property
     def fileDir(self):
@@ -39,16 +37,12 @@ class qssLoader(object, metaclass=hasMeta):
 
     @property
     def filePath(self):
-        pass
+        return self.__filePath
 
     @filePath.setter
     def filePath(self, value):
         self.__filePath = value
-        self.__fileDir = models.getDirname(value)
-
-    @filePath.getter
-    def filePath(self):
-        return self.__filePath
+        self.__fileDir = core.getDirname(value)
 
     def searchFiles(self):
         if os.path.exists(self.rootPath):
@@ -64,11 +58,11 @@ class qssLoader(object, metaclass=hasMeta):
 
     @property
     def styleSheet(self):
-        pass
+        return self.__styleSheet
 
     @styleSheet.getter
     def styleSheet(self):
-        self.__styleSheet = models.readFile(self.filePath)
+        self.__styleSheet = core.readFile(self.filePath)
 
         self.atImport()
         self.PseudoRoot()
@@ -85,11 +79,11 @@ class qssLoader(object, metaclass=hasMeta):
             importPath = importContent.replace(self.atRules["importFixStart"], "")
             importPath = importPath.replace(self.atRules["importFixEnd"], "")
             if not os.path.exists(importPath):
-                importPath = models.refreshPath(self.fileDir, importPath)
+                importPath = core.refreshPath(self.fileDir, importPath)
                 if not os.path.exists(importPath):
                     continue
 
-            qss = models.readFile(importPath)
+            qss = core.readFile(importPath)
             self.__styleSheet = self.__styleSheet.replace(importContent, qss)
 
     def PseudoRoot(self):

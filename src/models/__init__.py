@@ -1,4 +1,3 @@
-from .utils import *
+from .iconListModel import *
 from .qtutils import *
 from .settingTreeModel import *
-from .iconListModel import *

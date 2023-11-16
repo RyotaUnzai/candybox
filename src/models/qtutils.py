@@ -1,6 +1,4 @@
-from PySide2.QtWidgets import *
-from PySide2.QtGui import *
-from PySide2.QtCore import *
+from PySide2 import QtCore, QtGui
 
 
 def maskImage(
@@ -10,11 +8,11 @@ def maskImage(
     if imgPath is not None:
         imgData = open(imgPath, "rb").read()
 
-    image = QImage.fromData(imgData, imgType)
-    image.convertToFormat(QImage.Format_ARGB32)
+    image = QtGui.QImage.fromData(imgData, imgType)
+    image.convertToFormat(QtGui.QImage.Format_ARGB32)
 
     imgsize = min(image.width(), image.height())
-    rect = QRect(
+    rect = QtCore.QRect(
         (image.width() - imgsize) / 2.0,
         (image.height() - imgsize) / 2.0,
         imgsize,
@@ -22,14 +20,14 @@ def maskImage(
     )
     image = image.copy(rect)
 
-    out_img = QImage(imgsize, imgsize, QImage.Format_ARGB32)
-    out_img.fill(Qt.transparent)
+    out_img = QtGui.QImage(imgsize, imgsize, QtGui.QImage.Format_ARGB32)
+    out_img.fill(QtCore.Qt.transparent)
 
-    brush = QBrush(image)
-    painter = QPainter(out_img)
+    brush = QtGui.QBrush(image)
+    painter = QtGui.QPainter(out_img)
     painter.setBrush(brush)
-    painter.setPen(Qt.NoPen)
-    painter.setRenderHint(QPainter.Antialiasing, True)
+    painter.setPen(QtCore.Qt.NoPen)
+    painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
     penSizeHalf = penSize / 2.0
     painter.drawEllipse(
         0, 0,
@@ -37,58 +35,58 @@ def maskImage(
     )
     painter.end()
 
-    pr = QWindow().devicePixelRatio()
-    Pixmap = QPixmap.fromImage(out_img)
+    pr = QtGui.QWindow().devicePixelRatio()
+    Pixmap = QtGui.QPixmap.fromImage(out_img)
     Pixmap.setDevicePixelRatio(pr)
     size *= pr
-    Pixmap = Pixmap.scaled(size, size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+    Pixmap = Pixmap.scaled(size, size, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation)
     if noPen is False:
         extendSize = size + (penSize * 2.0)
         if penStyle == "center":
-            out_img = QImage(extendSize, extendSize, QImage.Format_ARGB32)
+            out_img = QtGui.QImage(extendSize, extendSize, QtGui.QImage.Format_ARGB32)
 
-            out_img.fill(Qt.transparent)
-            brush = QBrush(Pixmap)
-            Paint = QPainter(out_img)
+            out_img.fill(QtCore.Qt.transparent)
+            brush = QtGui.QBrush(Pixmap)
+            Paint = QtGui.QPainter(out_img)
             Paint.setBrush(brush)
             Paint.setBrushOrigin(penSize, penSize)
 
-            Paint.setPen(QPen(QColor(penColor), penSize, Qt.SolidLine))
-            Paint.setRenderHint(QPainter.Antialiasing, True)
+            Paint.setPen(QtGui.QPen(QtGui.QColor(penColor), penSize, QtCore.Qt.SolidLine))
+            Paint.setRenderHint(QtGui.QPainter.Antialiasing, True)
             Paint.drawEllipse(
                 penSize, penSize,
                 extendSize - penSize * 2, extendSize - penSize * 2
             )
             Paint.end()
 
-            pr = QWindow().devicePixelRatio()
-            NewPixmap = QPixmap.fromImage(out_img)
+            pr = QtGui.QWindow().devicePixelRatio()
+            NewPixmap = QtGui.QPixmap.fromImage(out_img)
             NewPixmap.setDevicePixelRatio(pr)
             return NewPixmap
         elif penStyle == "outside":
-            out_img = QImage(extendSize, extendSize, QImage.Format_ARGB32)
-            out_img.fill(Qt.transparent)
-            brush = QBrush(Pixmap)
-            Paint = QPainter(out_img)
+            out_img = QtGui.QImage(extendSize, extendSize, QtGui.QImage.Format_ARGB32)
+            out_img.fill(QtCore.Qt.transparent)
+            brush = QtGui.QBrush(Pixmap)
+            Paint = QtGui.QPainter(out_img)
             Paint.setBrush(brush)
             Paint.setBrushOrigin(penSize, penSize)
 
-            Paint.setPen(QPen(QColor(penColor), penSize, Qt.SolidLine))
-            Paint.setRenderHint(QPainter.Antialiasing, True)
+            Paint.setPen(QtGui.QPen(QtGui.QColor(penColor), penSize, QtCore.Qt.SolidLine))
+            Paint.setRenderHint(QtGui.QPainter.Antialiasing, True)
             Paint.drawEllipse(
                 penSizeHalf + 1, penSizeHalf + 1,
                 extendSize - penSize - 2, extendSize - penSize - 2
             )
             Paint.end()
 
-            pr = QWindow().devicePixelRatio()
-            NewPixmap = QPixmap.fromImage(out_img)
+            pr = QtGui.QWindow().devicePixelRatio()
+            NewPixmap = QtGui.QPixmap.fromImage(out_img)
             NewPixmap.setDevicePixelRatio(pr)
             return NewPixmap
         else:
-            Paint = QPainter(Pixmap)
-            Paint.setPen(QPen(QColor(penColor), penSize, Qt.SolidLine))
-            Paint.setRenderHint(QPainter.Antialiasing, True)
+            Paint = QtGui.QPainter(Pixmap)
+            Paint.setPen(QtGui.QPen(QtGui.QColor(penColor), penSize, QtCore.Qt.SolidLine))
+            Paint.setRenderHint(QtGui.QPainter.Antialiasing, True)
             Paint.drawEllipse(
                 penSize / 2.0, penSize / 2.0,
                 size - penSize, size - penSize

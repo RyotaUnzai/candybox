@@ -6,7 +6,7 @@ import core
 import delegator
 
 
-class candyBoxDelegator(core.delegator):
+class candyBoxDelegator(core.Delegator):
     view: candyboxView.candyBoxMainWindow
     model: candyboxModel
     fontRemix: core.fontRemixicon.Remixcon

@@ -42,7 +42,7 @@ class iconListModel(QAbstractListModel):
             self.count = 0
         for item in self.__items:
             if ":resource" in item["imageUrl"]:
-                item["imageUrl"] = item["imageUrl"].replace(":resource", core.PATH_RESOURCE).replace("\\", "/")
+                item["imageUrl"] = item["imageUrl"].replace(":resource", core.PATH_RESOURCE.as_posix()).replace("\\", "/")
             item["baseName"] = utils.getBasename(item["filePath"])
             item["displayName"] = item["baseName"].split(".")[0]
 

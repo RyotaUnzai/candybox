@@ -1,10 +1,10 @@
 {
-    "displayName": "red packet fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Finance/red-packet-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "red packet fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Finance/red-packet-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

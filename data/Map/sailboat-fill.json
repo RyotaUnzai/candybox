@@ -1,10 +1,10 @@
 {
-    "displayName": "sailboat fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Map/sailboat-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "sailboat fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Map/sailboat-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

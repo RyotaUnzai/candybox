@@ -1,10 +1,10 @@
 {
-    "displayName": "volume down fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Media/volume-down-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "volume down fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Media/volume-down-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

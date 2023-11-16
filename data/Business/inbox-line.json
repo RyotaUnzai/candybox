@@ -1,10 +1,10 @@
 {
-    "displayName": "inbox line", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Business/inbox-line.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "inbox line",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Business/inbox-line.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

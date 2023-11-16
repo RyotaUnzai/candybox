@@ -1,10 +1,10 @@
 {
-    "displayName": "layout row line", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Design/layout-row-line.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "layout row line",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Design/layout-row-line.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

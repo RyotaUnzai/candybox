@@ -1,10 +1,10 @@
 {
-    "displayName": "paint brush fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Design/paint-brush-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "paint brush fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Design/paint-brush-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

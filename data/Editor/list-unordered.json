@@ -1,10 +1,10 @@
 {
-    "displayName": "list unordered", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/list-unordered.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "list unordered",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/list-unordered.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

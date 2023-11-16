@@ -1,10 +1,10 @@
 {
-    "displayName": "code view", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/code-view.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "code view",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/code-view.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

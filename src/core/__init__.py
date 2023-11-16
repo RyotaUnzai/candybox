@@ -1,13 +1,14 @@
 import os
-
 from pathlib import Path
+
 from PySide2 import QtCore
 
 from .application import *
-from .fontRemixicon import *
 from .fontRaleway import *
-from .qssloader import *
+from .fontRemixicon import *
 from .imageResource import *
+from .qssloader import *
+from .utils import *
 
 PATH_ABS = Path(os.getcwd())
 PATH_SRC = PATH_ABS / "src"

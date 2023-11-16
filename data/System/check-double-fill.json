@@ -1,10 +1,10 @@
 {
-    "displayName": "check double fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/System/check-double-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "check double fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/System/check-double-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

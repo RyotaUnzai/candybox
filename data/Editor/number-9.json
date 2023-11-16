@@ -1,10 +1,10 @@
 {
-    "displayName": "number 9", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/number-9.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "number 9",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/number-9.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

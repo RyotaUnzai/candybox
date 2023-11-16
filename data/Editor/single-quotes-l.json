@@ -1,10 +1,10 @@
 {
-    "displayName": "single quotes l", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/single-quotes-l.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "single quotes l",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/single-quotes-l.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

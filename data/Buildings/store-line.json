@@ -1,10 +1,10 @@
 {
-    "displayName": "store line", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Buildings/store-line.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "store line",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Buildings/store-line.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

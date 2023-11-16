@@ -1,10 +1,10 @@
 {
-    "displayName": "flow chart", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/flow-chart.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "flow chart",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/flow-chart.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

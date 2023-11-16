@@ -1,10 +1,10 @@
 {
-    "displayName": "walk line", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Map/walk-line.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "walk line",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Map/walk-line.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

@@ -1,10 +1,10 @@
 {
-    "displayName": "text wrap", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Editor/text-wrap.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "text wrap",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Editor/text-wrap.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

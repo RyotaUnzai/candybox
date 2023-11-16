@@ -1,10 +1,10 @@
 {
-    "displayName": "motorbike fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Map/motorbike-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "motorbike fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Map/motorbike-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

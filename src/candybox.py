@@ -13,7 +13,7 @@ import candyboxDelegator
 
 
 if __name__ == "__main__":
-    qssloader = core.qssLoader()
+    qssloader = core.QssLoader()
     qssloader.filePath = Path(core.PATH_QSS) / "main.qss"
 
     # models.saveFile(path=r"D:\python\candybox\src\qss\test.qss", data=qssloader.styleSheet)

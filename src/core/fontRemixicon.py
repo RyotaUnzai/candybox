@@ -2280,4 +2280,4 @@ class Remixcon(object):
         font_database = QtGui.QFontDatabase()
         font_id = font_database.addApplicationFont(":/fonts/RemixIcon/fonts/remixicon.ttf")
         remixicon_family = font_database.applicationFontFamilies(font_id)[0]
-        self.font_remixicon = QtGui.QFont(remixicon_family, pointSize=12)
+        self.Font_Remixicon = QtGui.QFont(remixicon_family, pointSize=12)

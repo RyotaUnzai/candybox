@@ -1,10 +1,10 @@
 {
-    "displayName": "chat 1 fill", 
-    "AssetVersion": 0, 
-    "imageUrl": ":resource/image/dark/Communication/chat-1-fill.svg", 
-    "LastAuthor": "Taro Yamada", 
-    "FileUpdateTime": "2022-12-08T04:42:16.7913408Z", 
-    "Authors": [
+    "displayName": "chat 1 fill",
+    "assetVersion": 0,
+    "imageUrl": ":resource/image/dark/Communication/chat-1-fill.svg",
+    "lastAuthor": "Taro Yamada",
+    "fileUpdateTime": "2022-12-08T04:42:16.7913408Z",
+    "authors": [
         "Taro Yamada"
     ]
 }

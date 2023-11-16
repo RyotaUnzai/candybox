@@ -1,7 +1,7 @@
-from PySide2 import QtWidgets, QtGui
+from PySide2 import QtWidgets
 
-import candyboxView
 import candyboxModel
+import candyboxView
 import core
 import delegator
 
@@ -35,13 +35,14 @@ class candyBoxDelegator(core.Delegator):
         self.messageWidget = self.view.cw.messageWidget
 
     def __messageWidgetConnection(self) -> None:
-        iconList = self.model.getExtList(core.PATH_DATA)
+        iconList = core.getExtList(core.PATH_DATA)
         iconDataList = []
         for url in iconList:
-            iconData = self.model.loadJson(url)
+            iconData = core.loadJson(url)
             iconData["filePath"] = url
-            iconDataList.append(iconData)
-        self.iconListModel = self.model.iconListModel(data=iconDataList)
+            iconModel = candyboxModel.IconModel(**iconData)
+            iconDataList.append(iconModel)
+        self.iconListModel = self.model.IconListModel(data=iconDataList)
         self.messageWidget.listView.setModel(self.iconListModel)
         self.messageWidget.listView.setItemDelegate(delegator.iconListDelegate(self.messageWidget.listView))
 

@@ -1,0 +1,72 @@
+[project]
+name = "Candybox"
+version = "1.0.0"
+description="Porting Candybox project"
+requires-python = "==3.9.7"
+dependencies = [  
+]
+
+# [project.optional-dependencies]
+# test = ["pytest"]
+# dev = [
+#   "black == 23.3.0",
+#   "debugpy == 1.6.7",
+#   "isort == 5.12.0",
+#   "mypy == 1.2.0",
+#   "pyproject-flake8 == 6.0.0.post1",
+# ]
+
+[tool.black]
+line-length = 120
+max-complexity = 10
+target-version = ['py39']
+exclude = '''
+(
+    .mypy_cache
+    | .pytest_cache
+    | .venv
+)
+'''
+
+[tool.flake8]
+ignore = "E203,W503,W504"
+max-line-length = 120
+exclude = "tests/*"
+max-complexity = 10
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = 3.9
+cache_dir = ".maya/.mypy_cache"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+implicit_reexport = true
+#ignore_missing_imports = true
+implicit_optional = true
+warn_redundant_casts = true
+
+[[tool.mypy.overrides]]
+module = [
+  "backports",
+  "debugpy",
+  "pythonnet",
+  "varname",
+  "xlrd",
+  "xlutils",
+  "xlwt",
+  "openpyxl",
+  "pandas",
+  "requests"
+]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+warn_untyped_fields = true
+
+[tool.pylint."messages control"]
+disable = "all"
+enable = "W0212"

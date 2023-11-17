@@ -6,7 +6,7 @@ I have also prepared a buildable bat that makes it easy to use custom Font and i
 Since this is a sample, I have not implemented anything that will actually work, but you can easily implement these features as well.
 
 
-For more information, [click here](https://unzairyota.github.io/candybox/)  
+For more information, [click here](https://ryotaunzai.github.io/candybox/)  
 
 
 ### Third Party

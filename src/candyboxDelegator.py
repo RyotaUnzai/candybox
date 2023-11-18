@@ -9,15 +9,16 @@ import delegator
 class candyBoxDelegator(core.Delegator):
     view: candyboxView.candyBoxMainWindow
     model: candyboxModel
-    fontRemix: core.fontRemixicon.Remixcon
-    fontRaleway: core.fontRaleway.Raleway
+    fontRemicon: core.fontRemixicon.Remixicon
+    fontRalewayExtraBoldItalic: core.fontRaleway.RalewayExtraBoldItalic
     nav: candyboxView.views.navigationWidget
     body: candyboxView.views.bodyWidget
 
     def __init__(self, view=None, model=None, *args, **kwargs):
         super(candyBoxDelegator, self).__init__(view, model, *args, **kwargs)
-        self.fontRemix = core.fontRemixicon.Remixcon()
-        self.fontRaleway = core.fontRaleway.Raleway()
+        #self.fontRemix = core.fontRemixicon.Remixicon()
+        self.fontRemicon = core.fontRemixicon.Remixicon()
+        self.fontRalewayExtraBoldItalic = core.fontRaleway.RalewayExtraBoldItalic()
 
     def connect(self) -> None:
         self.view.show()
@@ -98,19 +99,20 @@ class candyBoxDelegator(core.Delegator):
         # self.nav.setMaximumWidth(100)
         # self.nav.PB_Home.clicked.connect(self.view.close)
 
-        self.fontRemix.Font_Remixicon.setPixelSize(20)
-        self.nav.PB_Home.setFont(self.fontRemix.Font_Remixicon)
-        self.nav.PB_Message.setFont(self.fontRemix.Font_Remixicon)
-        self.nav.PB_Schedule.setFont(self.fontRemix.Font_Remixicon)
-        self.nav.PB_Setting.setFont(self.fontRemix.Font_Remixicon)
-        self.nav.PB_Account.setFont(self.fontRemix.Font_Remixicon)
+        #self.fontRemix.Font_Remixicon.setPixelSize(20)
+        self.fontRemicon.setPixelSize(20)
+        self.nav.PB_Home.setFont(self.fontRemicon)
+        self.nav.PB_Message.setFont(self.fontRemicon)
+        self.nav.PB_Schedule.setFont(self.fontRemicon)
+        self.nav.PB_Setting.setFont(self.fontRemicon)
+        self.nav.PB_Account.setFont(self.fontRemicon)
 
-        self.nav.PB_Home.setText(self.fontRemix.ri_home_2_fill)
-        self.nav.PB_Message.setText(self.fontRemix.ri_message_2_fill)
-        self.nav.PB_Schedule.setText(self.fontRemix.ri_calendar_2_fill)
-        self.nav.PB_Setting.setText(self.fontRemix.ri_settings_2_fill)
-        self.nav.PB_Account.setText(self.fontRemix.ri_account_box_fill)
+        self.nav.PB_Home.setText(self.fontRemicon.ri_home_2_fill)
+        self.nav.PB_Message.setText(self.fontRemicon.ri_message_2_fill)
+        self.nav.PB_Schedule.setText(self.fontRemicon.ri_calendar_2_fill)
+        self.nav.PB_Setting.setText(self.fontRemicon.ri_settings_2_fill)
+        self.nav.PB_Account.setText(self.fontRemicon.ri_account_box_fill)
 
-        self.fontRemix.Font_Remixicon.setPixelSize(36)
-        self.nav.L_Appicon.setFont(self.fontRemix.Font_Remixicon)
-        self.nav.L_Appicon.setText(self.fontRemix.ri_apps_fill)
+        self.fontRemicon.setPixelSize(36)
+        self.nav.L_Appicon.setFont(self.fontRemicon)
+        self.nav.L_Appicon.setText(self.fontRemicon.ri_apps_fill)

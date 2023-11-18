@@ -1,5 +1,6 @@
 import os
 import re
+from pathlib import Path, WindowsPath
 
 import core
 
@@ -8,15 +9,13 @@ class HasMeta(type):
     def __new__(cls, name, bases, dict):
         dict["file"] = ""
         dict["style"] = ""
-        dict["pattern"] = {
-            "colon": r"(:[ ]+|:|[ ]+:)"
-        }
+        dict["pattern"] = {"colon": r"(:[ ]+|:|[ ]+:)"}
         dict["patternPseudoRoot"] = {
             "main": r":root([ {]+)((\s+)(--)[a-zA-Z0-9:-]+[ ;0-9a-zA-Z#:]+)+[\s]+}",
             "key": r"--[a-zA-Z0-9- ]+",
             "value": r":[ #a-zA-Z0-9]+;",
             "var": r"(:|[ ]+:)",
-            "sentance": r"(| +)--[a-zA-z0-9-: ]+([0-9a-zA-Z#:]+)"
+            "sentance": r"(| +)--[a-zA-z0-9-: ]+([0-9a-zA-Z#:]+)",
         }
         dict["atRules"] = {
             "import": r"@import[a-zA-Z0-9\(\".-_<> ]+\);",
@@ -42,7 +41,7 @@ class QssLoader(object, metaclass=HasMeta):
     @filePath.setter
     def filePath(self, value):
         self.__filePath = value
-        self.__fileDir = core.getDirname(value)
+        self.__fileDir = os.path.dirname(value)
 
     def searchFiles(self):
         if os.path.exists(self.rootPath):
@@ -52,7 +51,7 @@ class QssLoader(object, metaclass=HasMeta):
                 if os.path.isdir(fullpath):
                     self.searchFile(self.files)
 
-                if file.split('.')[-1] == 'qss':
+                if file.split(".")[-1] == "qss":
                     self.files.append(fullpath)
         return self.files
 
@@ -76,14 +75,14 @@ class QssLoader(object, metaclass=HasMeta):
             importContents.append(match.group(0))
 
         for importContent in importContents:
-            importPath = importContent.replace(self.atRules["importFixStart"], "")
+            importPath: WindowsPath = importContent.replace(self.atRules["importFixStart"], "")
             importPath = importPath.replace(self.atRules["importFixEnd"], "")
             if not os.path.exists(importPath):
-                importPath = core.refreshPath(self.fileDir, importPath)
-                if not os.path.exists(importPath):
+                importPath = Path(self.fileDir) / importPath
+                if not importPath.exists():
                     continue
 
-            qss = core.readFile(importPath)
+            qss = core.readFile(importPath.as_posix())
             self.__styleSheet = self.__styleSheet.replace(importContent, qss)
 
     def PseudoRoot(self):

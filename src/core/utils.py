@@ -22,24 +22,6 @@ def loadJson(path: str, decoding: str = "utf-8-sig") -> Any:
         raise IOError(f"Error loading JSON from {path}: {e}")
 
 
-def readFile(path: str, decoding: str = "utf-8-sig") -> str:
-    """
-    Reads the content of a file.
-
-    Parameters:
-    path: Path to the file to be read.
-    decoding: The character encoding for reading the file. Defaults to 'utf-8-sig'.
-
-    Returns:
-    The content of the file as a string.
-    """
-    try:
-        with codecs.open(path, "r", encoding=decoding) as file:
-            return file.read()
-    except Exception as e:
-        raise IOError(f"Error reading file {path}: {e}")
-
-
 def saveFile(path: str, data: Any) -> None:
     """
     Saves data to a file.

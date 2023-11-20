@@ -1,1 +1,1 @@
-from .body import *
+from .body import BodyWidget

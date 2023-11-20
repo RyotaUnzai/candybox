@@ -12,7 +12,7 @@ class candyBoxDelegator(core.Delegator):
     fontRemicon: core.fontRemixicon.Remixicon
     fontRalewayExtraBoldItalic: core.fontRaleway.RalewayExtraBoldItalic
     nav: candyboxView.views.navigationWidget
-    body: candyboxView.views.bodyWidget
+    body: QtWidgets.QWidget
 
     def __init__(self, view=None, model=None, *args, **kwargs):
         super(candyBoxDelegator, self).__init__(view, model, *args, **kwargs)
@@ -33,7 +33,7 @@ class candyBoxDelegator(core.Delegator):
         self.bodyWidget = self.view.cw.bodyWidget
         self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
         self.settingWidget = self.view.cw.settingWidget
-        self.messageWidget = self.view.cw.messageWidget
+        self.messageWidget = self.view.cw.message
 
     def __messageWidgetConnection(self) -> None:
         iconList = core.getExtList(core.PATH_DATA)
@@ -54,7 +54,7 @@ class candyBoxDelegator(core.Delegator):
             {'parent': 'python', 'key': 'autopep8Args'},
             {'parent': 'python', 'key': 'renderControlCharacters'},
             {'parent': 'python', 'key': 'formatOnSave'},
-            {'parent': 'colorInfo', 'key': 'homeUI'},
+            {'parent': 'colorInfo', 'key': 'home'},
             {'parent': 'colorInfo', 'key': 'fields'},
             {'parent': 'colorInfo', 'key': 'formatOnSave'},
             {'parent': 'colorInfo', 'key': 'renderControlCharacters'},

@@ -44,6 +44,8 @@ QToolButton {
 
 /*---- QLabel ---*/
 
+/*TODO: 後で消す*/
+QLabel#labelHeading,
 QLabel#L_Header1 {
     font-family: "Raleway";
     color: var(--header1-color1);

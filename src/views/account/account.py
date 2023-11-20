@@ -1,18 +1,20 @@
-import os
+import QtCustom
 import core
-from PySide2.QtWidgets import QWidget
-from PySide2.QtUiTools import loadUiType, QUiLoader
+from PySide2 import QtWidgets
+from typing import Final, TypeVar
+
+UI_FILE: Final = core.PATH_VIEWS / "account" / "account.ui"
+_, baseClass = QtCustom.loadWindowUiType(UI_FILE)
 
 
-class accountWidget(QWidget):
+class AccountWidget(_, baseClass):
+    Self = TypeVar("Self", bound="AccountWidget")
+    checkBox: QtWidgets.QCheckBox
+    labelHeading: QtWidgets.QLabel
+    pushButton: QtWidgets.QPushButton
+    verticalSpacer: QtWidgets.QSpacerItem
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
-
-        super(accountWidget, self).__init__(parent, *args, **kwargs)
-        uiLoader = QUiLoader()
-        __uiFilePath = os.path.join(core.PATH_VIEWS, "account", "account.ui")
-        ui = uiLoader.load(__uiFilePath)
-        self.ui = ui
-        self.ui.setParent(parent)
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
+        super(AccountWidget, self).__init__(parent, *args, **kwargs)
+        self.setupUi(self)
         self.setObjectName("Account")
-        # QAnimationComboBox

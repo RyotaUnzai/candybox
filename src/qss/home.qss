@@ -138,17 +138,17 @@ QWidget#Home QSpinBox::up-button {
 
 /*---- QListView ---*/
 
-QWidget#Home QListWidget#LW_qss {
+QWidget#Home QListWidget {
     color: var(--highlight-color1);
     outline: none;
     font-weight: 300;
     outline: none;
 }
 
-QWidget#Home QListWidget::item#LW_qss {
+QWidget#Home QListWidget::item {
     border-color: var(--main-color2);
 }
 
-QWidget#Home QListWidget::item:hover#LW_qss {
+QWidget#Home QListWidget::item:hover {
     background-color: var(--default-color1);
 }

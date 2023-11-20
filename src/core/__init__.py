@@ -1,3 +1,5 @@
+from typing import Callable, Type, Tuple
+from PySide2 import QtWidgets
 import os
 from pathlib import Path
 
@@ -9,6 +11,7 @@ from .fontRemixicon import *
 from .imageResource import *
 from .qssloader import *
 from .utils import *
+
 
 PATH_ABS = Path(os.getcwd())
 PATH_SRC = PATH_ABS / "src"

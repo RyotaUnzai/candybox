@@ -23,7 +23,6 @@ class candyBoxBodyItemModel(object):
                 widget.hide()
             else:
                 widget.show()
-
     @property
     def widgetItems(self):
         return self.__widgetItems

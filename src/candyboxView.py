@@ -5,8 +5,8 @@ import views
 
 class candyBoxCentralWidget(QtWidgets.QWidget):
     navigation: views.navigationWidget
-    bodyWidget: views.bodyWidget
-    messageWidget: views.messageWidget
+    bodyWidget: QtWidgets.QWidget
+    message: views.MessageWidget
     settingWidget: views.settingWidget
     boxLayout: QtWidgets.QBoxLayout
     centralWidgetLayout: QtWidgets.QBoxLayout
@@ -15,53 +15,42 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
         self.navigation = views.navigationWidget(self)
         self.bodyWidget = QtWidgets.QWidget(self)
-        self.home = views.homeWidget(self)
-        self.messageWidget = views.messageWidget(self)
-        self.schedule = views.scheduleWidget(self)
+        self.home = views.HomeWidget(self)
+        self.message = views.MessageWidget(self)
+        self.schedule = views.ScheduleWidget(self)
         self.settingWidget = views.settingWidget(self)
-        self.account = views.accountWidget(self)
+        self.account = views.AccountWidget(self)
         self.boxLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.TopToBottom, self)
         self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
         self.__initUI()
 
-
     def __initUI(self) -> None:
         self.bodyWidget.setObjectName("bodyWidget")
         self.navigation.setObjectName("navigation")
-        self.homeUI = self.home.ui
-        self.messageUI = self.messageWidget.ui
         self.scheduleUI = self.schedule.ui
         self.settingUI = self.settingWidget.ui
-        self.accountUI = self.account.ui
 
         self.__initLayout()
 
-        self.homeUI.hide()
-        self.messageUI.hide()
+        self.home.hide()
+        self.message.hide()
         # self.scheduleUI.hide()
         self.settingUI.hide()
-        self.accountUI.hide()
+        self.account.hide()
 
     def __initLayout(self) -> None:
         self.bodyWidget.setLayout(self.boxLayout)
 
-        self.boxLayout.addWidget(self.homeUI)
-        self.boxLayout.addWidget(self.messageUI)
+        self.boxLayout.addWidget(self.home)
+        self.boxLayout.addWidget(self.message)
         self.boxLayout.addWidget(self.scheduleUI)
         self.boxLayout.addWidget(self.settingUI)
-        self.boxLayout.addWidget(self.accountUI)
+        self.boxLayout.addWidget(self.account)
 
         self.centralWidgetLayout.addWidget(self.navigation.ui)
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
 
-        # def getQss():
-        #     import core
-        #     import os
-        #     qssloader = core.qssLoader()
-        #     qssloader.filePath = os.path.join(core.PATH_QSS, "main.qss")
-
-        #     self.parentWidget().setStyleSheet(qssloader.styleSheet)
 
 class candyBoxMainWindow(QtWidgets.QMainWindow):
     cw: candyBoxCentralWidget
@@ -77,7 +66,7 @@ class candyBoxMainWindow(QtWidgets.QMainWindow):
 
         self.setAutoFillBackground(True)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
-        
+
         self.setWindowTitle("CandyBox")
         self.setObjectName("candybox")
 

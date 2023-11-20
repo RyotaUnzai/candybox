@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Home</class>
- <widget class="QFrame" name="Home">
+ <class>Form</class>
+ <widget class="QFrame" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="2">
-    <widget class="QPushButton" name="PB_qss_02">
+    <widget class="QPushButton" name="pushButtonQss2">
      <property name="maximumSize">
       <size>
        <width>150</width>
@@ -37,20 +37,20 @@
     <widget class="QSpinBox" name="spinBox"/>
    </item>
    <item row="1" column="0">
-    <widget class="QAnimationComboBox" name="Cb_qss"/>
+    <widget class="QAnimationComboBox" name="animationComboBox"/>
    </item>
    <item row="2" column="1">
-    <widget class="QSpinBox" name="SB_qss"/>
+    <widget class="QSpinBox" name="spinBoxQss"/>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="L_Header1">
+    <widget class="QLabel" name="labelHeading">
      <property name="text">
       <string>Home</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="PB_qss_01">
+    <widget class="QPushButton" name="pushButtonQss1">
      <property name="maximumSize">
       <size>
        <width>150</width>
@@ -63,7 +63,7 @@
     </widget>
    </item>
    <item row="3" column="0" colspan="3">
-    <widget class="QListWidget" name="LW_qss">
+    <widget class="QListWidget" name="listWidget">
      <item>
       <property name="text">
        <string>DateA</string>

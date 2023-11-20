@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>L_Header1</class>
- <widget class="QFrame" name="L_Header1">
+ <class>Form</class>
+ <widget class="QFrame" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="L_qss">
+    <widget class="QLabel" name="labelHeading">
      <property name="text">
       <string>Acount</string>
      </property>
@@ -48,7 +48,7 @@
     </spacer>
    </item>
    <item row="2" column="0">
-    <widget class="QPushButton" name="PB_qss">
+    <widget class="QPushButton" name="pushButton">
      <property name="text">
       <string>Check</string>
      </property>

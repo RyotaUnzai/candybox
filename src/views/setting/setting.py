@@ -1,13 +1,18 @@
-import os
+
+from PySide2 import QtWidgets, QtCore
+from typing import Final, TypeVar
+
 import core
-from PySide2.QtCore import *
-from PySide2.QtWidgets import *
-from PySide2.QtUiTools import loadUiType, QUiLoader
+import QtCustom
+
+UI_FILE: Final = core.PATH_VIEWS / "setting" / "setting.ui"
+_, baseClass = QtCustom.loadWindowUiType(UI_FILE)
 
 
-class settingWidgetFilter(QObject):
+
+class settingWidgetFilter(QtCore.QObject):
     def eventFilter(self, widget, event):
-        if event.type() == QEvent.Resize:
+        if event.type() == QtCore.QEvent.Resize:
             Width = int(widget.size().width() / 30) * 10
             if Width <= 120:
                 Width = 120
@@ -17,48 +22,67 @@ class settingWidgetFilter(QObject):
             widget.TreeView_Setting.setMaximumWidth(Width)
 
 
-class settingWidget(QWidget):
-    __TableView_Setting = None
-    __TreeView_Setting = None
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
+class SettingWidget(_, baseClass):
+    Self = TypeVar("Self", bound="SettingWidget")
+    labelHeading: QtWidgets.QLabel
+    lineEdit: QtWidgets.QLineEdit
+    tableView: QtWidgets.QTableView
+    treeView: QtWidgets.QTreeView
+    _minimumWidth = 240
 
-        super(settingWidget, self).__init__(parent, *args, **kwargs)
-        uiLoader = QUiLoader()
-        __uiFilePath = os.path.join(core.PATH_VIEWS, "setting", "setting.ui")
-        ui = uiLoader.load(__uiFilePath)
-        self.ui = ui
-        self.ui.setParent(parent)
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
+        super(SettingWidget, self).__init__(parent, *args, **kwargs)
+        self.setupUi(self)
         self.setObjectName("Setting")
-        self.__filter = settingWidgetFilter()
-        self.ui.installEventFilter(self.__filter)
+        self.__initUI()
 
-        self.TreeView_Setting = self.ui.TreeView_Setting
-        self.TableView_Setting = self.ui.TableView_Setting
-        self.TableView_Setting.setMinimumWidth(240)
-        self.TableView_Setting.setMinimumWidth(240)
+    def __initUI(self) -> NotImplemented:
+        self.tableView.setMinimumWidth(self._minimumWidth)
+        self.treeView.setMinimumWidth(self._minimumWidth)
 
-        # data = []
-        # for i in range(5):
-        #     data.append({'parent': 'hogehoge', 'key': 'homuhomu_' + str(i).zfill(3)})
-        # for i in range(5):
-        #     data.append({'parent': 'fugafuga', 'key': 'homuhomu_' + str(i).zfill(3)})
+# class settingWidget(QWidget):
+#     __TableView_Setting = None
+#     __TreeView_Setting = None
 
-        # import models
-        # self.model = models.settingTreeModel.SettingTreeModel()
+#     def __init__(self, parent=None, *args, **kwargs) -> None:
 
-    @property
-    def TreeView_Setting(self) -> QTreeView:
-        return self.__TreeView_Setting
+#         super(settingWidget, self).__init__(parent, *args, **kwargs)
+#         uiLoader = QUiLoader()
+#         __uiFilePath = os.path.join(core.PATH_VIEWS, "setting", "setting.ui")
+#         ui = uiLoader.load(__uiFilePath)
+#         self.ui = ui
+#         self.ui.setParent(parent)
+#         self.setObjectName("Setting")
+#         self.__filter = settingWidgetFilter()
+#         self.ui.installEventFilter(self.__filter)
 
-    @TreeView_Setting.setter
-    def TreeView_Setting(self, value):
-        self.__TreeView_Setting = value
+#         self.TreeView_Setting = self.ui.TreeView_Setting
+#         self.TableView_Setting = self.ui.TableView_Setting
+#         self.TableView_Setting.setMinimumWidth(240)
+#         self.TableView_Setting.setMinimumWidth(240)
 
-    @property
-    def TableView_Setting(self) -> QTableView:
-        return self.__TableView_Setting
+#         # data = []
+#         # for i in range(5):
+#         #     data.append({'parent': 'hogehoge', 'key': 'homuhomu_' + str(i).zfill(3)})
+#         # for i in range(5):
+#         #     data.append({'parent': 'fugafuga', 'key': 'homuhomu_' + str(i).zfill(3)})
 
-    @TableView_Setting.setter
-    def TableView_Setting(self, value):
-        self.__TableView_Setting = value
+#         # import models
+#         # self.model = models.settingTreeModel.SettingTreeModel()
+
+#     @property
+#     def TreeView_Setting(self) -> QTreeView:
+#         return self.__TreeView_Setting
+
+#     @TreeView_Setting.setter
+#     def TreeView_Setting(self, value):
+#         self.__TreeView_Setting = value
+
+#     @property
+#     def TableView_Setting(self) -> QTableView:
+#         return self.__TableView_Setting
+
+#     @TableView_Setting.setter
+#     def TableView_Setting(self, value):
+#         self.__TableView_Setting = value

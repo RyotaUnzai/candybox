@@ -32,7 +32,7 @@ class candyBoxDelegator(core.Delegator):
         self.nav = self.view.cw.navigation.ui
         self.bodyWidget = self.view.cw.bodyWidget
         self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
-        self.settingWidget = self.view.cw.settingWidget
+        self.settingWidget = self.view.cw.setting
         self.messageWidget = self.view.cw.message
 
     def __messageWidgetConnection(self) -> None:
@@ -68,10 +68,10 @@ class candyBoxDelegator(core.Delegator):
         ]
 
         self.settingModel = self.model.settingTreeModel.SettingTreeModel(data)
-        self.settingWidget.TreeView_Setting.setModel(self.settingModel)
-        self.settingWidget.TableView_Setting.setModel(self.settingModel)
-        self.settingWidget.TreeView_Setting.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.settingWidget.TreeView_Setting.setSelectionModel(self.settingWidget.TableView_Setting.selectionModel())
+        self.settingWidget.treeView.setModel(self.settingModel)
+        self.settingWidget.tableView.setModel(self.settingModel)
+        self.settingWidget.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.settingWidget.treeView.setSelectionModel(self.settingWidget.tableView.selectionModel())
 
     def __bodyWidgetConnection(self) -> None:
 

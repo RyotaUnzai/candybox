@@ -19,14 +19,15 @@ class candyBoxBodyItemModel(object):
             item = layout.itemAt(num)
             widget = item.widget()
             objectName = widget.objectName()
+            print(widgetType)
             if widgetType != objectName:
                 widget.hide()
             else:
                 widget.show()
+                try:
+                    widget.ui.show()
+                except:
+                    pass
     @property
     def widgetItems(self):
         return self.__widgetItems
-
-
-def debug():
-    print("debug")

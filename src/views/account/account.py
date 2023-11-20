@@ -1,10 +1,11 @@
-import QtCustom
+from QtCustom import loadWindowUiType
 import core
 from PySide2 import QtWidgets
 from typing import Final, TypeVar
 
 UI_FILE: Final = core.PATH_VIEWS / "account" / "account.ui"
-_, baseClass = QtCustom.loadWindowUiType(UI_FILE)
+_, baseClass = loadWindowUiType(UI_FILE)
+
 
 
 class AccountWidget(_, baseClass):
@@ -18,3 +19,4 @@ class AccountWidget(_, baseClass):
         super(AccountWidget, self).__init__(parent, *args, **kwargs)
         self.setupUi(self)
         self.setObjectName("Account")
+        

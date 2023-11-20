@@ -7,7 +7,7 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
     navigation: views.navigationWidget
     bodyWidget: QtWidgets.QWidget
     message: views.MessageWidget
-    settingWidget: views.settingWidget
+    setting: views.SettingWidget
     boxLayout: QtWidgets.QBoxLayout
     centralWidgetLayout: QtWidgets.QBoxLayout
 
@@ -18,7 +18,7 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         self.home = views.HomeWidget(self)
         self.message = views.MessageWidget(self)
         self.schedule = views.ScheduleWidget(self)
-        self.settingWidget = views.settingWidget(self)
+        self.setting = views.SettingWidget(self)
         self.account = views.AccountWidget(self)
         self.boxLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.TopToBottom, self)
         self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
@@ -27,15 +27,13 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
     def __initUI(self) -> None:
         self.bodyWidget.setObjectName("bodyWidget")
         self.navigation.setObjectName("navigation")
-        self.scheduleUI = self.schedule.ui
-        self.settingUI = self.settingWidget.ui
 
         self.__initLayout()
 
         self.home.hide()
         self.message.hide()
         # self.scheduleUI.hide()
-        self.settingUI.hide()
+        self.setting.hide()
         self.account.hide()
 
     def __initLayout(self) -> None:
@@ -43,8 +41,8 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
 
         self.boxLayout.addWidget(self.home)
         self.boxLayout.addWidget(self.message)
-        self.boxLayout.addWidget(self.scheduleUI)
-        self.boxLayout.addWidget(self.settingUI)
+        self.boxLayout.addWidget(self.schedule)
+        self.boxLayout.addWidget(self.setting)
         self.boxLayout.addWidget(self.account)
 
         self.centralWidgetLayout.addWidget(self.navigation.ui)

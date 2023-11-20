@@ -1,58 +1,22 @@
-from PySide2.QtUiTools import QUiLoader
-from .QAnimationComboBox import *
-from .QFlowLayout import *
-from .QFloatSlider import *
-from .QIntSlider import *
-from .QProgressCircular import *
-from .QAbstractProgressCircular import *
-from .QCircularSlider import *
-import typing
-import PySide2
+from typing import Final, Optional, Union, Type, Tuple, Callable
+from PySide2 import QtWidgets, QtCore
+from PySide2.QtUiTools import QUiLoader, loadUiType
+from pathlib import WindowsPath
+
+from .QFlowLayout import QFlowLayout
+from .QFloatSlider import QFloatSlider
+from .QIntSlider import QIntSlider
+from .QProgressCircular import QProgressCircular
+from .QAbstractProgressCircular import QAbstractProgressCircular
+from .QCircularSlider import QCircularSlider
+from .QAnimationComboBox import QAnimationComboBox
 
 
 class QExUiLoader(QUiLoader):
-    def createWidget(
-        self, className: str, parent: typing.Optional[PySide2.QtWidgets.QWidget] = ...,
-        name: str = ...
-    ) -> PySide2.QtWidgets.QWidget:
-        u"""Creates a new widget with the given parent and name using the class specified by className.
-        You can use this function to create any of the widgets returned by the availableWidgets() function.
-
-        The function is also used internally by the QUiLoader class whenever it creates a widget.
-        Hence, you can subclass QUiLoader and reimplement this function to intervene process of constructing
-        a user interface or widget. However, in your implementation, ensure that you call QUiLoader's version first.
-
-        ExtendedWidgets:
-            QAnimationComboBox
-            QFloatSlider
-            QIntSlider
-        """
-        isCustom = True
-        if className == "QAnimationComboBox":
-            widget = QAnimationComboBox(parent)
-        elif className == "QFloatSlider":
-            widget = QFloatSlider(parent)
-        elif className == "QIntSlider":
-            widget = QIntSlider(parent)
-        elif className == "QAbstractProgressCircular":
-            widget = QAbstractProgressCircular(parent)
-        elif className == "QProgressCircular":
-            widget = QProgressCircular(parent)
-        elif className == "QCircularSlider":
-            widget = QCircularSlider(parent)
-        else:
-            isCustom = False
-        if isCustom:
-            widget.setObjectName(name)
-            return widget
-
-        return super().createWidget(className, parent, name)
-
     def createLayout(
-        self, className: str, parent: typing.Optional[PySide2.QtCore.QObject] = ...,
-        name: str = ...
-    ) -> PySide2.QtWidgets.QLayout:
-        u"""Creates a new layout with the given parent and name using the class specified by className.
+        self, className: str, parent: Optional[QtCore.QObject] = ..., name: str = ...
+    ) -> QtWidgets.QLayout:
+        """Creates a new layout with the given parent and name using the class specified by className.
 
         The function is also used internally by the QUiLoader class whenever it creates a widget.
         Hence, you can subclass QUiLoader and reimplement this function to intervene process of constructing
@@ -75,3 +39,46 @@ class QExUiLoader(QUiLoader):
             return layout
 
         return super(QExUiLoader, self).createLayout(className, parent, name)
+
+
+Uiloader: Final = QExUiLoader()
+Uiloader.registerCustomWidget(QAnimationComboBox)
+Uiloader.registerCustomWidget(QFloatSlider)
+Uiloader.registerCustomWidget(QIntSlider)
+Uiloader.registerCustomWidget(QProgressCircular)
+Uiloader.registerCustomWidget(QAbstractProgressCircular)
+Uiloader.registerCustomWidget(QCircularSlider)
+
+
+def ExUiLoader(file: Union[WindowsPath, str]) -> Type[QtWidgets.QMainWindow]:
+    if isinstance(file, WindowsPath):
+        file = file.as_posix()
+    return Uiloader.load(file)
+
+
+def loadWidgetUiType(file: Union[WindowsPath, str]) -> Tuple[
+    Type[QtWidgets.QWidget],
+    Type[QtWidgets.QWidget]
+]:
+    if isinstance(file, WindowsPath):
+        file = file.as_posix()
+    return loadUiType(file)
+
+
+def loadWindowUiType(file: Union[WindowsPath, str]) -> Tuple[
+    Type[QtWidgets.QMainWindow],
+    Type[QtWidgets.QMainWindow]
+]:
+    if isinstance(file, WindowsPath):
+        file = file.as_posix()
+    return loadUiType(file)
+
+
+LoadWidgetUiType = Callable[
+    [str],
+    Tuple[Type[QtWidgets.QWidget], Type[QtWidgets.QWidget]]
+]
+LoadWindowUiType = Callable[
+    [str],
+    Tuple[Type[QtWidgets.QMainWindow], Type[QtWidgets.QMainWindow]]
+]

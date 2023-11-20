@@ -115,7 +115,7 @@
         <x>0</x>
         <y>0</y>
         <width>674</width>
-        <height>446</height>
+        <height>412</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -133,7 +133,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="flowLayout"/>
+        <layout class="QVBoxLayout" name="QFlowLayout_FlowLayout"/>
        </item>
       </layout>
      </widget>

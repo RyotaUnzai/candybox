@@ -12,12 +12,12 @@ class ScheduleWidget(QtWidgets.QWidget):
     Self = TypeVar("Self", bound="ScheduleWidget")
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
-        super(ScheduleWidget, self).__init__(parent, *args, **kwargs)
+        super().__init__(parent, *args, **kwargs)
         self.ui = QtCustom.ExUiLoader(UI_FILE)
         self.setObjectName("Schedule")
+        self.__initUI()
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.ui)
-        self.__initUI()
 
     @property
     def animationComboBox(self) -> QtCustom.QAnimationComboBox:
@@ -77,7 +77,7 @@ class ScheduleWidget(QtWidgets.QWidget):
 
     @property
     def flowLayout(self) -> QtCustom.QFlowLayout:
-        return self.ui.flowLayout
+        return self.ui.QFlowLayout_FlowLayout
 
     def __initUI(self) -> None:
         self.__initAnimationComboBox()
@@ -92,8 +92,8 @@ class ScheduleWidget(QtWidgets.QWidget):
         [self.animationComboBox.addItem(f"Item {i}") for i in range(5)]
 
     def __initFlowLayout(self) -> None:
-        self.flowLayout.space(15, 50)
         [self.flowLayout.addWidget(QtWidgets.QPushButton(f"Btn {i}")) for i in range(50)]
+        self.flowLayout.space = (15, 5)
 
     def __initCicularSliders(self) -> None:
         self.pushButtonA.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularA))

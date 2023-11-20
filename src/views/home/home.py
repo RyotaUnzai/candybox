@@ -13,6 +13,7 @@ class HomeWidget(QtWidgets.QWidget):
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super(HomeWidget, self).__init__(parent, *args, **kwargs)
         self.ui = QtCustom.ExUiLoader(UI_FILE)
+        self.ui.setParent(self)
         self.setObjectName("Home")
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.ui)

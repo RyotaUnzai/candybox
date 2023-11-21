@@ -24,7 +24,7 @@ class NavigationWidget(_, baseClass):
     pushButtonHome: QtWidgets.QPushButton
     pushButtonMessage: QtWidgets.QPushButton
     pushButtonSchedule: QtWidgets.QPushButton
-    pushButtonSetting: QtWidgets.QPushButton
+    pushButtonPreference: QtWidgets.QPushButton
     pushButtons: Tuple[QtWidgets.QPushButton]
     _absWidth: int = 100
 
@@ -42,13 +42,13 @@ class NavigationWidget(_, baseClass):
         self.pushButtonHome.clicked.connect(self._on_button_clicked)
         self.pushButtonMessage.clicked.connect(self._on_button_clicked)
         self.pushButtonSchedule.clicked.connect(self._on_button_clicked)
-        self.pushButtonSetting.clicked.connect(self._on_button_clicked)
+        self.pushButtonPreference.clicked.connect(self._on_button_clicked)
         self.pushButtons = (
             self.pushButtonAccount,
             self.pushButtonHome,
             self.pushButtonMessage,
             self.pushButtonSchedule,
-            self.pushButtonSetting
+            self.pushButtonPreference
         )
 
     def _on_button_clicked(self) -> None:

@@ -1,17 +1,18 @@
 from PySide2 import QtWidgets
 
 import candyboxModel
-import candyboxView
+from candyboxView import CandyBoxMainWindow
+import views
 import core
 import delegator
 
 
 class candyBoxDelegator(core.Delegator):
-    view: candyboxView.candyBoxMainWindow
+    view: CandyBoxMainWindow
     model: candyboxModel
     fontRemicon: core.fontRemixicon.Remixicon
     fontRalewayExtraBoldItalic: core.fontRaleway.RalewayExtraBoldItalic
-    nav: candyboxView.views.NavigationWidget
+    nav: views.NavigationWidget
     body: QtWidgets.QWidget
 
     def __init__(self, view=None, model=None, *args, **kwargs):
@@ -29,9 +30,9 @@ class candyBoxDelegator(core.Delegator):
 
     def createClassVariables(self) -> None:
         self.nav = self.view.cw.navigation
-        self.bodyWidget = self.view.cw.bodyWidget
-        self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
-        self.settingWidget = self.view.cw.setting
+        self.bodyWidget = self.view.cw.body
+        self.bodyWidgetLayout = self.view.cw.body.layout()
+        self.preferenceWidget = self.view.cw.preference
         self.messageWidget = self.view.cw.message
 
     def __messageWidgetConnection(self) -> None:
@@ -66,16 +67,16 @@ class candyBoxDelegator(core.Delegator):
             {'parent': 'svn', 'key': 'd'}
         ]
 
-        self.settingModel = self.model.settingTreeModel.SettingTreeModel(data)
-        self.settingWidget.treeView.setModel(self.settingModel)
-        self.settingWidget.tableView.setModel(self.settingModel)
-        self.settingWidget.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.settingWidget.treeView.setSelectionModel(self.settingWidget.tableView.selectionModel())
+        self.settingModel = self.model.SettingTreeModel(data)
+        self.preferenceWidget.treeView.setModel(self.settingModel)
+        self.preferenceWidget.tableView.setModel(self.settingModel)
+        self.preferenceWidget.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.preferenceWidget.treeView.setSelectionModel(self.preferenceWidget.tableView.selectionModel())
 
     def __bodyWidgetConnection(self) -> None:
-
-        self.bodyItemModel = self.model.candyBoxBodyItemModel()
+        self.bodyItemModel = self.model.CandyBoxBodyItemModel()
         self.bodyItemModel.setBodyWidgetItems(self.bodyWidgetLayout)
+        self.view.cw.navigation
 
         self.nav.pushButtonAccount.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Account", layout=self.bodyWidgetLayout)
@@ -89,8 +90,8 @@ class candyBoxDelegator(core.Delegator):
         self.nav.pushButtonSchedule.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.bodyWidgetLayout)
         )
-        self.nav.pushButtonSetting.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Setting", layout=self.bodyWidgetLayout)
+        self.nav.pushButtonPreference.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Preference", layout=self.bodyWidgetLayout)
         )
 
     def __navigationConnection(self) -> None:
@@ -104,13 +105,13 @@ class candyBoxDelegator(core.Delegator):
         self.nav.pushButtonHome.setFont(self.fontRemicon)
         self.nav.pushButtonMessage.setFont(self.fontRemicon)
         self.nav.pushButtonSchedule.setFont(self.fontRemicon)
-        self.nav.pushButtonSetting.setFont(self.fontRemicon)
+        self.nav.pushButtonPreference.setFont(self.fontRemicon)
 
         self.nav.pushButtonAccount.setText(self.fontRemicon.ri_account_box_fill)
         self.nav.pushButtonHome.setText(self.fontRemicon.ri_home_2_fill)
         self.nav.pushButtonMessage.setText(self.fontRemicon.ri_message_2_fill)
         self.nav.pushButtonSchedule.setText(self.fontRemicon.ri_calendar_2_fill)
-        self.nav.pushButtonSetting.setText(self.fontRemicon.ri_settings_2_fill)
+        self.nav.pushButtonPreference.setText(self.fontRemicon.ri_settings_2_fill)
 
         self.fontRemicon.setPixelSize(36)
         self.nav.labelAppIcon.setFont(self.fontRemicon)

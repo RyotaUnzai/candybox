@@ -3,25 +3,25 @@ from PySide2 import QtWidgets, QtCore, QtGui
 import views
 
 
-class candyBoxCentralWidget(QtWidgets.QWidget):
+class CandyBoxCentralWidget(QtWidgets.QWidget):
     navigation: views.NavigationWidget
-    bodyWidget: QtWidgets.QWidget
+    body: QtWidgets.QWidget
     home: views.HomeWidget
     message: views.MessageWidget
     schedule: views.ScheduleWidget
-    setting: views.SettingWidget
+    preference: views.PreferenceWidget
     account: views.AccountWidget
     boxLayout: QtWidgets.QBoxLayout
     centralWidgetLayout: QtWidgets.QBoxLayout
 
     def __init__(self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
-        super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
+        super(CandyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
         self.navigation = views.NavigationWidget(self)
-        self.bodyWidget = QtWidgets.QWidget(self)
+        self.body = QtWidgets.QWidget(self)
         self.home = views.HomeWidget(self)
         self.message = views.MessageWidget(self)
         self.schedule = views.ScheduleWidget(self)
-        self.setting = views.SettingWidget(self)
+        self.preference = views.PreferenceWidget(self)
         self.account = views.AccountWidget(self)
         self.boxLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.TopToBottom, self)
         self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
@@ -31,7 +31,7 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         # self.home.hide()
         self.message.hide()
         self.schedule.hide()
-        self.setting.hide()
+        self.preference.hide()
         self.account.hide()
 
     def __initUI(self) -> None:
@@ -39,29 +39,61 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         self.__initLayout()
 
     def __initObjectNames(self) -> None:
-        self.bodyWidget.setObjectName("Body")
+        self.body.setObjectName("Body")
 
     def __initLayout(self) -> None:
-        self.bodyWidget.setLayout(self.boxLayout)
+        self.body.setLayout(self.boxLayout)
 
         self.boxLayout.addWidget(self.home)
         self.boxLayout.addWidget(self.message)
         self.boxLayout.addWidget(self.schedule)
-        self.boxLayout.addWidget(self.setting)
+        self.boxLayout.addWidget(self.preference)
         self.boxLayout.addWidget(self.account)
 
         self.centralWidgetLayout.addWidget(self.navigation)
-        self.centralWidgetLayout.addWidget(self.bodyWidget)
+        self.centralWidgetLayout.addWidget(self.body)
         self.setLayout(self.centralWidgetLayout)
 
 
-class candyBoxMainWindow(QtWidgets.QMainWindow):
-    cw: candyBoxCentralWidget
+class CandyBoxMainWindow(QtWidgets.QMainWindow):
+    cw: CandyBoxCentralWidget
 
     def __init__(self, parent: QtWidgets.QWidget = None, *args, **kwargs):
-        super(candyBoxMainWindow, self).__init__(parent, *args, **kwargs)
-        self.cw = candyBoxCentralWidget(self)
+        super(CandyBoxMainWindow, self).__init__(parent, *args, **kwargs)
+        self.cw = CandyBoxCentralWidget(self)
         self.__initUI()
+
+    @property
+    def centralWidget(self):
+        return self.cw
+
+    @property
+    def navigation(self):
+        return self.cw.navigation
+
+    @property
+    def body(self):
+        return self.cw.body
+
+    @property
+    def home(self):
+        return self.cw.home
+
+    @property
+    def message(self):
+        return self.cw.message
+
+    @property
+    def schedule(self):
+        return self.cw.schedule
+
+    @property
+    def preference(self):
+        return self.cw.preference
+
+    @property
+    def account(self):
+        return self.cw.account
 
     def __initUI(self) -> None:
         self.setCentralWidget(self.cw)
@@ -93,4 +125,4 @@ class candyBoxMainWindow(QtWidgets.QMainWindow):
         painterPath.addRoundedRect(0, 0, 104, 87, 0, 0)
         painter.end()
 
-        super(candyBoxMainWindow, self).paintEvent(event)
+        super(CandyBoxMainWindow, self).paintEvent(event)

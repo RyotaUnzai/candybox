@@ -4,16 +4,16 @@ from typing import Final, TypeVar
 import core
 import QtCustom
 
-UI_FILE: Final = core.PATH_VIEWS / "setting" / "setting.ui"
+UI_FILE: Final = core.PATH_VIEWS / "preference" / "preference.ui"
 _, baseClass = QtCustom.loadWindowUiType(UI_FILE)
 
 
-class SettingWidget(_, baseClass):
-    """A custom widget class for settings, inheriting from a dynamically loaded UI base class.
+class PreferenceWidget(_, baseClass):
+    """A custom widget class for preference, inheriting from a dynamically loaded UI base class.
 
-    This widget provides a user interface for application settings.
+    This widget provides a user interface for application preference.
     """
-    Self = TypeVar("Self", bound="SettingWidget")
+    Self = TypeVar("Self", bound="PreferenceWidget")
     labelHeading: QtWidgets.QLabel
     lineEdit: QtWidgets.QLineEdit
     tableView: QtWidgets.QTableView
@@ -23,7 +23,7 @@ class SettingWidget(_, baseClass):
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super().__init__(parent, *args, **kwargs)
         self.setupUi(self)
-        self.setObjectName("Setting")
+        self.setObjectName("Preference")
         self.__initUI()
 
     def __initUI(self) -> None:

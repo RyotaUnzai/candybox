@@ -21,7 +21,7 @@ if __name__ == "__main__":
     app.setWindowIcon(QtGui.QPixmap(":/image/app/appIcon.png"))
 
     delegator = candyboxDelegator.candyBoxDelegator(
-        view=candyboxView.candyBoxMainWindow(),
+        view=candyboxView.CandyBoxMainWindow(),
         model=candyboxModel
     )
     # delegator.view = candyboxView.candyBoxMainWindow()

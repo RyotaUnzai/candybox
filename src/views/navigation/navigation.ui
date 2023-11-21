@@ -124,7 +124,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonSetting">
+      <widget class="QPushButton" name="pushButtonPreference">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -138,7 +138,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Setting</string>
+        <string>Preference</string>
        </property>
        <property name="checkable">
         <bool>true</bool>

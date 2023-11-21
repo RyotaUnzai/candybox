@@ -1,10 +1,13 @@
 from PySide2 import QtWidgets
 
-from models import *
-from candyboxView import *
+from models import (
+    SettingTreeModel,
+    IconModel,
+    IconListModel
+)
 
 
-class candyBoxBodyItemModel(object):
+class CandyBoxBodyItemModel:
     __widgetItems = {}
 
     def setBodyWidgetItems(self, layout: QtWidgets.QBoxLayout) -> None:

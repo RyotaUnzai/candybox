@@ -1,39 +1,40 @@
 from PySide2 import QtWidgets
 
-import candyboxModel
-from candyboxView import CandyBoxMainWindow
-import views
 import core
+from core.fontRaleway import RalewayExtraBoldItalic
+from core.fontRemixicon import Remixicon
+
+
+from candyboxModel import (
+    CandyBoxModels,
+    IconModel,
+    IconListModel
+)
+from candyboxView import CandyBoxMainWindow
+
+import views
 import delegator
 
 
 class candyBoxDelegator(core.Delegator):
+    fontRemixicon: Remixicon
+    fontRalewayExtraBoldItalic: RalewayExtraBoldItalic
     view: CandyBoxMainWindow
-    model: candyboxModel
-    fontRemicon: core.fontRemixicon.Remixicon
-    fontRalewayExtraBoldItalic: core.fontRaleway.RalewayExtraBoldItalic
+    model: CandyBoxModels
     nav: views.NavigationWidget
     body: QtWidgets.QWidget
 
-    def __init__(self, view=None, model=None, *args, **kwargs):
-        super(candyBoxDelegator, self).__init__(view, model, *args, **kwargs)
-        self.fontRemicon = core.fontRemixicon.Remixicon()
-        self.fontRalewayExtraBoldItalic = core.fontRaleway.RalewayExtraBoldItalic()
+    def __init__(self, view: CandyBoxMainWindow, model: CandyBoxModels, *args, **kwargs):
+        super().__init__(view, model, *args, **kwargs)
+        self.fontRemixicon = Remixicon()
+        self.fontRalewayExtraBoldItalic = RalewayExtraBoldItalic()
 
     def connect(self) -> None:
         self.view.show()
-        self.createClassVariables()
         self.__bodyWidgetConnection()
         self.__navigationConnection()
         self.__settingWidgetConnection()
         self.__messageWidgetConnection()
-
-    def createClassVariables(self) -> None:
-        self.nav = self.view.cw.navigation
-        self.bodyWidget = self.view.cw.body
-        self.bodyWidgetLayout = self.view.cw.body.layout()
-        self.preferenceWidget = self.view.cw.preference
-        self.messageWidget = self.view.cw.message
 
     def __messageWidgetConnection(self) -> None:
         iconList = core.getExtList(core.PATH_DATA)
@@ -41,11 +42,11 @@ class candyBoxDelegator(core.Delegator):
         for url in iconList:
             iconData = core.loadJson(url)
             iconData["filePath"] = url
-            iconModel = candyboxModel.IconModel(**iconData)
+            iconModel = IconModel(**iconData)
             iconDataList.append(iconModel)
-        self.iconListModel = self.model.IconListModel(data=iconDataList)
-        self.messageWidget.listView.setModel(self.iconListModel)
-        self.messageWidget.listView.setItemDelegate(delegator.iconListDelegate(self.messageWidget.listView))
+        self.model.iconListModel = IconListModel(data=iconDataList)
+        self.view.message.listView.setModel(self.model.iconListModel)
+        self.view.message.listView.setItemDelegate(delegator.iconListDelegate(self.view.message.listView))
 
     def __settingWidgetConnection(self) -> None:
         data = [
@@ -67,52 +68,59 @@ class candyBoxDelegator(core.Delegator):
             {'parent': 'svn', 'key': 'd'}
         ]
 
-        self.settingModel = self.model.SettingTreeModel(data)
-        self.preferenceWidget.treeView.setModel(self.settingModel)
-        self.preferenceWidget.tableView.setModel(self.settingModel)
-        self.preferenceWidget.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
-        self.preferenceWidget.treeView.setSelectionModel(self.preferenceWidget.tableView.selectionModel())
+        self.model.setSettingTreeModel(data)
+
+        self.view.preference.treeView.setModel(self.model.settingTreeModel)
+        self.view.preference.tableView.setModel(self.model.settingTreeModel)
+
+        self.view.preference.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        self.view.preference.treeView.setSelectionModel(self.view.preference.tableView.selectionModel())
 
     def __bodyWidgetConnection(self) -> None:
-        self.bodyItemModel = self.model.CandyBoxBodyItemModel()
-        self.bodyItemModel.setBodyWidgetItems(self.bodyWidgetLayout)
-        self.view.cw.navigation
+        self.model.bodyItemModel.setBodyWidgetItems(self.view.body.layout())
 
-        self.nav.pushButtonAccount.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Account", layout=self.bodyWidgetLayout)
-        )
-        self.nav.pushButtonHome.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Home", layout=self.bodyWidgetLayout)
-        )
-        self.nav.pushButtonMessage.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Message", layout=self.bodyWidgetLayout)
-        )
-        self.nav.pushButtonSchedule.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.bodyWidgetLayout)
-        )
-        self.nav.pushButtonPreference.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Preference", layout=self.bodyWidgetLayout)
-        )
+        for pushButton in self.view.navigation.pushButtons:
+            pushButtonName: str = pushButton.objectName()
+            widgetType: str = pushButtonName[10:]
+            exec(f"""self.view.navigation.{pushButtonName}.clicked.connect(
+    lambda:  self.model.bodyItemModel.showHideWidget(widgetType="{widgetType}", layout=self.view.boxLayout)
+)"""               )
+
+        # self.view.navigation.pushButtonAccount.clicked.connect(
+        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Account", layout=self.view.boxLayout)
+        # )
+        # self.view.navigation.pushButtonHome.clicked.connect(
+        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Home", layout=self.view.boxLayout)
+        # )
+        # self.view.navigation.pushButtonMessage.clicked.connect(
+        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Message", layout=self.view.boxLayout)
+        # )
+        # self.view.navigation.pushButtonSchedule.clicked.connect(
+        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.view.boxLayout)
+        # )
+        # self.view.navigation.pushButtonPreference.clicked.connect(
+        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Preference", layout=self.view.boxLayout)
+        # )
 
     def __navigationConnection(self) -> None:
 
-        # self.nav.setMaximumWidth(100)
-        # self.nav.PB_Home.clicked.connect(self.view.close)
+        # self.view.navigation.setMaximumWidth(100)
+        # self.view.navigation.PB_Home.clicked.connect(self.view.close)
 
-        #self.fontRemix.Font_Remixicon.setPixelSize(20)
-        self.fontRemicon.setPixelSize(20)
-        self.nav.pushButtonAccount.setFont(self.fontRemicon)
-        self.nav.pushButtonHome.setFont(self.fontRemicon)
-        self.nav.pushButtonMessage.setFont(self.fontRemicon)
-        self.nav.pushButtonSchedule.setFont(self.fontRemicon)
-        self.nav.pushButtonPreference.setFont(self.fontRemicon)
+        # self.fontRemix.Font_Remixicon.setPixelSize(20)
+        self.fontRemixicon.setPixelSize(20)
+        self.view.navigation.pushButtonAccount.setFont(self.fontRemixicon)
+        self.view.navigation.pushButtonHome.setFont(self.fontRemixicon)
+        self.view.navigation.pushButtonMessage.setFont(self.fontRemixicon)
+        self.view.navigation.pushButtonSchedule.setFont(self.fontRemixicon)
+        self.view.navigation.pushButtonPreference.setFont(self.fontRemixicon)
 
-        self.nav.pushButtonAccount.setText(self.fontRemicon.ri_account_box_fill)
-        self.nav.pushButtonHome.setText(self.fontRemicon.ri_home_2_fill)
-        self.nav.pushButtonMessage.setText(self.fontRemicon.ri_message_2_fill)
-        self.nav.pushButtonSchedule.setText(self.fontRemicon.ri_calendar_2_fill)
-        self.nav.pushButtonPreference.setText(self.fontRemicon.ri_settings_2_fill)
+        self.view.navigation.pushButtonAccount.setText(self.fontRemixicon.ri_account_box_fill)
+        self.view.navigation.pushButtonHome.setText(self.fontRemixicon.ri_home_2_fill)
+        self.view.navigation.pushButtonMessage.setText(self.fontRemixicon.ri_message_2_fill)
+        self.view.navigation.pushButtonSchedule.setText(self.fontRemixicon.ri_calendar_2_fill)
+        self.view.navigation.pushButtonPreference.setText(self.fontRemixicon.ri_settings_2_fill)
 
-        self.fontRemicon.setPixelSize(36)
-        self.nav.labelAppIcon.setFont(self.fontRemicon)
-        self.nav.labelAppIcon.setText(self.fontRemicon.ri_apps_fill)
+        self.fontRemixicon.setPixelSize(36)
+        self.view.navigation.labelAppIcon.setFont(self.fontRemixicon)
+        self.view.navigation.labelAppIcon.setText(self.fontRemixicon.ri_apps_fill)

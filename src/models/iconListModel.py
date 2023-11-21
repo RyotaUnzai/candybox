@@ -31,14 +31,14 @@ class IconListModel(QtCore.QAbstractListModel):
         super(IconListModel, self).__init__(parent, *args, **kwargs)
         self.__items = data
         self.currentItem = self.__items[0]
-        
+
         self.__inquiryItems = {}
         self.count = 0
         self.initItems()
-        #self.setWatcher()
-        #self.fileSystemWatcher.directoryChanged.connect(self.test)
+        # self.setWatcher()
+        # self.fileSystemWatcher.directoryChanged.connect(self.test)
 
-    def initItems(self, reload: bool=False):
+    def initItems(self, reload: bool = False):
         if self.count < self.rowCount():
             self.count += 1
         else:

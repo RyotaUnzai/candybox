@@ -4,8 +4,8 @@ import core
 from PySide2 import QtWidgets, QtGui
 from pathlib import Path
 
-import candyboxView
-import candyboxModel
+from candyboxView import CandyBoxMainWindow
+from candyboxModel import CandyBoxModels
 import candyboxDelegator
 
 # import models
@@ -21,8 +21,8 @@ if __name__ == "__main__":
     app.setWindowIcon(QtGui.QPixmap(":/image/app/appIcon.png"))
 
     delegator = candyboxDelegator.candyBoxDelegator(
-        view=candyboxView.CandyBoxMainWindow(),
-        model=candyboxModel
+        view=CandyBoxMainWindow(),
+        model=CandyBoxModels()
     )
     # delegator.view = candyboxView.candyBoxMainWindow()
     delegator.view.setStyleSheet(qssloader.styleSheet)

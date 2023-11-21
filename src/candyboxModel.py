@@ -7,7 +7,7 @@ from models import (
 )
 
 
-class CandyBoxBodyItemModel:
+class BodyItemModel:
     __widgetItems = {}
 
     def setBodyWidgetItems(self, layout: QtWidgets.QBoxLayout) -> None:
@@ -30,3 +30,21 @@ class CandyBoxBodyItemModel:
     @property
     def widgetItems(self) -> dict:
         return self.__widgetItems
+
+
+class CandyBoxModels:
+    bodyItemModel: BodyItemModel
+    iconListModel: IconListModel
+    settingTreeModel: SettingTreeModel
+
+    def __init__(self) -> None:
+        self.bodyItemModel = BodyItemModel()
+
+    def setIconListModel(self, data) -> None:
+        self.iconListModel = IconListModel(data)
+
+    def setSettingTreeModel(self, data):
+        self.settingTreeModel = SettingTreeModel(data)
+
+    def createIconModel(self, **kwargs):
+        return IconModel(**kwargs)

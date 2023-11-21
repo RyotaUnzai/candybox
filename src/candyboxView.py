@@ -1,5 +1,4 @@
 from PySide2 import QtWidgets, QtCore, QtGui
-
 import views
 
 
@@ -27,12 +26,6 @@ class CandyBoxCentralWidget(QtWidgets.QWidget):
         self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
 
         self.__initUI()
-
-        # self.home.hide()
-        self.message.hide()
-        self.schedule.hide()
-        self.preference.hide()
-        self.account.hide()
 
     def __initUI(self) -> None:
         self.__initObjectNames()
@@ -63,6 +56,46 @@ class CandyBoxMainWindow(QtWidgets.QMainWindow):
         self.cw = CandyBoxCentralWidget(self)
         self.__initUI()
 
+    def __initUI(self) -> None:
+        self.setAutoFillBackground(True)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+        self.resize(800, 600)
+        self.setWindowTitle("CandyBox")
+        self.setObjectName("Candybox")
+
+        self.setCentralWidget(self.cw)
+        self.__initShowSection()
+
+    def __initShowSection(self):
+        # self.home.hide()
+        self.message.hide()
+        self.schedule.hide()
+        self.preference.hide()
+        self.account.hide()
+
+    def paintEvent(self, event) -> None:
+        painter: QtGui.QPainter = QtGui.QPainter(self)
+        painterPath: QtGui.QPainterPath = QtGui.QPainterPath()
+        linearGradient: QtGui.QLinearGradient = QtGui.QLinearGradient(90, 114, 117, 114)
+
+        painter.setRenderHint(QtGui.QPainter.Antialiasing)
+
+        painter.setPen(QtCore.Qt.NoPen)
+        linearGradient.setColorAt(0.0, QtGui.QColor("#2c2b30"))
+        linearGradient.setColorAt(0.499999999, QtGui.QColor("#2c2b30"))
+        linearGradient.setColorAt(0.5, QtGui.QColor("#18181b"))
+        linearGradient.setColorAt(1.0, QtGui.QColor("#2c2b30"))
+
+        painter.setBrush(QtGui.QBrush(linearGradient))
+        painter.drawRect(0, 0, self.geometry().width(), self.geometry().height())
+        painter.setPen(QtCore.Qt.NoPen)
+        painter.setBrush(QtGui.QColor("#00b8b8"))
+        painter.drawRect(0, 0, 104, 87)
+        painterPath.addRoundedRect(0, 0, 104, 87, 0, 0)
+        painter.end()
+
+        super(CandyBoxMainWindow, self).paintEvent(event)
+
     @property
     def centralWidget(self):
         return self.cw
@@ -74,6 +107,10 @@ class CandyBoxMainWindow(QtWidgets.QMainWindow):
     @property
     def body(self):
         return self.cw.body
+
+    @property
+    def boxLayout(self):
+        return self.cw.boxLayout
 
     @property
     def home(self):
@@ -94,35 +131,3 @@ class CandyBoxMainWindow(QtWidgets.QMainWindow):
     @property
     def account(self):
         return self.cw.account
-
-    def __initUI(self) -> None:
-        self.setCentralWidget(self.cw)
-        self.resize(800, 600)
-
-        self.setAutoFillBackground(True)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
-
-        self.setWindowTitle("CandyBox")
-        self.setObjectName("candybox")
-
-    def paintEvent(self, event) -> None:
-        painter: QtGui.QPainter = QtGui.QPainter(self)
-        painterPath: QtGui.QPainterPath = QtGui.QPainterPath()
-        linearGradient: QtGui.QLinearGradient = QtGui.QLinearGradient(90, 114, 117, 114)
-        painter.setRenderHint(QtGui.QPainter.Antialiasing)
-
-        painter.setPen(QtCore.Qt.NoPen)
-        linearGradient.setColorAt(0.0, QtGui.QColor("#2c2b30"))
-        linearGradient.setColorAt(0.499999999, QtGui.QColor("#2c2b30"))
-        linearGradient.setColorAt(0.5, QtGui.QColor("#18181b"))
-        linearGradient.setColorAt(1.0, QtGui.QColor("#2c2b30"))
-
-        painter.setBrush(QtGui.QBrush(linearGradient))
-        painter.drawRect(0, 0, self.geometry().width(), self.geometry().height())
-        painter.setPen(QtCore.Qt.NoPen)
-        painter.setBrush(QtGui.QColor("#00b8b8"))
-        painter.drawRect(0, 0, 104, 87)
-        painterPath.addRoundedRect(0, 0, 104, 87, 0, 0)
-        painter.end()
-
-        super(CandyBoxMainWindow, self).paintEvent(event)

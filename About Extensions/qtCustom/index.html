@@ -328,6 +328,26 @@
     QExUiLoader
   </a>
   
+    <nav class="md-nav" aria-label="QExUiLoader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uiloader" class="md-nav__link">
+    Uiloader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadwidgetuitype-loadwindowuitype" class="md-nav__link">
+    loadWidgetUiType, loadWindowUiType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -473,6 +493,26 @@
     QExUiLoader
   </a>
   
+    <nav class="md-nav" aria-label="QExUiLoader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uiloader" class="md-nav__link">
+    Uiloader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadwidgetuitype-loadwindowuitype" class="md-nav__link">
+    loadWidgetUiType, loadWindowUiType
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -540,7 +580,29 @@
 <h2 id="qanimationcombobox">QAnimationComboBox</h2>
 <p>QAnimationComboBox is a class that inherits from QComboBox and is a QComboBox with Animation as the name suggests.</p>
 <h2 id="qexuiloader">QExUiLoader</h2>
-<p>QExUiLoader can be used to use QtCustom classes that extend QUiLoader from.</p>
+<h3 id="uiloader">Uiloader</h3>
+<p>Uiloader is a variable that calls QExUiLoader, which inherits from QUiLoader. This variable can use the Widget class that QtCustom has. It can be used in the same way as a normal QUiLoader, but this Uiloader is compatible with pathlib.WindowPath, so you can put a Path using pathlib as it is. Also, it can be used on the IDE by using the one.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">QtCustom</span> <span class="kn">import</span> <span class="n">ExUiLoader</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">UI_FILE</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\hoge&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">ui</span> <span class="o">=</span> <span class="n">ExUiLoader</span><span class="p">(</span><span class="n">UI_FILE</span><span class="p">)</span>
+</code></pre></div>
+<img alt="loadWidgetUiType" src="../qtCustom_Uiloader.png" />  </p>
+<h3 id="loadwidgetuitype-loadwindowuitype">loadWidgetUiType, loadWindowUiType</h3>
+<p>loadWidgetUiType and loadWindowUiType are based on the function loadUiType, which generates and loads a .ui file at runtime and returns a tuple containing a Python class reference and base class.
+The difference with loadUiType is that, as the names Widget and Window indicate, the Python class reference and base class that loaded the .ui created by the QWidget base or the QMainWindow base, respectively, can be used with these functions The point is that annotations can be used on the IDE by using these functions.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">QtCustom</span> <span class="kn">import</span> <span class="n">loadWidgetUiType</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">UI_FILE</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\hoge\hogeWidget.ui&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">_</span><span class="p">,</span> <span class="n">baseClass</span><span class="o">=</span> <span class="n">loadWidgetUiType</span><span class="p">(</span><span class="n">UI_FILE</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">class</span> <span class="nc">HogeWidget</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">baseClass</span><span class="p">):</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="o">...</span>
+</code></pre></div>
+<img alt="loadWidgetUiType" src="../qtCustom_loadWidgetUiType.png" />  </p>
 <h2 id="qfloatslider">QFloatSlider</h2>
 <p>QFloatSlider is a class that combines QDoubleSpinBox and QSlider.</p>
 <h2 id="qflowlayout">QFlowLayout</h2>

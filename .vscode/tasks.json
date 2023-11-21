@@ -2,26 +2,60 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": [
+                    "/C",
+                    "${workspaceFolder}\\.venv\\Scripts\\activate.bat",
+                    "&"
+                ]
+            }
+        }
+    },
     "tasks": [
         {
-            "label": "makevenv",
+            "label": "[venv] create venv",
             "type": "shell",
-            "command": "makevenv.bat"
+            "command": "C:/Python310/python.exe",
+            "args": [
+                "-m",
+                "venv",
+                ".venv",
+            ],
+            "icon": {
+                "id": "star",
+                "color": "terminal.ansiBlue"
+            }
         },
         {
-            "label": "pipInstall",
+            "label": "[venv] pip install",
             "type": "shell",
-            "command": "pipInstall.bat"
+            "command": "python",
+            "args": [
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                "${workspaceFolder}/requirements.txt"
+            ],
+            "icon": {
+                "id": "star",
+                "color": "terminal.ansiBlue"
+            }
         },
         {
-            "label": "run",
+            "label": "Candybox",
             "type": "shell",
-            "command": "run.bat"
-        },
-        {
-            "label": "serve",
-            "type": "shell",
-            "command": "serve.bat"
+            "command": "python",
+            "args": [
+                "${workspaceFolder}/src/candybox.py",
+            ],
+            "icon": {
+                "id": "star",
+                "color": "terminal.ansiBlue"
+            }
         }
     ]
 }

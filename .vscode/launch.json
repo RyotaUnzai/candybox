@@ -16,12 +16,14 @@
             }
         },
         {
-            "name": "Candybox",
+            "name": "Python: Launch Candybox",
             "type": "python",
             "request": "launch",
-            "program": "src/candybox.py",
+            "program": "${workspaceFolder}/src/candybox.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}/src"
+            }
         }
     ]
 }

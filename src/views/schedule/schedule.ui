@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Schedule</class>
- <widget class="QFrame" name="Schedule">
+ <class>From</class>
+ <widget class="QFrame" name="From">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -20,8 +20,23 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>6</number>
+   </property>
    <item row="3" column="0">
-    <widget class="QIntSlider" name="IntSlider">
+    <widget class="QIntSlider" name="intSlider">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -30,21 +45,21 @@
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QCircularSlider" name="CircularSliderA">
+      <widget class="QCircularSlider" name="circularSliderA">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCircularSlider" name="CircularSliderB">
+      <widget class="QCircularSlider" name="circularSliderB">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCircularSlider" name="CircularSliderC">
+      <widget class="QCircularSlider" name="circularSliderC">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -53,17 +68,17 @@
     </layout>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="L_Header1">
+    <widget class="QLabel" name="labelHeading">
      <property name="text">
       <string>Schedule</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QAnimationComboBox" name="Cb_qss"/>
+    <widget class="QAnimationComboBox" name="animationComboBox"/>
    </item>
    <item row="2" column="0">
-    <widget class="QFloatSlider" name="FloatSlider">
+    <widget class="QFloatSlider" name="floatSlider">
      <property name="maximum">
       <number>100</number>
      </property>
@@ -75,28 +90,28 @@
    <item row="5" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="1" column="0">
-      <widget class="QAbstractProgressCircular" name="AbstractProgressCircularB">
+      <widget class="QAbstractProgressCircular" name="abstractProgressCircularB">
        <property name="value">
         <number>24</number>
        </property>
       </widget>
      </item>
      <item row="0" column="0">
-      <widget class="QProgressCircular" name="AbstractProgressCircularA">
+      <widget class="QProgressCircular" name="abstractProgressCircularA">
        <property name="value">
         <number>24</number>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QPushButton" name="APC_PushButtonB">
+      <widget class="QPushButton" name="pushButtonB">
        <property name="text">
         <string>Progress Start</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QPushButton" name="APC_PushButtonA">
+      <widget class="QPushButton" name="pushButtonA">
        <property name="text">
         <string>Progress Start</string>
        </property>
@@ -114,8 +129,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>674</width>
-        <height>412</height>
+        <width>692</width>
+        <height>464</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">

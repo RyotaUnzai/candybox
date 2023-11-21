@@ -1,18 +1,25 @@
-import os
+from QtCustom import loadWindowUiType
 import core
-from PySide2.QtWidgets import QWidget
-from PySide2.QtUiTools import loadUiType, QUiLoader
+from PySide2 import QtWidgets
+from typing import Final, TypeVar
+
+UI_FILE: Final = core.PATH_VIEWS / "account" / "account.ui"
+_, baseClass = loadWindowUiType(UI_FILE)
 
 
-class accountWidget(QWidget):
+class AccountWidget(_, baseClass):
+    """A widget class for user account management in a graphical user interface.
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
+    This class is a customized widget derived from a base UI class, designed to provide an interface
+    for account-related actions. It includes components like checkboxes, labels, and buttons.
+    """
+    Self = TypeVar("Self", bound="AccountWidget")
+    checkBox: QtWidgets.QCheckBox
+    labelHeading: QtWidgets.QLabel
+    pushButton: QtWidgets.QPushButton
+    verticalSpacer: QtWidgets.QSpacerItem
 
-        super(accountWidget, self).__init__(parent, *args, **kwargs)
-        uiLoader = QUiLoader()
-        __uiFilePath = os.path.join(core.PATH_VIEWS, "account", "account.ui")
-        ui = uiLoader.load(__uiFilePath)
-        self.ui = ui
-        self.ui.setParent(parent)
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
+        super().__init__(parent, *args, **kwargs)
+        self.setupUi(self)
         self.setObjectName("Account")
-        # QAnimationComboBox

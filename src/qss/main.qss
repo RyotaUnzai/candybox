@@ -44,6 +44,8 @@ QToolButton {
 
 /*---- QLabel ---*/
 
+/*TODO: 後で消す*/
+QLabel#labelHeading,
 QLabel#L_Header1 {
     font-family: "Raleway";
     color: var(--header1-color1);
@@ -55,4 +57,4 @@ QLabel#L_Header1 {
 @import url("message.qss");
 @import url("navigation.qss");
 @import url("schedule.qss");
-@import url("setting.qss");
+@import url("preference.qss");

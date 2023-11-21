@@ -1,20 +1,21 @@
-from PySide2.QtWidgets import *
+from PySide2 import QtWidgets
 
-from models import *
-from candyboxView import *
+from typing import TypeVar
+from models import SettingTreeModel, IconModel, IconListModel
 
 
-class candyBoxBodyItemModel(object):
+class BodyItemModel:
+    Self = TypeVar("Self", bound="BodyItemModel")
     __widgetItems = {}
 
-    def setBodyWidgetItems(self, layout: QBoxLayout) -> None:
+    def setBodyWidgetItems(self: Self, layout: QtWidgets.QBoxLayout) -> None:
         self.__widgetItems = {}
         for num in range(layout.count()):
             item = layout.itemAt(num)
             widget = item.widget()
             self.__widgetItems[widget.objectName()] = widget
 
-    def showHideWidget(self, widgetType: str, layout: QBoxLayout) -> None:
+    def showHideWidget(self: Self, widgetType: str, layout: QtWidgets.QBoxLayout) -> None:
         for num in range(layout.count()):
             item = layout.itemAt(num)
             widget = item.widget()
@@ -25,9 +26,24 @@ class candyBoxBodyItemModel(object):
                 widget.show()
 
     @property
-    def widgetItems(self):
+    def widgetItems(self) -> dict:
         return self.__widgetItems
 
 
-def debug():
-    print("debug")
+class CandyBoxModels:
+    Self = TypeVar("Self", bound="CandyBoxModels")
+    bodyItemModel: BodyItemModel
+    iconListModel: IconListModel
+    settingTreeModel: SettingTreeModel
+
+    def __init__(self) -> None:
+        self.bodyItemModel = BodyItemModel()
+
+    def setIconListModel(self: Self, data) -> None:
+        self.iconListModel = IconListModel(data)
+
+    def setSettingTreeModel(self: Self, data):
+        self.settingTreeModel = SettingTreeModel(data)
+
+    def createIconModel(self: Self, **kwargs):
+        return IconModel(**kwargs)

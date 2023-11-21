@@ -1,33 +1,22 @@
 import sys
-import os
 import core
 
 from PySide2 import QtWidgets, QtGui
 from pathlib import Path
 
-import candyboxView
-import candyboxModel
-import candyboxDelegator
-
-# import models
+from candyboxView import CandyBoxMainWindow
+from candyboxModel import CandyBoxModels
+from candyboxDelegator import CandyBoxDelegator
 
 
 if __name__ == "__main__":
-    qssloader = core.QssLoader()
+    qssloader: core.QssLoader = core.QssLoader()
     qssloader.filePath = Path(core.PATH_QSS) / "main.qss"
-
-    # models.saveFile(path=r"D:\python\candybox\src\qss\test.qss", data=qssloader.styleSheet)
-    app = QtWidgets.QApplication(sys.argv)
-    # app
+    app: QtWidgets.QApplication = QtWidgets.QApplication(sys.argv)
     app.setWindowIcon(QtGui.QPixmap(":/image/app/appIcon.png"))
-
-    delegator = candyboxDelegator.candyBoxDelegator(
-        view=candyboxView.candyBoxMainWindow(),
-        model=candyboxModel
+    delegator: CandyBoxDelegator = CandyBoxDelegator(
+        view=CandyBoxMainWindow(), model=CandyBoxModels()
     )
-    # delegator.view = candyboxView.candyBoxMainWindow()
     delegator.view.setStyleSheet(qssloader.styleSheet)
-    # delegator.model = candyboxModel
     delegator.connect()
-
     sys.exit(app.exec_())

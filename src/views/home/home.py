@@ -1,41 +1,64 @@
-import os
-import core
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-
+from PySide2 import QtWidgets
+from typing import Final, TypeVar
 
 import QtCustom
+import core
+
+UI_FILE: Final = core.PATH_VIEWS / "home" / "home.ui"
 
 
-class homeWidget(QWidget):
+class HomeWidget(QtWidgets.QWidget):
+    """A widget class for the home section of a graphical user interface.
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
+    This class manages the home interface's layout and components, dynamically loading the UI from a file.
+    It provides access to various UI elements through properties, enabling easy interaction with the home UI.
+    """
+    Self = TypeVar("Self", bound="HomeWidget")
 
-        super(homeWidget, self).__init__(parent, *args, **kwargs)
-        uiLoader = QtCustom.QExUiLoader()
-        __uiFilePath = os.path.join(core.PATH_VIEWS, "home", "home.ui")
-        ui = uiLoader.load(__uiFilePath)
-        self.ui = ui
-        self.ui.setParent(parent)
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
+        super().__init__(parent, *args, **kwargs)
+        self.ui = QtCustom.ExUiLoader(UI_FILE)
+        self.ui.setParent(self)
         self.setObjectName("Home")
+        self.__initUI()
 
-        self.ComboBox_ListView = QListView(self.ui)
-        self.ComboBox_ListView.setObjectName("Cb_qss")
-        self.ComboBox_ListView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.ComboBox_LineEdit = QLineEdit(self.ui)
-        self.ComboBox_LineEdit.setObjectName("Cb_qss")
-        self.ComboBox_LineEdit.setReadOnly(True)
-
-        self.Cb_qss.setView(self.ComboBox_ListView)
-        self.Cb_qss.setLineEdit(self.ComboBox_LineEdit)
-        self.Cb_qss.PopupOffcet = (0, 10)
-        self.Cb_qss.fade = True
-        self.Cb_qss.slide = False
-        self.Cb_qss.stretch = True
-        for i in range(5):
-            self.Cb_qss.addItem("Item %s" % i)
+    def __initUI(self: Self) -> None:
+        "Initializes and configures the UI elements of the widget."
+        self.layout = QtWidgets.QVBoxLayout(self)
+        self.layout.addWidget(self.ui)
+        self.setLayout(self.layout)
 
     @property
-    def Cb_qss(self):
-        return self.ui.Cb_qss
+    def animationComboBox(self: Self) -> QtCustom.QAnimationComboBox:
+        "Access animationComboBox component from the UI."
+        return self.ui.animationComboBox
+
+    @property
+    def labelHeading(self: Self) -> QtWidgets.QLabel:
+        "Access labelHeading component from the UI."
+        return self.ui.labelHeading
+
+    @property
+    def listWidget(self: Self) -> QtWidgets.QListWidget:
+        "Access listWidget component from the UI."
+        return self.ui.listWidget
+
+    @property
+    def pushButtonQss1(self: Self) -> QtWidgets.QPushButton:
+        "Access pushButtonQss1 component from the UI."
+        return self.ui.pushButtonQss1
+
+    @property
+    def pushButtonQss2(self: Self) -> QtWidgets.QPushButton:
+        "Access pushButtonQss2 component from the UI."
+        return self.ui.pushButtonQss2
+
+    @property
+    def spinBox(self: Self) -> QtWidgets.QSpinBox:
+        "Access spinBox component from the UI."
+        return self.ui.spinBox
+
+    @property
+    def spinBoxQss(self: Self) -> QtWidgets.QSpinBox:
+        "Access spinBoxQss component from the UI."
+        return self.ui.spinBoxQss

@@ -5,4 +5,4 @@ from .account import *
 from .home import *
 from .message import *
 from .schedule import *
-from .setting import *
+from .preference import *

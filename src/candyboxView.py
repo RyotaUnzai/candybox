@@ -4,16 +4,19 @@ import views
 
 
 class candyBoxCentralWidget(QtWidgets.QWidget):
-    navigation: views.navigationWidget
+    navigation: views.NavigationWidget
     bodyWidget: QtWidgets.QWidget
+    home: views.HomeWidget
     message: views.MessageWidget
+    schedule: views.ScheduleWidget
     setting: views.SettingWidget
+    account: views.AccountWidget
     boxLayout: QtWidgets.QBoxLayout
     centralWidgetLayout: QtWidgets.QBoxLayout
 
     def __init__(self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super(candyBoxCentralWidget, self).__init__(parent, *args, **kwargs)
-        self.navigation = views.navigationWidget(self)
+        self.navigation = views.NavigationWidget(self)
         self.bodyWidget = QtWidgets.QWidget(self)
         self.home = views.HomeWidget(self)
         self.message = views.MessageWidget(self)
@@ -22,19 +25,21 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         self.account = views.AccountWidget(self)
         self.boxLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.TopToBottom, self)
         self.centralWidgetLayout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.LeftToRight, self)
+
         self.__initUI()
 
-    def __initUI(self) -> None:
-        self.bodyWidget.setObjectName("bodyWidget")
-        self.navigation.setObjectName("navigation")
-
-        self.__initLayout()
-
-        self.home.hide()
+        # self.home.hide()
         self.message.hide()
-        # self.scheduleUI.hide()
+        self.schedule.hide()
         self.setting.hide()
         self.account.hide()
+
+    def __initUI(self) -> None:
+        self.__initObjectNames()
+        self.__initLayout()
+
+    def __initObjectNames(self) -> None:
+        self.bodyWidget.setObjectName("Body")
 
     def __initLayout(self) -> None:
         self.bodyWidget.setLayout(self.boxLayout)
@@ -45,7 +50,7 @@ class candyBoxCentralWidget(QtWidgets.QWidget):
         self.boxLayout.addWidget(self.setting)
         self.boxLayout.addWidget(self.account)
 
-        self.centralWidgetLayout.addWidget(self.navigation.ui)
+        self.centralWidgetLayout.addWidget(self.navigation)
         self.centralWidgetLayout.addWidget(self.bodyWidget)
         self.setLayout(self.centralWidgetLayout)
 

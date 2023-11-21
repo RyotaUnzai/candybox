@@ -1,56 +1,63 @@
-import os
+from PySide2 import QtWidgets
+from typing import Final, TypeVar, Tuple
+
 import core
-from PySide2.QtUiTools import loadUiType, QUiLoader
-from PySide2.QtWidgets import QWidget, QButtonGroup
+import QtCustom
+
+UI_FILE: Final = core.PATH_VIEWS / "navigation" / "navigation.ui"
+_, baseClass = QtCustom.loadWidgetUiType(UI_FILE)
 
 
-class navigationWidget(QWidget):
-    PB_Home = None
-    PB_Message = None
-    PB_Schedule = None
-    PB_Setting = None
-    PB_Account = None
-    L_Appicon = None
-    VBL_Top = None
-    VBL_Bottom = None
+class NavigationWidget(_, baseClass):
+    """A custom widget class for navigation, inheriting from a dynamically loaded UI base class.
 
-    def __init__(self, parent=None, *args, **kwargs) -> None:
+    This widget is designed to provide a UI for navigation purposes in an application.
+    """
+    Self = TypeVar("Self", bound="NavigationWidget")
+    verticalLayoutTop: QtWidgets.QVBoxLayout
+    verticalLayoutBottom: QtWidgets.QVBoxLayout
+    verticalSpacerTop: QtWidgets.QSpacerItem
+    verticalSpacerBottom: QtWidgets.QSpacerItem
+    horizontalSpacer: QtWidgets.QSpacerItem
+    labelAppIcon: QtWidgets.QLabel
+    pushButtonAccount: QtWidgets.QPushButton
+    pushButtonHome: QtWidgets.QPushButton
+    pushButtonMessage: QtWidgets.QPushButton
+    pushButtonSchedule: QtWidgets.QPushButton
+    pushButtonSetting: QtWidgets.QPushButton
+    pushButtons: Tuple[QtWidgets.QPushButton]
+    _absWidth: int = 100
 
-        super(navigationWidget, self).__init__(parent, *args, **kwargs)
-        uiLoader = QUiLoader()
-        __uiFilePath = os.path.join(core.PATH_VIEWS, "navigation", "navigation.ui")
-        ui = uiLoader.load(__uiFilePath)
-        self.ui = ui
-        self.ui.setParent(parent)
-        self.ui.setMaximumWidth(100)
-        self.ui.setMinimumWidth(100)
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
+        super().__init__(parent, *args, **kwargs)
+        self.setupUi(self)
         self.setObjectName("Navigation")
+        self.__initUI()
 
-        self.ui.PB_Home.clicked.connect(self._on_button_clicked)
-        self.ui.PB_Message.clicked.connect(self._on_button_clicked)
-        self.ui.PB_Schedule.clicked.connect(self._on_button_clicked)
-        self.ui.PB_Setting.clicked.connect(self._on_button_clicked)
-        self.ui.PB_Account.clicked.connect(self._on_button_clicked)
+    def __initUI(self) -> None:
+        "Initializes and configures the UI elements of the widget."
+        self.setMaximumWidth(self._absWidth)
+        self.setMinimumWidth(100)
+        self.pushButtonAccount.clicked.connect(self._on_button_clicked)
+        self.pushButtonHome.clicked.connect(self._on_button_clicked)
+        self.pushButtonMessage.clicked.connect(self._on_button_clicked)
+        self.pushButtonSchedule.clicked.connect(self._on_button_clicked)
+        self.pushButtonSetting.clicked.connect(self._on_button_clicked)
+        self.pushButtons = (
+            self.pushButtonAccount,
+            self.pushButtonHome,
+            self.pushButtonMessage,
+            self.pushButtonSchedule,
+            self.pushButtonSetting
+        )
 
-    def _on_button_clicked(self):
-        sender = self.sender()
-        if sender != self.ui.PB_Home:
-            self.ui.PB_Home.setChecked(False)
-        else:
-            self.ui.PB_Home.setChecked(True)
-        if sender != self.ui.PB_Message:
-            self.ui.PB_Message.setChecked(False)
-        else:
-            self.ui.PB_Message.setChecked(True)
-        if sender != self.ui.PB_Schedule:
-            self.ui.PB_Schedule.setChecked(False)
-        else:
-            self.ui.PB_Schedule.setChecked(True)
-        if sender != self.ui.PB_Setting:
-            self.ui.PB_Setting.setChecked(False)
-        else:
-            self.ui.PB_Setting.setChecked(True)
-        if sender != self.ui.PB_Account:
-            self.ui.PB_Account.setChecked(False)
-        else:
-            self.ui.PB_Account.setChecked(True)
+    def _on_button_clicked(self) -> None:
+        """Handles button click events for the navigation widget.
+
+        When a navigation button is clicked, this method unchecks all buttons and then sets the clicked button as checked.
+        This method ensures that only one button can be active (checked) at a time.
+        """
+        sender: QtWidgets.QPushButton = self.sender()
+        if isinstance(sender, QtWidgets.QPushButton):
+            [pushButton.setChecked(False) for pushButton in self.pushButtons]
+            sender.setChecked(True)

@@ -5,7 +5,7 @@ from PySide2.QtCore import *
 
 
 class QAnimationComboBox(QComboBox):
-    __PopupOffcet = (0, 0)
+    __PopupOffset = (0, 0)
     __fade = False
     __stretch = False
     __slide = False
@@ -15,12 +15,12 @@ class QAnimationComboBox(QComboBox):
         self.popup = self.view().window()
 
     @property
-    def PopupOffcet(self):
-        return self.__PopupOffcet
+    def PopupOffset(self):
+        return self.__PopupOffset
 
-    @PopupOffcet.setter
-    def PopupOffcet(self, value):
-        self.__PopupOffcet = value
+    @PopupOffset.setter
+    def PopupOffset(self, value):
+        self.__PopupOffset = value
 
     @property
     def fade(self):
@@ -50,8 +50,8 @@ class QAnimationComboBox(QComboBox):
         super(QAnimationComboBox, self).showPopup()
         self.rect = self.popup.geometry()
         self.popup.move(
-            self.rect.x() + self.__PopupOffcet[0],
-            self.rect.y() + self.__PopupOffcet[1]
+            self.rect.x() + self.__PopupOffset[0],
+            self.rect.y() + self.__PopupOffset[1]
         )
 
         if self.__fade:

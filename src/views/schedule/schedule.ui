@@ -20,6 +20,21 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>6</number>
+   </property>
    <item row="3" column="0">
     <widget class="QIntSlider" name="intSlider">
      <property name="orientation">
@@ -114,8 +129,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>674</width>
-        <height>412</height>
+        <width>692</width>
+        <height>464</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">

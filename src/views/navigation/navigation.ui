@@ -1,68 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Navigation</class>
- <widget class="QFrame" name="Navigation">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>460</width>
-    <height>521</height>
+    <width>446</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Frame</string>
-  </property>
-  <property name="frameShape">
-   <enum>QFrame::StyledPanel</enum>
-  </property>
-  <property name="frameShadow">
-   <enum>QFrame::Raised</enum>
+   <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <layout class="QVBoxLayout" name="VBL_Bottom">
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="PB_Account">
-       <property name="minimumSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>60</width>
-         <height>60</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Account</string>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="0" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="VBL_Top">
+    <layout class="QVBoxLayout" name="verticalLayoutTop">
      <item>
-      <widget class="QLabel" name="L_Appicon">
+      <widget class="QLabel" name="labelAppIcon">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -87,7 +55,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="PB_Home">
+      <widget class="QPushButton" name="pushButtonHome">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -112,7 +80,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="PB_Message">
+      <widget class="QPushButton" name="pushButtonMessage">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -134,7 +102,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="PB_Schedule">
+      <widget class="QPushButton" name="pushButtonSchedule">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -156,7 +124,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="PB_Setting">
+      <widget class="QPushButton" name="pushButtonSetting">
        <property name="minimumSize">
         <size>
          <width>60</width>
@@ -178,7 +146,7 @@
       </widget>
      </item>
      <item>
-      <spacer name="verticalSpacer_2">
+      <spacer name="verticalSpacerTop">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -192,23 +160,46 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+   <item row="2" column="0">
+    <layout class="QVBoxLayout" name="verticalLayoutBottom">
+     <item>
+      <spacer name="verticalSpacerBottom">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonAccount">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>60</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Account</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
-  <zorder></zorder>
-  <zorder></zorder>
-  <zorder>horizontalSpacer</zorder>
  </widget>
  <resources/>
  <connections/>

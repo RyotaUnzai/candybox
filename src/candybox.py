@@ -1,5 +1,4 @@
 import sys
-import os
 import core
 
 from PySide2 import QtWidgets, QtGui

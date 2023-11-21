@@ -11,12 +11,11 @@ class candyBoxDelegator(core.Delegator):
     model: candyboxModel
     fontRemicon: core.fontRemixicon.Remixicon
     fontRalewayExtraBoldItalic: core.fontRaleway.RalewayExtraBoldItalic
-    nav: candyboxView.views.navigationWidget
+    nav: candyboxView.views.NavigationWidget
     body: QtWidgets.QWidget
 
     def __init__(self, view=None, model=None, *args, **kwargs):
         super(candyBoxDelegator, self).__init__(view, model, *args, **kwargs)
-        #self.fontRemix = core.fontRemixicon.Remixicon()
         self.fontRemicon = core.fontRemixicon.Remixicon()
         self.fontRalewayExtraBoldItalic = core.fontRaleway.RalewayExtraBoldItalic()
 
@@ -29,7 +28,7 @@ class candyBoxDelegator(core.Delegator):
         self.__messageWidgetConnection()
 
     def createClassVariables(self) -> None:
-        self.nav = self.view.cw.navigation.ui
+        self.nav = self.view.cw.navigation
         self.bodyWidget = self.view.cw.bodyWidget
         self.bodyWidgetLayout = self.view.cw.bodyWidget.layout()
         self.settingWidget = self.view.cw.setting
@@ -78,20 +77,20 @@ class candyBoxDelegator(core.Delegator):
         self.bodyItemModel = self.model.candyBoxBodyItemModel()
         self.bodyItemModel.setBodyWidgetItems(self.bodyWidgetLayout)
 
-        self.nav.PB_Home.clicked.connect(
+        self.nav.pushButtonAccount.clicked.connect(
+            lambda: self.bodyItemModel.showHideWidget(widgetType="Account", layout=self.bodyWidgetLayout)
+        )
+        self.nav.pushButtonHome.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Home", layout=self.bodyWidgetLayout)
         )
-        self.nav.PB_Message.clicked.connect(
+        self.nav.pushButtonMessage.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Message", layout=self.bodyWidgetLayout)
         )
-        self.nav.PB_Schedule.clicked.connect(
+        self.nav.pushButtonSchedule.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.bodyWidgetLayout)
         )
-        self.nav.PB_Setting.clicked.connect(
+        self.nav.pushButtonSetting.clicked.connect(
             lambda: self.bodyItemModel.showHideWidget(widgetType="Setting", layout=self.bodyWidgetLayout)
-        )
-        self.nav.PB_Account.clicked.connect(
-            lambda: self.bodyItemModel.showHideWidget(widgetType="Account", layout=self.bodyWidgetLayout)
         )
 
     def __navigationConnection(self) -> None:
@@ -101,18 +100,18 @@ class candyBoxDelegator(core.Delegator):
 
         #self.fontRemix.Font_Remixicon.setPixelSize(20)
         self.fontRemicon.setPixelSize(20)
-        self.nav.PB_Home.setFont(self.fontRemicon)
-        self.nav.PB_Message.setFont(self.fontRemicon)
-        self.nav.PB_Schedule.setFont(self.fontRemicon)
-        self.nav.PB_Setting.setFont(self.fontRemicon)
-        self.nav.PB_Account.setFont(self.fontRemicon)
+        self.nav.pushButtonAccount.setFont(self.fontRemicon)
+        self.nav.pushButtonHome.setFont(self.fontRemicon)
+        self.nav.pushButtonMessage.setFont(self.fontRemicon)
+        self.nav.pushButtonSchedule.setFont(self.fontRemicon)
+        self.nav.pushButtonSetting.setFont(self.fontRemicon)
 
-        self.nav.PB_Home.setText(self.fontRemicon.ri_home_2_fill)
-        self.nav.PB_Message.setText(self.fontRemicon.ri_message_2_fill)
-        self.nav.PB_Schedule.setText(self.fontRemicon.ri_calendar_2_fill)
-        self.nav.PB_Setting.setText(self.fontRemicon.ri_settings_2_fill)
-        self.nav.PB_Account.setText(self.fontRemicon.ri_account_box_fill)
+        self.nav.pushButtonAccount.setText(self.fontRemicon.ri_account_box_fill)
+        self.nav.pushButtonHome.setText(self.fontRemicon.ri_home_2_fill)
+        self.nav.pushButtonMessage.setText(self.fontRemicon.ri_message_2_fill)
+        self.nav.pushButtonSchedule.setText(self.fontRemicon.ri_calendar_2_fill)
+        self.nav.pushButtonSetting.setText(self.fontRemicon.ri_settings_2_fill)
 
         self.fontRemicon.setPixelSize(36)
-        self.nav.L_Appicon.setFont(self.fontRemicon)
-        self.nav.L_Appicon.setText(self.fontRemicon.ri_apps_fill)
+        self.nav.labelAppIcon.setFont(self.fontRemicon)
+        self.nav.labelAppIcon.setText(self.fontRemicon.ri_apps_fill)

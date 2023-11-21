@@ -1,6 +1,6 @@
-import time
 from PySide2 import QtWidgets, QtGui
 from typing import Final, TypeVar
+import time
 
 import QtCustom
 import core
@@ -9,6 +9,10 @@ UI_FILE: Final = core.PATH_VIEWS / "schedule" / "schedule.ui"
 
 
 class ScheduleWidget(QtWidgets.QWidget):
+    """A custom widget class for scheduling, inheriting from QtWidgets.QWidget.
+
+    This widget provides a user interface for scheduling.
+    """
     Self = TypeVar("Self", bound="ScheduleWidget")
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
@@ -21,85 +25,109 @@ class ScheduleWidget(QtWidgets.QWidget):
 
     @property
     def animationComboBox(self) -> QtCustom.QAnimationComboBox:
+        "Access animationComboBox component from the UI."
         return self.ui.animationComboBox
 
     @property
     def circularSliderA(self) -> QtCustom.QCircularSlider:
+        "Access circularSliderA component from the UI."
         return self.ui.circularSliderA
 
     @property
     def circularSliderB(self) -> QtCustom.QCircularSlider:
+        "Access circularSliderB component from the UI."
         return self.ui.circularSliderB
 
     @property
     def circularSliderC(self) -> QtCustom.QCircularSlider:
+        "Access circularSliderC component from the UI."
         return self.ui.circularSliderC
 
     @property
     def abstractProgressCircularA(self) -> QtCustom.QAbstractProgressCircular:
+        "Access abstractProgressCircularA component from the UI."
         return self.ui.abstractProgressCircularA
 
     @property
     def abstractProgressCircularB(self) -> QtCustom.QAbstractProgressCircular:
+        "Access abstractProgressCircularB component from the UI."
         return self.ui.abstractProgressCircularA
 
     @property
     def pushButtonA(self) -> QtWidgets.QPushButton:
+        "Access pushButtonA component from the UI."
         return self.ui.pushButtonA
 
     @property
     def pushButtonB(self) -> QtWidgets.QPushButton:
+        "Access pushButtonB component from the UI."
         return self.ui.pushButtonA
 
     @property
     def floatSlider(self) -> QtCustom.QFloatSlider:
+        "Access floatSlider component from the UI."
         return self.ui.floatSlider
 
     @property
     def intSlider(self) -> QtCustom.QIntSlider:
+        "Access intSlider component from the UI."
         return self.ui.intSlider
 
     @property
     def labelHeading(self) -> QtWidgets.QLabel:
+        "Access labelHeading component from the UI."
         return self.ui.labelHeading
 
     @property
     def label(self) -> QtWidgets.QLabel:
+        "Access label component from the UI."
         return self.ui.label
 
     @property
     def scrollArea(self) -> QtWidgets.QScrollArea:
+        "Access scrollArea component from the UI."
         return self.ui.scrollArea
 
     @property
     def scrollAreaWidgetContents(self) -> QtWidgets.QWidget:
+        "Access scrollAreaWidgetContents component from the UI."
         return self.ui.scrollAreaWidgetContents
 
     @property
     def flowLayout(self) -> QtCustom.QFlowLayout:
+        "Access flowLayout component from the UI."
         return self.ui.QFlowLayout_FlowLayout
 
     def __initUI(self) -> None:
+        "Initializes and configures the UI elements of the widget."
         self.__initAnimationComboBox()
         self.__initFlowLayout()
-        self.__initCicularSliders()
+        self.__initCircularSliders()
 
     def __initAnimationComboBox(self) -> None:
-        self.animationComboBox.PopupOffcet = (0, 10)
+        "Initializes and configures the animation combo box."
+        self.animationComboBox.PopupOffset = (0, 10)
         self.animationComboBox.fade = True
         self.animationComboBox.slide = True
         self.animationComboBox.stretch = False
         [self.animationComboBox.addItem(f"Item {i}") for i in range(5)]
 
     def __initFlowLayout(self) -> None:
-        [self.flowLayout.addWidget(QtWidgets.QPushButton(f"Btn {i}")) for i in range(50)]
+        "Initializes and configures the flow layout."
+        [self.flowLayout.addWidget(
+            QtWidgets.QPushButton(f"Btn {i}")) for i in range(50)]
         self.flowLayout.space = (15, 5)
 
-    def __initCicularSliders(self) -> None:
-        self.pushButtonA.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularA))
-        self.abstractProgressCircularA.valueChanged.connect(self.ProgressStartCount)
-        self.pushButtonB.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularB))
-        self.abstractProgressCircularB.valueChanged.connect(self.ProgressStartCount)
+    def __initCircularSliders(self) -> None:
+        "Initializes and configures the circular sliders."
+        self.pushButtonA.clicked.connect(
+            lambda: self.progressStart(self.abstractProgressCircularA))
+        self.abstractProgressCircularA.valueChanged.connect(
+            self.progressStartCount)
+        self.pushButtonB.clicked.connect(
+            lambda: self.progressStart(self.abstractProgressCircularB))
+        self.abstractProgressCircularB.valueChanged.connect(
+            self.progressStartCount)
 
         self.circularSliderB.progressColor = QtGui.QColor(128, 0, 255)
         self.circularSliderB.fontColor = "#888"
@@ -120,108 +148,14 @@ class ScheduleWidget(QtWidgets.QWidget):
         self.abstractProgressCircularB.progressColorType = "blur"
         self.abstractProgressCircularB.value = 73
 
-    def ProgressStart(self, progressWidget) -> None:
+    def progressStart(self, progressWidget) -> None:
+        "Initiates a progress simulation for a given progress widget."
         value: int = 0
         while value <= 100:
             time.sleep(0.1)
             progressWidget.setValue(value)
             value += 5
 
-    def ProgressStartCount(self, value) -> None:
-        print("ProgressCircular", value)
-
-
-# class scheduleWidget(QWidget):
-
-#     def __init__(self, parent=None, *args, **kwargs) -> None:
-
-#         super(scheduleWidget, self).__init__(parent, *args, **kwargs)
-#         uiLoader = QtCustom.QExUiLoader()
-#         __uiFilePath = os.path.join(core.PATH_VIEWS, "schedule", "schedule.ui")
-#         ui = uiLoader.load(__uiFilePath)
-#         self.ui = ui
-#         self.ui.setParent(parent)
-#         self.setObjectName("Schedule")
-
-#         self.Cb_qss.PopupOffcet = (0, 10)
-#         self.Cb_qss.fade = True
-#         self.Cb_qss.slide = True
-#         self.Cb_qss.stretch = False
-#         for i in range(5):
-#             self.Cb_qss.addItem("Item %s" % i)
-
-#         for i in range(50):
-#             btn =
-#             self.FlowLayout.addWidget(btn)
-
-#         # self.FlowLayout.space = (15, 50)
-
-#         self.APC_PushButtonA.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularA))
-#         self.AbstractProgressCircularA.valueChanged.connect(self.ProgressStartCount)
-#         self.APC_PushButtonB.clicked.connect(lambda: self.ProgressStart(self.AbstractProgressCircularB))
-#         self.AbstractProgressCircularB.valueChanged.connect(self.ProgressStartCount)
-
-#         self.CircularSliderB.progressColor = QColor(128, 0, 255)
-#         self.CircularSliderB.fontColor = "#888"
-#         self.CircularSliderB.progressColorType = "gradation"
-#         self.CircularSliderB.progressBlurColor = QColor(255, 128, 0)
-#         self.CircularSliderB.indicatorSubColor = QColor(255, 128, 0)
-#         self.CircularSliderB.value = 73
-#         self.CircularSliderB.intensity = 100
-
-#         self.CircularSliderC.progressColor = QColor(0, 255, 128)
-#         self.CircularSliderC.progressColorType = "blur"
-#         self.CircularSliderC.indicatorSubColor = QColor(255, 0, 128)
-#         self.CircularSliderC.indicatorMainColor = QColor(255, 0, 128)
-#         self.CircularSliderC.value = 73
-
-#         self.AbstractProgressCircularA.progressColorType = "gradation"
-#         self.AbstractProgressCircularA.value = 73
-#         self.AbstractProgressCircularB.progressColorType = "blur"
-#         self.AbstractProgressCircularB.value = 73
-
-#     def ProgressStart(self, progressWidget):
-#         value: int = 0
-#         while value <= 100:
-#             time.sleep(0.1)
-#             progressWidget.setValue(value)
-#             value += 5
-
-#     def ProgressStartCount(self, value):
-#         print("ProgressCircular", value)
-
-#     @property
-#     def CircularSliderC(self) -> QtCustom.QCircularSlider:
-#         return self.ui.CircularSliderC
-
-#     @property
-#     def CircularSliderB(self) -> QtCustom.QCircularSlider:
-#         return self.ui.CircularSliderB
-
-#     @property
-#     def GridLayout(self) -> QGridLayout:
-#         return self.ui.gridLayout
-
-#     @property
-#     def AbstractProgressCircularA(self) -> QtCustom.QAbstractProgressCircular:
-#         return self.ui.AbstractProgressCircularA
-
-#     @property
-#     def AbstractProgressCircularB(self) -> QtCustom.QAbstractProgressCircular:
-#         return self.ui.AbstractProgressCircularB
-
-#     @property
-#     def APC_PushButtonA(self) -> QPushButton:
-#         return self.ui.APC_PushButtonA
-
-#     @property
-#     def APC_PushButtonB(self) -> QPushButton:
-#         return self.ui.APC_PushButtonB
-
-#     @property
-#     def Cb_qss(self):
-#         return self.ui.Cb_qss
-
-#     @property
-#     def FlowLayout(self) -> QtCustom.QFlowLayout:
-#         return self.ui.QFlowLayout_FlowLayout
+    def progressStartCount(self, value) -> None:
+        "A callback function that prints the current progress value."
+        print(f"count: {value}")

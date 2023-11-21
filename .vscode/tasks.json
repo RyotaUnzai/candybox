@@ -16,45 +16,47 @@
     },
     "tasks": [
         {
-            "label": "[venv] create venv",
+            "label": "[mkdocs] serve",
             "type": "shell",
-            "command": "C:/Python310/python.exe",
+            "isBackground": true,
+            "command": "mkdocs",
             "args": [
-                "-m",
-                "venv",
-                ".venv",
+                "serve",
+                "-f",
+                "${workspaceRoot}\\docs\\mkdocs.yml",
             ],
-            "icon": {
-                "id": "star",
-                "color": "terminal.ansiBlue"
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^.*(Error|Except).*$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*Building documentation.*",
+                    "endsPattern": ".*Start detecting changes.*"
+                }
             }
         },
         {
-            "label": "[venv] pip install",
+            "label": "[mkdocs] gh-deploy",
             "type": "shell",
-            "command": "python",
+            "isBackground": true,
+            "command": "mkdocs",
             "args": [
-                "-m",
-                "pip",
-                "install",
-                "-r",
-                "${workspaceFolder}/requirements.txt"
+                "gh-deploy",
+                "-f",
+                "${workspaceRoot}\\docs\\mkdocs.yml",
             ],
-            "icon": {
-                "id": "star",
-                "color": "terminal.ansiBlue"
-            }
-        },
-        {
-            "label": "Candybox",
-            "type": "shell",
-            "command": "python",
-            "args": [
-                "${workspaceFolder}/src/candybox.py",
-            ],
-            "icon": {
-                "id": "star",
-                "color": "terminal.ansiBlue"
+            "problemMatcher": {
+                "owner": "custom",
+                "pattern": {
+                    "regexp": "^.*(Error|Except).*$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".*Building documentation.*",
+                    "endsPattern": ".*Start detecting changes.*"
+                }
             }
         }
     ]

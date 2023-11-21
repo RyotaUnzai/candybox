@@ -27,8 +27,8 @@ For example, QCircularSlider. This is a slider in the shape of a circle. Such ex
 1. Install a Python3  
 Let’s first install Python3. The sample used [Python 3.10.6](https://www.python.org/downloads/release/python-3106/)
 2. Create a virtualenv  
-Open Folder with VSCode and then Let's run makevenv.bat. After a while, you will see ../candybox/.venv should be created.
+Execute Terminal > Run Task... > `[venv] create venv` After a while, you will see `${workspaceFolder}/.venv` should be created.
 3. Install python modules  
-Let's run pipInstall.bat. Various modules should be installed.
-4. Run and Debug  
-Please start Run And Debug Candybox.
+Execute Terminal > Run Task... > `[venv] pip install`.
+4. Launch or Run and Debug.  
+Execute either Terminal > Run Task... > `Candybox` or `Python: Launch Candybox`.

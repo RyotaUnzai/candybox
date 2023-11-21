@@ -1,1 +1,0 @@
-python resource\image\changeColor.py

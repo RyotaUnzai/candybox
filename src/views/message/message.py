@@ -27,7 +27,7 @@ class MessageWidget(_, baseClass):
         self.setObjectName("Message")
         self.__initUI()
 
-    def __initUI(self) -> None:
+    def __initUI(self: Self) -> None:
         "Initializes and configures the UI elements of the widget."
         self.listView.setAutoFillBackground(True)
         self.listView.setFlow(QtWidgets.QListView.LeftToRight)

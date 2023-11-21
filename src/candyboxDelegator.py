@@ -1,4 +1,5 @@
 from PySide2 import QtWidgets
+from typing import TypeVar
 
 import core
 from core.fontRaleway import RalewayExtraBoldItalic
@@ -16,7 +17,8 @@ import views
 import delegator
 
 
-class candyBoxDelegator(core.Delegator):
+class CandyBoxDelegator(core.Delegator):
+    Self = TypeVar("Self", bound="CandyBoxDelegator")
     fontRemixicon: Remixicon
     fontRalewayExtraBoldItalic: RalewayExtraBoldItalic
     view: CandyBoxMainWindow
@@ -24,19 +26,19 @@ class candyBoxDelegator(core.Delegator):
     nav: views.NavigationWidget
     body: QtWidgets.QWidget
 
-    def __init__(self, view: CandyBoxMainWindow, model: CandyBoxModels, *args, **kwargs):
+    def __init__(self: Self,view: CandyBoxMainWindow, model: CandyBoxModels, *args, **kwargs) -> Self:
         super().__init__(view, model, *args, **kwargs)
         self.fontRemixicon = Remixicon()
         self.fontRalewayExtraBoldItalic = RalewayExtraBoldItalic()
 
-    def connect(self) -> None:
+    def connect(self: Self) -> None:
         self.view.show()
         self.__bodyWidgetConnection()
         self.__navigationConnection()
         self.__settingWidgetConnection()
         self.__messageWidgetConnection()
 
-    def __messageWidgetConnection(self) -> None:
+    def __messageWidgetConnection(self: Self) -> None:
         iconList = core.getExtList(core.PATH_DATA)
         iconDataList = []
         for url in iconList:
@@ -48,7 +50,7 @@ class candyBoxDelegator(core.Delegator):
         self.view.message.listView.setModel(self.model.iconListModel)
         self.view.message.listView.setItemDelegate(delegator.iconListDelegate(self.view.message.listView))
 
-    def __settingWidgetConnection(self) -> None:
+    def __settingWidgetConnection(self: Self) -> None:
         data = [
             {'parent': 'python', 'key': 'flake8Args'},
             {'parent': 'python', 'key': 'provider'},
@@ -67,16 +69,13 @@ class candyBoxDelegator(core.Delegator):
             {'parent': 'svn', 'key': 'associations'},
             {'parent': 'svn', 'key': 'd'}
         ]
-
         self.model.setSettingTreeModel(data)
-
         self.view.preference.treeView.setModel(self.model.settingTreeModel)
         self.view.preference.tableView.setModel(self.model.settingTreeModel)
-
         self.view.preference.treeView.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.view.preference.treeView.setSelectionModel(self.view.preference.tableView.selectionModel())
 
-    def __bodyWidgetConnection(self) -> None:
+    def __bodyWidgetConnection(self: Self) -> None:
         self.model.bodyItemModel.setBodyWidgetItems(self.view.body.layout())
 
         for pushButton in self.view.navigation.pushButtons:
@@ -86,23 +85,7 @@ class candyBoxDelegator(core.Delegator):
     lambda:  self.model.bodyItemModel.showHideWidget(widgetType="{widgetType}", layout=self.view.boxLayout)
 )"""               )
 
-        # self.view.navigation.pushButtonAccount.clicked.connect(
-        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Account", layout=self.view.boxLayout)
-        # )
-        # self.view.navigation.pushButtonHome.clicked.connect(
-        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Home", layout=self.view.boxLayout)
-        # )
-        # self.view.navigation.pushButtonMessage.clicked.connect(
-        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Message", layout=self.view.boxLayout)
-        # )
-        # self.view.navigation.pushButtonSchedule.clicked.connect(
-        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Schedule", layout=self.view.boxLayout)
-        # )
-        # self.view.navigation.pushButtonPreference.clicked.connect(
-        #     lambda: self.model.bodyItemModel.showHideWidget(widgetType="Preference", layout=self.view.boxLayout)
-        # )
-
-    def __navigationConnection(self) -> None:
+    def __navigationConnection(self: Self) -> None:
 
         # self.view.navigation.setMaximumWidth(100)
         # self.view.navigation.PB_Home.clicked.connect(self.view.close)

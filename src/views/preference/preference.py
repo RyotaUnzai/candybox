@@ -26,7 +26,7 @@ class PreferenceWidget(_, baseClass):
         self.setObjectName("Preference")
         self.__initUI()
 
-    def __initUI(self) -> None:
+    def __initUI(self: Self) -> None:
         "Initializes and configures the UI elements of the widget."
         self.tableView.setMinimumWidth(self._minimumWidth)
         self.treeView.setMinimumWidth(self._minimumWidth)

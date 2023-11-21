@@ -1,23 +1,21 @@
 from PySide2 import QtWidgets
 
-from models import (
-    SettingTreeModel,
-    IconModel,
-    IconListModel
-)
+from typing import TypeVar
+from models import SettingTreeModel, IconModel, IconListModel
 
 
 class BodyItemModel:
+    Self = TypeVar("Self", bound="BodyItemModel")
     __widgetItems = {}
 
-    def setBodyWidgetItems(self, layout: QtWidgets.QBoxLayout) -> None:
+    def setBodyWidgetItems(self: Self, layout: QtWidgets.QBoxLayout) -> None:
         self.__widgetItems = {}
         for num in range(layout.count()):
             item = layout.itemAt(num)
             widget = item.widget()
             self.__widgetItems[widget.objectName()] = widget
 
-    def showHideWidget(self, widgetType: str, layout: QtWidgets.QBoxLayout) -> None:
+    def showHideWidget(self: Self, widgetType: str, layout: QtWidgets.QBoxLayout) -> None:
         for num in range(layout.count()):
             item = layout.itemAt(num)
             widget = item.widget()
@@ -33,6 +31,7 @@ class BodyItemModel:
 
 
 class CandyBoxModels:
+    Self = TypeVar("Self", bound="CandyBoxModels")
     bodyItemModel: BodyItemModel
     iconListModel: IconListModel
     settingTreeModel: SettingTreeModel
@@ -40,11 +39,11 @@ class CandyBoxModels:
     def __init__(self) -> None:
         self.bodyItemModel = BodyItemModel()
 
-    def setIconListModel(self, data) -> None:
+    def setIconListModel(self: Self, data) -> None:
         self.iconListModel = IconListModel(data)
 
-    def setSettingTreeModel(self, data):
+    def setSettingTreeModel(self: Self, data):
         self.settingTreeModel = SettingTreeModel(data)
 
-    def createIconModel(self, **kwargs):
+    def createIconModel(self: Self, **kwargs):
         return IconModel(**kwargs)

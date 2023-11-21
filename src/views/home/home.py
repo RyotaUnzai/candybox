@@ -22,43 +22,43 @@ class HomeWidget(QtWidgets.QWidget):
         self.setObjectName("Home")
         self.__initUI()
 
-    def __initUI(self) -> None:
+    def __initUI(self: Self) -> None:
         "Initializes and configures the UI elements of the widget."
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.ui)
         self.setLayout(self.layout)
 
     @property
-    def animationComboBox(self) -> QtCustom.QAnimationComboBox:
+    def animationComboBox(self: Self) -> QtCustom.QAnimationComboBox:
         "Access animationComboBox component from the UI."
         return self.ui.animationComboBox
 
     @property
-    def labelHeading(self) -> QtWidgets.QLabel:
+    def labelHeading(self: Self) -> QtWidgets.QLabel:
         "Access labelHeading component from the UI."
         return self.ui.labelHeading
 
     @property
-    def listWidget(self) -> QtWidgets.QListWidget:
+    def listWidget(self: Self) -> QtWidgets.QListWidget:
         "Access listWidget component from the UI."
         return self.ui.listWidget
 
     @property
-    def pushButtonQss1(self) -> QtWidgets.QPushButton:
+    def pushButtonQss1(self: Self) -> QtWidgets.QPushButton:
         "Access pushButtonQss1 component from the UI."
         return self.ui.pushButtonQss1
 
     @property
-    def pushButtonQss2(self) -> QtWidgets.QPushButton:
+    def pushButtonQss2(self: Self) -> QtWidgets.QPushButton:
         "Access pushButtonQss2 component from the UI."
         return self.ui.pushButtonQss2
 
     @property
-    def spinBox(self) -> QtWidgets.QSpinBox:
+    def spinBox(self: Self) -> QtWidgets.QSpinBox:
         "Access spinBox component from the UI."
         return self.ui.spinBox
 
     @property
-    def spinBoxQss(self) -> QtWidgets.QSpinBox:
+    def spinBoxQss(self: Self) -> QtWidgets.QSpinBox:
         "Access spinBoxQss component from the UI."
         return self.ui.spinBoxQss

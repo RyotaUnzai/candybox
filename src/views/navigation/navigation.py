@@ -34,7 +34,7 @@ class NavigationWidget(_, baseClass):
         self.setObjectName("Navigation")
         self.__initUI()
 
-    def __initUI(self) -> None:
+    def __initUI(self: Self) -> None:
         "Initializes and configures the UI elements of the widget."
         self.setMaximumWidth(self._absWidth)
         self.setMinimumWidth(100)
@@ -51,7 +51,7 @@ class NavigationWidget(_, baseClass):
             self.pushButtonPreference
         )
 
-    def _on_button_clicked(self) -> None:
+    def _on_button_clicked(self: Self) -> None:
         """Handles button click events for the navigation widget.
 
         When a navigation button is clicked, this method unchecks all buttons and then sets the clicked button as checked.

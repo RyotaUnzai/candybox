@@ -1,5 +1,5 @@
-from PySide2 import QtWidgets
-from typing import Final, TypeVar, Tuple
+from PySide2 import QtWidgets, QtGui
+from typing import Final, TypeVar, Tuple, Dict
 
 import core
 import QtCustom
@@ -25,39 +25,50 @@ class NavigationWidget(_, baseClass):
     pushButtonMessage: QtWidgets.QPushButton
     pushButtonSchedule: QtWidgets.QPushButton
     pushButtonPreference: QtWidgets.QPushButton
-    pushButtons: Tuple[QtWidgets.QPushButton]
+    pushButtons: Tuple[Tuple[int, QtWidgets.QPushButton]]
     _absWidth: int = 100
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super().__init__(parent, *args, **kwargs)
         self.setupUi(self)
         self.setObjectName("Navigation")
+        self.pushButtons = (
+            (0, self.pushButtonAccount),
+            (1, self.pushButtonHome),
+            (2, self.pushButtonMessage),
+            (3, self.pushButtonSchedule),
+            (4, self.pushButtonPreference)
+        )
         self.__initUI()
 
     def __initUI(self: Self) -> None:
         "Initializes and configures the UI elements of the widget."
         self.setMaximumWidth(self._absWidth)
         self.setMinimumWidth(100)
-        self.pushButtonAccount.clicked.connect(self._on_button_clicked)
-        self.pushButtonHome.clicked.connect(self._on_button_clicked)
-        self.pushButtonMessage.clicked.connect(self._on_button_clicked)
-        self.pushButtonSchedule.clicked.connect(self._on_button_clicked)
-        self.pushButtonPreference.clicked.connect(self._on_button_clicked)
-        self.pushButtons = (
-            self.pushButtonAccount,
-            self.pushButtonHome,
-            self.pushButtonMessage,
-            self.pushButtonSchedule,
-            self.pushButtonPreference
-        )
+
+        [pushButton.clicked.connect(self._on_button_clicked) for num, pushButton in self.pushButtons]
 
     def _on_button_clicked(self: Self) -> None:
         """Handles button click events for the navigation widget.
 
-        When a navigation button is clicked, this method unchecks all buttons and then sets the clicked button as checked.
+        When a navigation button is clicked, this method unchecks all buttons
+        and then sets the clicked button as checked.
         This method ensures that only one button can be active (checked) at a time.
         """
         sender: QtWidgets.QPushButton = self.sender()
         if isinstance(sender, QtWidgets.QPushButton):
-            [pushButton.setChecked(False) for pushButton in self.pushButtons]
+            [pushButton.setChecked(False) for num, pushButton in self.pushButtons]
             sender.setChecked(True)
+
+    def setFont(self: Self, font: QtGui.QFont) -> None:
+        for num, pushButton in self.pushButtons:
+            pushButton.setFont(font)
+
+    def setText(self: Self, data: Dict[int, str]) -> None:
+        for num, pushButton in self.pushButtons:
+            pushButton.setText(data[num])
+
+    def setIconText(self: Self, font: QtGui.QFont, iconText: str, iconSize: int) -> None:
+        font.setPixelSize(iconSize)
+        self.labelAppIcon.setFont(font)
+        self.labelAppIcon.setText(iconText)

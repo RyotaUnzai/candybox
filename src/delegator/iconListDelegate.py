@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
-from PySide2.QtGui import *
-from PySide2.QtCore import *
-from PySide2.QtSvg import *
-from PySide2.QtWidgets import *
+
+from PySide2 import QtCore, QtGui, QtWidgets
 
 import core
 import models
 
 from pathlib import WindowsPath
 
-class iconListDelegate(QStyledItemDelegate):
+
+class iconListDelegate(QtWidgets.QStyledItemDelegate):
     _referenceButton = None
     isDrawDisplayName = True
     itemSize = 100
@@ -19,17 +17,17 @@ class iconListDelegate(QStyledItemDelegate):
     textFrameSize = frameSize - (frameRoundSize * 2)
     imageSize = 60
     fontSize = 10
-    _frameColor = QColor("#3c3c3c")
-    _frameLineColor = QColor("#3c3c3c")
-    _backgroundColor = QColor(0, 0, 0, 0)
+    _frameColor = QtGui.QColor("#3c3c3c")
+    _frameLineColor = QtGui.QColor("#3c3c3c")
+    _backgroundColor = QtGui.QColor(0, 0, 0, 0)
 
     def __init__(self, parent=None, *args, **kwargs):
         super(iconListDelegate, self).__init__(parent, *args, **kwargs)
         self.imageDict = {}
-        self._referenceButton = QPushButton()
+        self._referenceButton = QtWidgets.QPushButton()
 
         self.count = 0
-        self.__viewGeometry = QRect()
+        self.__viewGeometry = QtCore.QRect()
 
     @property
     def frameColor(self):
@@ -42,11 +40,11 @@ class iconListDelegate(QStyledItemDelegate):
     @backgroundColor.setter
     def backgroundColor(self, value):
         if "mouseOver" == value:
-            self._backgroundColor = QColor(0, 184, 184, 10)
+            self._backgroundColor = QtGui.QColor(0, 184, 184, 10)
         elif "selected" == value:
-            self._backgroundColor = QColor(0, 0, 0, 0)
+            self._backgroundColor = QtGui.QColor(0, 0, 0, 0)
         else:
-            self._backgroundColor = QColor(0, 0, 0, 0)
+            self._backgroundColor = QtGui.QColor(0, 0, 0, 0)
 
     @property
     def frameLineColor(self):
@@ -55,11 +53,11 @@ class iconListDelegate(QStyledItemDelegate):
     @frameLineColor.setter
     def frameLineColor(self, value):
         if "mouseOver" == value:
-            self._frameLineColor = QColor("#00b8b8")
+            self._frameLineColor = QtGui.QColor("#00b8b8")
         elif "selected" == value:
-            self._frameLineColor = QColor("#00E7B8")
+            self._frameLineColor = QtGui.QColor("#00E7B8")
         else:
-            self._frameLineColor = QColor("#3c3c3c")
+            self._frameLineColor = QtGui.QColor("#3c3c3c")
 
     def setStyle(self, option, index):
         basePosX = option.rect.x() + self.space
@@ -68,10 +66,10 @@ class iconListDelegate(QStyledItemDelegate):
         self.viewGeometry = option
         self.isDrawDisplayName = True
 
-        if option.state & QStyle.State_MouseOver:
+        if option.state & QtWidgets.QStyle.State_MouseOver:
             self.frameLineColor = "mouseOver"
             self.backgroundColor = "mouseOver"
-        elif option.state & QStyle.State_Selected:
+        elif option.state & QtWidgets.QStyle.State_Selected:
             self.frameLineColor = "selected"
             self.backgroundColor = "selected"
         else:
@@ -79,19 +77,19 @@ class iconListDelegate(QStyledItemDelegate):
             self.frameLineColor = None
             self.backgroundColor = None
 
-        self.baseRect = QRect(
+        self.baseRect = QtCore.QRect(
             basePosX + (self.space / 2.0),
             basePosY + (self.space / 2.0),
             self.frameSize - self.space,
             self.frameSize - self.space
         )
-        self.frameRect = QRect(
+        self.frameRect = QtCore.QRect(
             basePosX,
             basePosY,
             self.frameSize,
             self.frameSize
         )
-        self.textRect = QRectF(
+        self.textRect = QtCore.QRectF(
             basePosX + self.frameRoundSize,
             basePosY + self.frameRoundSize,
             self.textFrameSize, self.textFrameSize
@@ -122,27 +120,27 @@ class iconListDelegate(QStyledItemDelegate):
         self.createButton(index, keyName)
         if self.isDrawDisplayName:
             self.drawText(
-                rect=self.textRect, text=index.data(Qt.DisplayRole), fontSize=self.fontSize,
-                align=Qt.AlignBottom | Qt.AlignLeft
+                rect=self.textRect, text=index.data(QtCore.Qt.DisplayRole), fontSize=self.fontSize,
+                align=QtCore.Qt.AlignBottom | QtCore.Qt.AlignLeft
             )
         else:
             self.drawText(
-                rect=self.textRect, text=index.data(Qt.DisplayRole), fontSize=self.fontSize,
-                color=QColor("#666666"), align=Qt.AlignBottom | Qt.AlignLeft
+                rect=self.textRect, text=index.data(QtCore.Qt.DisplayRole), fontSize=self.fontSize,
+                color=QtGui.QColor("#666666"), align=QtCore.Qt.AlignBottom | QtCore.Qt.AlignLeft
             )
 
     def createButton(self, index, keyName):
         if keyName not in self.imageDict:
             ThumbnailImgPath: WindowsPath = index.data(core.ThumbnailImgPathRole)
             self.imageDict[keyName] = {
-                "btn": QStyleOptionButton(),
-                "image": QPixmap(ThumbnailImgPath.as_posix()),
+                "btn": QtWidgets.QStyleOptionButton(),
+                "image": QtGui.QPixmap(ThumbnailImgPath.as_posix()),
             }
             btn = self.imageDict[keyName]["btn"]
-            btn.state = QStyle.State_Enabled
+            btn.state = QtWidgets.QStyle.State_Enabled
             btn.icon = self.imageDict[keyName]["image"]
-            btn.iconSize = QSize(self.frameSize, self.frameSize)
-            btn.color = btn.palette.setColor(QPalette.Button, QColor(self.frameColor))
+            btn.iconSize = QtCore.QSize(self.frameSize, self.frameSize)
+            btn.color = btn.palette.setColor(QtGui.QPalette.Button, QtGui.QColor(self.frameColor))
         else:
             btn = self.imageDict[keyName]["btn"]
             btn.rect = self.baseRect
@@ -160,41 +158,41 @@ QPushButton:pressed{{
         """)
 
         self.referenceButton.style().drawControl(
-            QStyle.CE_PushButton, btn, self.painter, self.referenceButton
+            QtWidgets.QStyle.CE_PushButton, btn, self.painter, self.referenceButton
         )
         # Dont' need
-        # QApplication.style().drawControl(QStyle.CE_PushButton, btn, self.painter)
+        # QApplication.style().drawControl(QtWidgets.QStyle.CE_PushButton, btn, self.painter)
 
     def drawQStyleOptionButtonFrame(self, rect):
-        self.painter.setRenderHint(QPainter.Antialiasing, True)
-        self.painter.setPen(QPen(self.frameLineColor, 2, Qt.SolidLine))
-        self.painter.setBrush(Qt.NoBrush)
+        self.painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
+        self.painter.setPen(QtGui.QPen(self.frameLineColor, 2, QtCore.Qt.SolidLine))
+        self.painter.setBrush(QtCore.Qt.NoBrush)
         self.painter.drawRoundRect(
             rect, self.frameRoundSize, self.frameRoundSize
         )
 
     def drawThumbnailImg(self, rect, index, lineColor, image):
-        self.painter.setRenderHint(QPainter.Antialiasing, True)
+        self.painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
         ThumbnailImgPath = index.data(core.ThumbnailImgPathRole)
-        image = QIcon(ThumbnailImgPath).pixmap(QSize(self.frameSize, self.frameSize))
+        image = QtGui.QIcon(ThumbnailImgPath).pixmap(QtCore.QSize(self.frameSize, self.frameSize))
         self.painter.drawPixmap(rect, image)
 
     def drawFrame(self, rect, color, lineColor, space=0):
-        self.painter.setRenderHint(QPainter.Antialiasing, True)
-        self.painter.setBrush(QBrush(color))
-        self.painter.setPen(QPen(lineColor, 2, Qt.SolidLine))
+        self.painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
+        self.painter.setBrush(QtGui.QBrush(color))
+        self.painter.setPen(QtGui.QPen(lineColor, 2, QtCore.Qt.SolidLine))
         self.painter.drawRoundRect(
             rect, self.frameRoundSize, self.frameRoundSize
         )
 
     def drawText(
         self, rect, text="", fontSize=16,
-        color=QColor("#060606"), align=Qt.AlignCenter
+        color=QtGui.QColor("#060606"), align=QtCore.Qt.AlignCenter
     ):
-        self.painter.setRenderHint(QPainter.Antialiasing, True)
-        font = QFont()
+        self.painter.setRenderHint(QtGui.QPainter.Antialiasing, True)
+        font = QtGui.QFont()
         font.setPixelSize(fontSize)
-        self.painter.setPen(QPen(color))
+        self.painter.setPen(QtGui.QPen(color))
         self.painter.setFont(font)
         self.painter.drawText(rect, align, text)
 

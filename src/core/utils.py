@@ -2,6 +2,7 @@ import codecs
 import glob
 import json
 from typing import Any, List
+from pathlib import Path, WindowsPath
 
 
 def loadJson(path: str, decoding: str = "utf-8-sig") -> Any:
@@ -52,7 +53,7 @@ def saveJson(path: str, data: Any) -> None:
         raise IOError(f"Error saving JSON to file {path}: {e}")
 
 
-def getExtList(path: str = "", ext: str = ".json") -> List[str]:
+def getExtList(path: str = "", ext: str = ".json") -> List[WindowsPath]:
     """
     Gets a list of files with a specific extension.
 
@@ -65,6 +66,6 @@ def getExtList(path: str = "", ext: str = ".json") -> List[str]:
     """
     try:
         pattern = f"{path}/**/*{ext}" if path else f"**/*{ext}"
-        return [file.replace("\\", "/") for file in glob.glob(pattern, recursive=True)]
+        return [Path(file) for file in glob.glob(pattern, recursive=True)]
     except Exception as e:
         raise IOError(f"Error retrieving files from {path}: {e}")

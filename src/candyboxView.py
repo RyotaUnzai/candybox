@@ -55,7 +55,7 @@ class CandyBoxMainWindow(QtWidgets.QMainWindow):
     Self = TypeVar("Self", bound="CandyBoxMainWindow")
     cw: CandyBoxCentralWidget
 
-    def __init__(self: Self,parent: QtWidgets.QWidget = None, *args, **kwargs):
+    def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs):
         super(CandyBoxMainWindow, self).__init__(parent, *args, **kwargs)
         self.cw = CandyBoxCentralWidget(self)
         self.__initUI()

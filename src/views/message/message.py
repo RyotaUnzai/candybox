@@ -3,6 +3,7 @@ from typing import Final, TypeVar
 
 import core
 import QtCustom
+from ..tooltip import ToolTipWidget
 
 UI_FILE: Final = core.PATH_VIEWS / "message" / "message.ui"
 _, baseClass = QtCustom.loadWindowUiType(UI_FILE)
@@ -20,9 +21,11 @@ class MessageWidget(_, baseClass):
     progressBar: QtWidgets.QProgressBar
     radioButton1: QtWidgets.QRadioButton
     radioButton2: QtWidgets.QRadioButton
+    toolTip: ToolTipWidget
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super().__init__(parent, *args, **kwargs)
+        self.toolTip = ToolTipWidget(parent)
         self.setupUi(self)
         self.setObjectName("Message")
         self.__initUI()
@@ -43,3 +46,23 @@ class MessageWidget(_, baseClass):
             QtCore.Qt.ScrollBarAlwaysOff
         )
         self.listView.setSpacing(2)
+
+        self.listView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.listView.customContextMenuRequested.connect(
+            self.on_context_menu
+        )
+
+    def on_context_menu(self, point):
+        index = self.listView.indexAt(point)
+        if not index.isValid():
+            return
+
+        self.toolTip.labelAssetVersionValue.setText(str(index.data(core.AssetVersionRole)))
+        self.toolTip.labelAuthorsValue.setText(str(index.data(core.AuthorsRole)))
+        self.toolTip.labelDisplayNameValue.setText(str(index.data(QtCore.Qt.DisplayRole)))
+        self.toolTip.labelFileUpdateTimeValue.setText(str(index.data(core.FileUpdateTimeRole)))
+        self.toolTip.labelImageUrlValue.setText(str(index.data(core.ThumbnailImgPathRole)))
+        self.toolTip.labelLastAuthorValue.setText(str(index.data(core.LastAuthorRole)))
+
+        self.toolTip.move(self.listView.viewport().mapToGlobal(point))
+        self.toolTip.show()

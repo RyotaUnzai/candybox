@@ -1,4 +1,4 @@
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
 from typing import TypeVar
 
 import core
@@ -49,6 +49,8 @@ class CandyBoxDelegator(core.Delegator):
         self.model.iconListModel = IconListModel(items=iconDataList)
         self.view.message.listView.setModel(self.model.iconListModel)
         self.view.message.listView.setItemDelegate(delegator.iconListDelegate(self.view.message.listView))
+
+
 
     def __settingWidgetConnection(self: Self) -> None:
         data = [

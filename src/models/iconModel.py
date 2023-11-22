@@ -2,7 +2,7 @@ import os
 from pathlib import Path, WindowsPath
 from pydantic import BaseModel, root_validator, validator
 
-from typing import List, Dict
+from typing import List, Dict, TypeVar
 
 
 PATH_RESOURCE = Path().cwd() / "resource"

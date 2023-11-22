@@ -1,0 +1,111 @@
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // The Language locale to use when spell checking. "en", "en-US" and "en-GB" are currently supported by default.
+  "language": "en",
+  // Controls the maximum number of spelling errors per document.
+  "maxNumberOfProblems": 100,
+  // Controls the number of suggestions shown.
+  "numSuggestions": 8,
+  // The minimum length of a word before checking it against a dictionary.
+  "minWordLength": 4,
+  // Specify file types to spell check.
+  "enabledLanguageIds": [
+    "python",
+    "csharp",
+    "go",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "php",
+    "plaintext",
+    "typescript",
+    "typescriptreact",
+    "yml"
+  ],
+  // Enable / Disable the spell checker.
+  "enabled": true,
+  // Words to add to dictionary for a workspace.
+  "words": [
+    "__qualname__",
+    "autoload",
+    "autopep",
+    "autopep8",
+    "Bsolver",
+    "candybox",
+    "cgfx",
+    "cmds",
+    "cmyk",
+    "codespace",
+    "codicon",
+    "codicons",
+    "Confeito",
+    "Cornsilk",
+    "debugpy",
+    "devkit",
+    "docstrings",
+    "dont",
+    "endregion",
+    "esbenp",
+    "fantasticon",
+    "fontawesome",
+    "hilite",
+    "hlsl",
+    "inlinehilite",
+    "linenums",
+    "materialx",
+    "mkdocs",
+    "MotionBuilder",
+    "nameof",
+    "opentype",
+    "Palenight",
+    "pycodestyle",
+    "pydantic",
+    "pylint",
+    "pymdownx",
+    "pymel",
+    "pyside",
+    "qtcreator",
+    "qssloader",
+    "QPixmap",
+    "RebeccaPurple",
+    "retargeter",
+    "Remixicon",
+    "Raleway",
+    "SDM",
+    "SDM2",
+    "SDMID",
+    "shiboken",
+    "superfences",
+    "tasklist",
+    "Tessellator",
+    "todohighlight",
+    "twemoji",
+    "UDIM",
+    "unindented",
+    "uvset",
+    "vsicons",
+    "xgen"
+  ],
+  // Enable / Disable compound words like 'errormessage'
+  "allowCompoundWords": false,
+  // Words to be ignored and not suggested.
+  "ignoreWords": ["behaviour"],
+  // User words to add to dictionary.  Should only be in the user settings.
+  "userWords": [],
+  // Specify paths/files to ignore.
+  "ignorePaths": [
+    "node_modules", // this will ignore anything the node_modules directory
+    "**/node_modules", // the same for this one
+    "**/node_modules/**", // the same for this one
+    "node_modules/**", // Doesn't currently work due to how the current working directory is determined.
+    "vscode-extension", //
+    ".git", // Ignore the .git directory
+    "*.dll", // Ignore all .dll files.
+    "**/*.dll" // Ignore all .dll files
+  ],
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  // For example "hte" should be "the"`
+  "flagWords": ["hte"]
+}

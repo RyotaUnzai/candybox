@@ -47,3 +47,15 @@ class CandyBoxModels:
 
     def createIconModel(self: Self, **kwargs):
         return IconModel(**kwargs)
+
+    def showToolTipWindow(self, point, widget):
+        print(point, widget)
+        index = widget.indexAt(point)
+        print(index)
+        if not index.isValid():
+            return
+
+        menu = QtWidgets.QMenu(self)
+        menu.addAction("action 1")
+        menu.addAction("action 1")
+        menu.exec_(widget.viewport().mapToGlobal(point))

@@ -13,8 +13,9 @@ class PreferenceWidget(_, baseClass):
 
     This widget provides a user interface for application preference.
     """
+
     Self = TypeVar("Self", bound="PreferenceWidget")
-    labelHeading: QtWidgets.QLabel
+    labelHeading1: QtWidgets.QLabel
     lineEdit: QtWidgets.QLineEdit
     tableView: QtWidgets.QTableView
     treeView: QtWidgets.QTreeView

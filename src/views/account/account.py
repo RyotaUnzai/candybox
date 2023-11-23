@@ -13,9 +13,10 @@ class AccountWidget(_, baseClass):
     This class is a customized widget derived from a base UI class, designed to provide an interface
     for account-related actions. It includes components like checkboxes, labels, and buttons.
     """
+
     Self = TypeVar("Self", bound="AccountWidget")
     checkBox: QtWidgets.QCheckBox
-    labelHeading: QtWidgets.QLabel
+    labelHeading1: QtWidgets.QLabel
     pushButton: QtWidgets.QPushButton
     verticalSpacer: QtWidgets.QSpacerItem
 

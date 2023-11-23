@@ -42,8 +42,8 @@ class CandyBoxModels:
     def setIconListModel(self: Self, data) -> None:
         self.iconListModel = IconListModel(data)
 
-    def setSettingTreeModel(self: Self, data):
+    def setSettingTreeModel(self: Self, data) -> None:
         self.settingTreeModel = SettingTreeModel(data)
 
-    def createIconModel(self: Self, **kwargs):
+    def createIconModel(self: Self, **kwargs) -> IconModel:
         return IconModel(**kwargs)

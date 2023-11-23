@@ -61,7 +61,7 @@
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="labelHeading">
+    <widget class="QLabel" name="labelHeading1">
      <property name="text">
       <string>Message</string>
      </property>

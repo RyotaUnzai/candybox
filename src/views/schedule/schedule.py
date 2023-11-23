@@ -13,6 +13,7 @@ class ScheduleWidget(QtWidgets.QWidget):
 
     This widget provides a user interface for scheduling.
     """
+
     Self = TypeVar("Self", bound="ScheduleWidget")
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
@@ -74,9 +75,9 @@ class ScheduleWidget(QtWidgets.QWidget):
         return self.ui.intSlider
 
     @property
-    def labelHeading(self) -> QtWidgets.QLabel:
-        "Access labelHeading component from the UI."
-        return self.ui.labelHeading
+    def labelHeading1(self) -> QtWidgets.QLabel:
+        "Access labelHeading1 component from the UI."
+        return self.ui.labelHeading1
 
     @property
     def label(self) -> QtWidgets.QLabel:
@@ -114,20 +115,15 @@ class ScheduleWidget(QtWidgets.QWidget):
 
     def __initFlowLayout(self) -> None:
         "Initializes and configures the flow layout."
-        [self.flowLayout.addWidget(
-            QtWidgets.QPushButton(f"Btn {i}")) for i in range(50)]
+        [self.flowLayout.addWidget(QtWidgets.QPushButton(f"Btn {i}")) for i in range(50)]
         self.flowLayout.space = (15, 5)
 
     def __initCircularSliders(self) -> None:
         "Initializes and configures the circular sliders."
-        self.pushButtonA.clicked.connect(
-            lambda: self.progressStart(self.abstractProgressCircularA))
-        self.abstractProgressCircularA.valueChanged.connect(
-            self.progressStartCount)
-        self.pushButtonB.clicked.connect(
-            lambda: self.progressStart(self.abstractProgressCircularB))
-        self.abstractProgressCircularB.valueChanged.connect(
-            self.progressStartCount)
+        self.pushButtonA.clicked.connect(lambda: self.progressStart(self.abstractProgressCircularA))
+        self.abstractProgressCircularA.valueChanged.connect(self.progressStartCount)
+        self.pushButtonB.clicked.connect(lambda: self.progressStart(self.abstractProgressCircularB))
+        self.abstractProgressCircularB.valueChanged.connect(self.progressStartCount)
 
         self.circularSliderB.progressColor = QtGui.QColor(128, 0, 255)
         self.circularSliderB.fontColor = "#888"

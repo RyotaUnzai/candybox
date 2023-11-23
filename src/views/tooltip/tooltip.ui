@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>696</width>
-    <height>415</height>
+    <width>534</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,9 +36,15 @@
     <number>6</number>
    </property>
    <item row="0" column="0">
-    <widget class="QLabel" name="labelHeading">
+    <widget class="QLabel" name="labelHeading2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>Schedule</string>
+      <string>Tooltip</string>
      </property>
     </widget>
    </item>
@@ -107,13 +113,6 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="labelFileUpdateTimeValue">
-       <property name="text">
-        <string>File Update Time</string>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="1">
       <widget class="QLabel" name="labelAuthorsValue">
        <property name="text">
@@ -121,7 +120,28 @@
        </property>
       </widget>
      </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="labelFilePath">
+       <property name="text">
+        <string>File Path</string>
+       </property>
+      </widget>
+     </item>
      <item row="5" column="1">
+      <widget class="QLabel" name="labelFilePathValue">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="labelFileUpdateTimeValue">
+       <property name="text">
+        <string>File Update Time</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
       <widget class="QLabel" name="labelFileUpdateTime">
        <property name="text">
         <string>TextLabel</string>

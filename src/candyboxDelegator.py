@@ -1,16 +1,12 @@
 from PySide2 import QtWidgets, QtCore
-from typing import TypeVar
+from typing import TypeVar, List
 
 import core
 from core.fontRaleway import RalewayExtraBoldItalic
 from core.fontRemixicon import Remixicon
 
 
-from candyboxModel import (
-    CandyBoxModels,
-    IconModel,
-    IconListModel
-)
+from candyboxModel import CandyBoxModels, IconModel, IconListModel
 from candyboxView import CandyBoxMainWindow
 
 import views
@@ -40,36 +36,35 @@ class CandyBoxDelegator(core.Delegator):
 
     def __messageWidgetConnection(self: Self) -> None:
         iconList = core.getExtList(core.PATH_DATA)
-        iconDataList = []
+        iconDataList: List[IconModel] = []
         for url in iconList:
             iconData = core.loadJson(url)
             iconData["filePath"] = url
             iconModel = IconModel(**iconData)
             iconDataList.append(iconModel)
+        iconData
         self.model.iconListModel = IconListModel(items=iconDataList)
         self.view.message.listView.setModel(self.model.iconListModel)
         self.view.message.listView.setItemDelegate(delegator.iconListDelegate(self.view.message.listView))
 
-
-
     def __settingWidgetConnection(self: Self) -> None:
         data = [
-            {'parent': 'python', 'key': 'flake8Args'},
-            {'parent': 'python', 'key': 'provider'},
-            {'parent': 'python', 'key': 'autopep8Args'},
-            {'parent': 'python', 'key': 'renderControlCharacters'},
-            {'parent': 'python', 'key': 'formatOnSave'},
-            {'parent': 'colorInfo', 'key': 'home'},
-            {'parent': 'colorInfo', 'key': 'fields'},
-            {'parent': 'colorInfo', 'key': 'formatOnSave'},
-            {'parent': 'colorInfo', 'key': 'renderControlCharacters'},
-            {'parent': 'colorInfo', 'key': 'associations'},
-            {'parent': 'svn', 'key': 'svn'},
-            {'parent': 'svn', 'key': 'fields'},
-            {'parent': 'svn', 'key': 'formatOnSave'},
-            {'parent': 'svn', 'key': 'renderControlCharacters'},
-            {'parent': 'svn', 'key': 'associations'},
-            {'parent': 'svn', 'key': 'd'}
+            {"parent": "python", "key": "flake8Args"},
+            {"parent": "python", "key": "provider"},
+            {"parent": "python", "key": "autopep8Args"},
+            {"parent": "python", "key": "renderControlCharacters"},
+            {"parent": "python", "key": "formatOnSave"},
+            {"parent": "colorInfo", "key": "home"},
+            {"parent": "colorInfo", "key": "fields"},
+            {"parent": "colorInfo", "key": "formatOnSave"},
+            {"parent": "colorInfo", "key": "renderControlCharacters"},
+            {"parent": "colorInfo", "key": "associations"},
+            {"parent": "svn", "key": "svn"},
+            {"parent": "svn", "key": "fields"},
+            {"parent": "svn", "key": "formatOnSave"},
+            {"parent": "svn", "key": "renderControlCharacters"},
+            {"parent": "svn", "key": "associations"},
+            {"parent": "svn", "key": "d"},
         ]
         self.model.setSettingTreeModel(data)
         self.view.preference.treeView.setModel(self.model.settingTreeModel)
@@ -90,7 +85,7 @@ self.view.navigation.{pushButtonName}.clicked.connect(
         widgetType="{widgetType}", layout=boxLayout
     )
 )""",
-                {"self": self}
+                {"self": self},
             )
 
     def __navigationConnection(self: Self) -> None:
@@ -101,9 +96,7 @@ self.view.navigation.{pushButtonName}.clicked.connect(
             1: self.fontRemixicon.ri_home_2_fill,
             2: self.fontRemixicon.ri_message_2_fill,
             3: self.fontRemixicon.ri_calendar_2_fill,
-            4: self.fontRemixicon.ri_settings_2_fill
+            4: self.fontRemixicon.ri_settings_2_fill,
         }
         self.view.navigation.setText(textData)
-        self.view.navigation.setIconText(
-            self.fontRemixicon, iconText=self.fontRemixicon.ri_apps_fill, iconSize=36
-        )
+        self.view.navigation.setIconText(self.fontRemixicon, iconText=self.fontRemixicon.ri_apps_fill, iconSize=36)

@@ -42,15 +42,40 @@ QToolButton {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+QLabel {
+    color: var(--highlight-color1);
+}
+
 /*---- QLabel ---*/
 
 /*TODO: 後で消す*/
-QLabel#labelHeading,
-QLabel#L_Header1 {
+QLabel#labelHeading1,
+QLabel#labelHeading2,
+QLabel#labelHeading3,
+QLabel#labelHeading4,
+QLabel#labelHeading5,
+QLabel#labelHeading6 {
     font-family: "Raleway";
     color: var(--header1-color1);
     background-color: transparent;
+}
+QLabel#labelHeading1 {
     font-size: 36px;
+}
+QLabel#labelHeading2 {
+    font-size: 32px;
+}
+QLabel#labelHeading3 {
+    font-size: 30px;
+}
+QLabel#labelHeading4 {
+    font-size: 28px;
+}
+QLabel#labelHeading5 {
+    font-size: 24px;
+}
+QLabel#labelHeading6 {
+    font-size: 20px;
 }
 
 @import url("home.qss");
@@ -58,3 +83,4 @@ QLabel#L_Header1 {
 @import url("navigation.qss");
 @import url("schedule.qss");
 @import url("preference.qss");
+@import url("tooltip.qss");

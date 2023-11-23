@@ -42,20 +42,8 @@ class CandyBoxModels:
     def setIconListModel(self: Self, data) -> None:
         self.iconListModel = IconListModel(data)
 
-    def setSettingTreeModel(self: Self, data):
+    def setSettingTreeModel(self: Self, data) -> None:
         self.settingTreeModel = SettingTreeModel(data)
 
-    def createIconModel(self: Self, **kwargs):
+    def createIconModel(self: Self, **kwargs) -> IconModel:
         return IconModel(**kwargs)
-
-    def showToolTipWindow(self, point, widget):
-        print(point, widget)
-        index = widget.indexAt(point)
-        print(index)
-        if not index.isValid():
-            return
-
-        menu = QtWidgets.QMenu(self)
-        menu.addAction("action 1")
-        menu.addAction("action 1")
-        menu.exec_(widget.viewport().mapToGlobal(point))

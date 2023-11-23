@@ -13,6 +13,7 @@ class HomeWidget(QtWidgets.QWidget):
     This class manages the home interface's layout and components, dynamically loading the UI from a file.
     It provides access to various UI elements through properties, enabling easy interaction with the home UI.
     """
+
     Self = TypeVar("Self", bound="HomeWidget")
 
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
@@ -34,9 +35,9 @@ class HomeWidget(QtWidgets.QWidget):
         return self.ui.animationComboBox
 
     @property
-    def labelHeading(self: Self) -> QtWidgets.QLabel:
-        "Access labelHeading component from the UI."
-        return self.ui.labelHeading
+    def labelHeading1(self: Self) -> QtWidgets.QLabel:
+        "Access labelHeading1 component from the UI."
+        return self.ui.labelHeading1
 
     @property
     def listWidget(self: Self) -> QtWidgets.QListWidget:

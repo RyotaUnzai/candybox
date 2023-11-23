@@ -13,12 +13,10 @@ class ToolTipWidget(QtCustom.QExToolTip):
     def __init__(self: Self, parent: QtWidgets.QWidget = None, *args, **kwargs) -> None:
         super().__init__(parent, *args, **kwargs)
         self.ui = QtCustom.ExUiLoader(UI_FILE)
-        self.ui.setupUi(self)
         self.setObjectName("ToolTip")
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.ui)
         self.setLayout(self.layout)
-        self.resize(300, 300)
 
     @property
     def formLayout(self: Self) -> QtWidgets.QFormLayout:
@@ -71,3 +69,11 @@ class ToolTipWidget(QtCustom.QExToolTip):
     @property
     def labelLastAuthorValue(self: Self) -> QtWidgets.QLabel:
         return self.ui.labelLastAuthorValue
+
+    @property
+    def labelFilePath(self: Self) -> QtWidgets.QLabel:
+        return self.ui.labelFilePath
+
+    @property
+    def labelFilePathValue(self: Self) -> QtWidgets.QLabel:
+        return self.ui.labelFilePathValue
